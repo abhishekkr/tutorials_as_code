@@ -1,0 +1,5 @@
+Port         Infantry
+Porto Bello  700
+Cartagena    500
+Panama City  1500
+Havana       2000
