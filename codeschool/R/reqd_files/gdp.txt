@@ -1,0 +1,6 @@
+Rank Country GDP
+1 Australia 101010
+2 Austria 91119
+3 China 90000
+4 Malaysia 89898
+5 Thailand 88888
