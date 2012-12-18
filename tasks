@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo 'clean up temporary files'
+find ./ | grep -e '\..*\.swp$' | xargs rm -f
+find ./ | grep -e '\w~$' | xargs rm -f
