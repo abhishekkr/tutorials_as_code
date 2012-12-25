@@ -1,0 +1,81 @@
+## 04 Controllers For Zombies
+##### main actions
+index     # list all
+show      # show single
+new       # new form
+edit      # edit form
+create    # create field
+update    # update field
+destroy   # delete field
+
+##### Authorized behavior
+def edit
+  @tweet = Tweet.find(params[:id])
+  if session[:zombie_id] != @tweet.zombie_id   ####session
+    # flash[:notice] = 'Unauthorized'
+    # redirect_to(tweets_path)
+    redirect_to(tweets_path,
+      :notice => 'Unauthorized')
+  end
+end
+##### show flash[:notice] on ERB
+
+##################################################
+#####  show Zombie by params[:id]
+class ZombiesController < ApplicationController
+  def show
+    @zombie = Zombie.find(params[:id])
+  end
+
+  def by_name
+    @zombie = Zombie.find(:name => params[:name])
+    render :action => 'show'
+  end
+
+  def create
+    @tweet = Tweet.create(params[:zombie]) # [:zombie] = {}
+  end
+end
+
+##### respond_to block, action returns the XML of the @zombie record
+class ZombiesController < ApplicationController
+  def show
+    @zombie = Zombie.find(params[:id])
+
+    respond_to do |format|
+      # format.html  ## show.html.erb
+      format.xml {render :xml => @zombie}
+      # format.json {render :json => @zombie}
+    end
+  end
+end
+
+##### create new Zombie from params[] and then redirect to show
+####### params = {zombie: {name: 'Gregg', graveyard: 'TBA'}}
+class ZombiesController < ApplicationController
+  def create
+    zombie = Zombie.create params[:zombie]
+    redirect_to zombie
+  end
+end
+
+##### before filter
+class ZombiesController < ApplicationController
+  before_filter :find_zombie
+  before_filter :empty?, :only => [:show]
+
+  def show
+    render :action => :show
+  end
+
+  def find_zombie
+    @zombie = Zombie.find params[:id]
+  end
+  
+  def empty?
+    redirect_to zombies_path if Zombie.find(params[:id]).tweets.empty?
+  end
+end
+
+
+##################################################

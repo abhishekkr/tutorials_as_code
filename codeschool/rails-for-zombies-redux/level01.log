@@ -1,0 +1,26 @@
+# 01 CRUD For Zombies
+##################################################
+##### table [tweets]
+  id         status                  zombie
+  0000000    wassup zitches          zimzombie
+##################################################
+##### CRUD
+ CREATE
+t = Tweet.new  ; t.status = 'message'  ; t.save
+t = Tweet.new(:status => 'msg', :zombie => 'labs') ; t.save
+t = Tweet.create(:status => 'm-s-g', :zombie => 'zom')
+##### READ
+t = Tweet.find(3) ;  t = Tweet.find(3, 4, 5)
+t = Tweet.first   ;  t = Tweet.last  ;  t = Tweet.all
+Tweet.order(:zombie) ; Tweet.limit(10)
+Tweet.where(:zombie => "zom") ; Tweet.count
+Tweet.where(:zombie => "zom").order(:zombie).limit(10)
+##### UPDATE
+t = Tweet.find(3) ; t.zombie = 'envy'  ; t.save
+t = Tweet.find(4) ; t.attributes = {:status => 'a', :zombie => 'b'} ; t.save
+t = Tweet.find(4) ; t.update_attributes = {:status => 'a', :zombie => 'b'}
+##### DELETE
+t = Tweet.find(3) ; t.destroy
+t = Tweet.find(3).destroy
+Tweet.destroy.all
+##################################################

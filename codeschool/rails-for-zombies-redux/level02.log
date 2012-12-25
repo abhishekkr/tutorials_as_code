@@ -1,0 +1,70 @@
+## 02 Models
+##################################################
+##### main Model validations in Rails
+validates_presence_of :status
+validates_numericality_of :height
+validates_uniqueness_of :email
+validates_confirmation_of :password
+validates_acceptance_of :country
+validates_length_of :name, minimum => 3
+validates_format_of :email, :with => /regex/i
+validates_inclusion_of :age, :in => 18..50
+validates_exclusion_of :age, :in => 0..18, :message => 'Sorry newborn'
+##### cool way
+validates :field, :presence => true
+validates :field, :length => {:minimum => 1}, :format => { :with => /.*/ }, :inclusion => { :in => [2,,5,7,9]}
+
+##################################################
+## Model Code for Zombie
+
+class Zombie < ActiveRecord::Base
+  attr_accessible :name, :graveyard
+end
+
+#
+## Validates name presence
+
+class Zombie < ActiveRecord::Base
+  validates :name, :presence => true
+end
+
+t = Tweet.new(:name => nil)
+t.save ~ false
+t.errors ~ {:status => ['can not be blank']}
+t.errors[:status] ~ 'can not be blank'
+
+#
+## Validates Uniqueness of name
+
+class Zombie < ActiveRecord::Base
+  validates :name, :uniqueness => true
+end
+
+#
+## Validates name presence and Validates Uniqueness of name
+
+class Zombie < ActiveRecord::Base
+  validates :name, :presence => true, :uniqueness => true
+  has_many :weapons
+end
+
+#
+## Every Weapon belongs to a Zombie
+
+class Weapon < ActiveRecord::Base
+  belongs_to :zombie
+end
+
+#
+## All weapons belonging to Zombie named "Ash"
+z = Zombie.where(:name => "Ash")
+w = Weapon.where(:zombie_id => z)
+
+##################################################
+##
+z = Zombie.find(2)
+t = Tweet.create(:status => 'yum', :zombie => z)
+t.zombie
+t.zombie.name
+z.tweets.count
+z.tweets

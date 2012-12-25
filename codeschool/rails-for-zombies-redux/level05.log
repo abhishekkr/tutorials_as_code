@@ -1,0 +1,72 @@
+## 05 Routing For Zombies
+##################################################
+
+ZombieTwitter::Application.routes.draw do |map|
+  resources :tweets
+  match 'all' => "tweets#index", :as => "all_tweets"  # all_tweets_path
+  match '/allInAll' => redirect('/tweets')
+  root :to => "tweets#index"
+  match 'local_tweets/:zipcode' => "tweets#index"
+  match 'mylocal_tweets/:zipcode' => "tweets#index", :as => mylocal_tweets
+  match ':name' => 'tweets#index', :as => 'zombie_tweets'
+end
+
+##  Controller
+class TweetsController < ApplicationController
+  def index
+    if params[:zipcode]
+      @tweets = Tweet.where(:zipcode => params[:zipcode])
+    elsif params[:name]
+      @zombie = Zombie.where(:name => params[:name]).first
+      @tweets = @zombie.tweets
+    else
+      @tweets = Tweet.all
+    end
+  end
+end
+
+## View
+
+<%= link_to 'All', all_tweets_path %>
+<%= link_to 'zom', zombie_tweets_path('zom') %>
+
+##  commoners
+tweets_path       /tweets            def index
+tweet             /tweet/<id>        def show
+new_tweet_path    /tweets/new        def new
+edit_tweet_path   /tweet/<id>/edit   def edit
+
+##
+##### add route for all resources zombies
+TwitterForZombies::Application.routes.draw do
+  resources :zombies
+end
+
+##
+##### custom route so that '/undead' undead action on ZombiesController
+TwitterForZombies::Application.routes.draw do
+  match 'undead' => 'zombies#undead'
+end
+
+##
+##### redirect for '/undead' to '/zombies'
+TwitterForZombies::Application.routes.draw do
+  match '/undead' => redirect('/zombies')
+end
+
+##
+##### root route to the ZombiesController index action
+TwitterForZombies::Application.routes.draw do
+  root :to => 'zombies#index'
+end
+
+##
+##### Create a named route.
+####### It should generate a path like '/zombies/:name'
+####### where :name is a param, and points to the index ZombiesController
+####### Name the route 'graveyard'
+TwitterForZombies::Application.routes.draw do
+  match '/zombies/:name' => 'zombies#index', :as => 'graveyard'
+end
+
+##################################################

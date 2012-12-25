@@ -1,0 +1,33 @@
+## 03 Views For Zombies
+##################################################
+
+<% Zombie.first %>
+<%= Zombie.name %>
+<%= link_to zombie.name, zombie_path(zombie) %>
+<%= link_to zombie.name, zombie, :confirm => 'Sure?' %>
+
+<% zombies = Zombie.all %>
+<ul>
+<% zombies.each do |zombie| %>
+<li><%= link_to zombie.name, zombie_path(zombie) %></li>
+<% end %>
+</ul>
+
+<ul>
+  <% zombies.each do |zombie| %>
+    <li>
+      <%= zombie.name %>
+      <%= "SMART ZOMBIE" if zombie.tweets.count > 1 %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% zombies.each do |zombie| %>
+    <li>Edit <%= link_to zombie.name, edit_zombie_path(zombie) %> </li>
+    <li>Delete <%= link_to zombie.name, zombie, :method => :delete %> </li>
+  <% end %>
+</ul>
+
+
+##################################################
