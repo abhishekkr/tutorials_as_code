@@ -1,0 +1,9 @@
+IRB has always been able to shift focus to objects (as Pry does), by simple running
+>> irb OBJECT
+on IRB console itself
+switch back
+>> fg 0
+and forth
+>> fg 1
+and get back
+>> exit

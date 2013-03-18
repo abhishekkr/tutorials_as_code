@@ -1,0 +1,4 @@
+with ruby 1.9 later installed also has prettify_json.rb installed
+just do
+
+$ curl http://localhost/weird.json | prettify_json.rb
