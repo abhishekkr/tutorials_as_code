@@ -1,0 +1,24 @@
+import 'lib/tasks/cut_copy_paste.rake'
+
+task :default => :paste
+
+## rake -P   # all deps
+## rake -T   # all documented tasks
+## rake -T copy   # all documented tasks with txt looked in name
+## rake -W copy   # where defined, works for documented
+
+namespace :f do
+  task :copy_cut_paste => [:copy, :paste] do
+    print 'copy, cut n paste'
+  end
+
+  task :fs do
+    mkdir_p 'a/b'
+    cp 'Rakefile', 'a/b/'
+    cp_r 'lib', 'a/b/'
+    File.write('a/a.rb', "#!ruby\nputs '><'*10")
+    ruby 'a/a.rb'
+    sh 'tree a'
+    rm_rf 'a'
+  end
+end
