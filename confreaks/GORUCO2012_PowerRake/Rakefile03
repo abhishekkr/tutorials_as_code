@@ -1,0 +1,32 @@
+#!rake
+#
+FileList['tasks/*.rake'].each{|rake| import rake}
+
+IMG_FILES = FileList['images/**/*.{png,jpg}'].exclude('*thumb*')
+THUMBS = IMG_FILES.pathmap("%{^images,thumbs}d/%n-thumb%x")
+
+
+# If I need a file xyz.o
+# and I have (or can build) file xyz.c
+# then build xyz.o using this action
+# xyz.o name of rule
+# xyz.c source of rule
+#
+## rule ".o" => ".c" do |r|
+##  sh "cc -c -o #{r.name} #{r.source}"
+## end
+#
+
+IMAGE_DIRS = FileList['images/**/*'].select{|fn| File.directory?(fn) }
+
+THUMB_DIRS = IMAGE_DIRS.pathmap("%{^images,thumbs}p")
+THUMB_DIRS.each{|d| directory d}
+
+TO_IMAGE = lambda {|fn|
+  fn.pathmap("%{^thumbs,images}d/%{-thumb,}f")
+}
+
+rule /^thumbs\/.*-thumb.(gif|jpg|png)/i =>
+    [TO_IMAGE] + THUMB_DIRS do |r|
+  sh "convert -thumbnail 75x75 #{r.source} #{r.name}"
+end

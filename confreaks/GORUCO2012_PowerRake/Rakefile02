@@ -1,0 +1,28 @@
+#!rake
+#
+FileList['tasks/*.rake'].each{|rake| import rake}
+
+IMG_FILES = FileList['images/**/*.{png,jpg}'].exclude('*thumb*')
+THUMBS = IMG_FILES.pathmap("%{^images,thumbs}d/%n-thumb%x")
+
+task :default => :list
+
+desc 'retain dir struct in thumbs'
+task :list do
+  p IMG_FILES
+  p THUMBS_TREE
+end
+
+directory "thumbs"   # will build entire dir path
+#
+# File Tasks ignore namespaces
+desc 'action as a File Task, smart enough to check the Dest. File timestamp with Src...
+if Dest. File is newer, doesn\'t require to go ahead and do work'
+THUMBS.zip(IMG_FILES) do |thumb, image|
+  parent_dir = thumb.pathmap("%d")  # to ensure similar dir-tree in thumbs
+  directory parent_dir
+  file thumb => [parent_dir, image] do
+    sh "convert -thumbnail 75x75 " +
+       "#{image} #{thumb}"
+  end
+end

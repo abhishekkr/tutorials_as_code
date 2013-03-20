@@ -1,0 +1,26 @@
+#!rake
+
+IMG_FILES = FileList['images/**/*.{png,jpg}'].exclude('*thumb*')
+THUMBS = IMG_FILES.pathmap("thumbs/%n-thumb%x")
+
+FileList['tasks/*.rake'].each{|rake| import rake}
+
+task :default => :list
+
+desc 'simple filelist'
+task :list do
+  p IMG_FILES
+  p THUMBS
+end
+
+directory "thumbs"   # will build entire dir path
+#
+# File Tasks ignore namespaces
+desc 'action as a File Task, smart enough to check the Dest. File timestamp with Src...
+if Dest. File is newer, doesn\'t require to go ahead and do work'
+THUMBS.zip(IMG_FILES) do |thumb, image|
+  file thumb => ["thumbs", image] do
+    sh "convert -thumbnail 75x75 " +
+       "#{image} #{thumb}"
+  end
+end

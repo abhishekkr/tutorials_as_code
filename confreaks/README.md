@@ -7,3 +7,6 @@
 | |[+] 
 |[+] texas rails conf 2012 - basic rake
 | |[+] http://www.confreaks.com/videos/899-railsconf2012-basic-rake
+|[+] GORUCO 2012 - Power Rake
+| |[+] http://www.confreaks.com/videos/988-goruco2012-power-rake
+|
