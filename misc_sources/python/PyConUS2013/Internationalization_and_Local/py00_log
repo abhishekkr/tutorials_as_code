@@ -1,0 +1,98 @@
+##### django based
+
+from django.utils.translation import ugettext, ungettext
+
+#Simple
+msg = ugettext("Today is %(month)s %(day)s") % {'month': m, 'day': d}
+#Plural
+msg = ungettext("%(num)d apple", "%(num)d apples", count) % {'num': count}
+
+# Django template provides trans and blocktrans
+{% trans "My Fruit Store" %}
+{% blocktrans %}
+Click <a href="{{ link }}">here</a>.
+{% endblocktrans %}
+
+{% blocktrans count counter=apple|length %}
+Checkout my apple
+{% plural %}
+Checkout my {{ counter }} apples
+{% endblocktrans %}
+
+
+## JS I18N
+# Django provides a view that returns a JS lib with gettext, ngettext and interpolate functions
+
+### Locale Detection
+## Django LocaleMiddleware determines locale to activate by
+# request.session['django_language'], django_language cookie, Accept-Language HTTP header, settings.LANGUAGE_CODE='en-us'
+
+##### Localize L10N with Babel Package
+#Use internationalized source file _("Hello")
+# and do BABEL EXTRACTION to PO (Portable Object) File
+# pass this PO File to Translation Service
+# Get Translated PO File "Bonjour"
+# then use it to update you Django apps message catalogue
+# Run compile making it MO File
+### String extraction with babel
+#### also handles String extraction from Source Code
+
+####CMD### pybabel extract --mapping-file babel.cfg --output out.po <APP_DIR>
+####babel.cfg###
+############# [python: **.py]
+############# [django: **/templates/**.html]
+############# [extractors]
+############# python = babel.messages.extract:extract_python
+############# django = babeldjango.extract:extract_django
+### JS String Extraction
+####babel_js.cfg###
+############# [javascript: **.js]
+############# extract_messages = $._, jQuery._
+############# [extractors]
+############# javascript = babel.messages.extract:extract_javascript
+
+## generate test translations using potpie
+
+## comments for Translators, get shown on formed PO
+### str - ugettext("%{num}s dates") % {'num': date_count}
+### {% comment %} TRANSLATOR: The date fruit, not calendar date{% endcomment %}
+
+## same word but in different context, use pgettext/npgettext to add context
+### fruit_str = pgettext("Date Fruit", "Date")
+### calendar_str = pgettext("Calendar Date", "Date")
+## Message catalogue has msgctxt to ensure unique mapping
+### msgctxt "Date Fruit"
+### msgid "Date"
+### msgstr ""
+### ...
+
+## LAZY Translations
+##### from django.utils.translation import ugettext_lazy
+##### class MyFruit(models.Models):
+#####   name = models.CharField(help_text=ugettext_lazy('Name your fruit!'))
+## Lazy string references are proxy objects do not know how to convert to bytestring 
+## Watch for lazy string concats, bytestring interpolation, exception handlers & JSON Encoder (LazyEncoder)
+
+## Import Aliases
+## Babel will miss it by default as parses through file one line at a time
+##### from django.utils.translation import ugettext_lazy as _lazy
+##### lazy_str = _lazy("Lazy")
+## Need to explicitly mention other aliases
+##### pybabel extract --keyword "_lazy" <options> <dir>
+
+## Smarted JS I18N
+### JS view function runs on every request. Browser can cache JS files, so it can be pre-generated at deploy & serve static
+
+## Database Strings
+### Aovid storing string that need translation. Save only user-generated content.
+### Build rich enum classes instead, to show other 
+##### Class MyFruitsEnum(CoolEnum):
+#####   APPLE = _MyFruitValue(1, 'apple', 'ugettext_lazy('Apple'))
+#####   BANANA = _MyFruitValue(2, 'banana', ugettext_lazy('Banana'))
+### If really need to store, use django-dbgettext to make DB Strings available in Message Catalog
+
+## Links:
+### http://docs.python.org/dev/library/gettext
+### http://babel.edgewell.org
+### https://docs.djangoproject.com/en/dev/topics/i18n
+##########
