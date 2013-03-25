@@ -65,9 +65,12 @@
 * Chrome DevTools > Settings > Override > UserAgent, Device Metrics, Enable Touch Events
 ##### Styled console messages :
 
+```
     console.log('%c is styled', 'background: #222, color: #bada55')
+```
  
-
+```
     var msg = "Overkill for console log, put any CSS in style", style;
     style = ['display: block; padding: 100px 0; text-align:center; font-size: 50px'].join(' ')
     console.log('%c' + msg, style);
+```
