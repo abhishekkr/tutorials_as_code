@@ -8,6 +8,7 @@ T U T O R I A L S ↣↣↣↣↣ C O D E
 + codeschool [ http://www.codeschool.com ]
 + google [ https://developers.google.com/edu  ]
 + confreaks [ http://confreaks.com ]
++ marakanaTechTV
 + misc_source
 
 * * *
