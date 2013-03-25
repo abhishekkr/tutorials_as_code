@@ -17,10 +17,12 @@
 
 
 ## [Yeomen](https://github.com/yeoman/yeoman)
+
 ##### Built on tools like
 *  [Yo    :](https://github.com/yeoman/yo) scaffolds a new app and manages the workflow
 *  [Grunt :](http://gruntjs.com/) build, preview, test
 *  [Bower : ](http://twitter.github.com/bower) dependency management
+
 ##### Includes
 *  Compass, Sass, CoffeeScript
 *  AMD Module Support, RequireJS, ES6 Module Experiment
@@ -30,6 +32,7 @@
 
 
 ## Usage
+
 ##### INIT
       $ yeomen init   {now yo webapp}
 
@@ -61,8 +64,9 @@
 * Chrome DevTools > Ctrl + Shift + F {search against all}
 * Chrome DevTools > Settings > Override > UserAgent, Device Metrics, Enable Touch Events
 ##### Styled console messages :
+
     console.log('%c is styled', 'background: #222, color: #bada55')
-> 
+ 
 
     var msg = "Overkill for console log, put any CSS in style", style;
     style = ['display: block; padding: 100px 0; text-align:center; font-size: 50px'].join(' ')
