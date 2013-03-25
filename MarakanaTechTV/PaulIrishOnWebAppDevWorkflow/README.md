@@ -63,6 +63,7 @@
 * Can pause
 * Chrome DevTools > Ctrl + Shift + F {search against all}
 * Chrome DevTools > Settings > Override > UserAgent, Device Metrics, Enable Touch Events
+
 ##### Styled console messages :
 
 ```
