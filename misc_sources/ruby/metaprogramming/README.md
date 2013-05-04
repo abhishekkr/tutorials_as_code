@@ -5,3 +5,5 @@
 ##### Episode.3 Dynamic Code: blocks, bindings and define_method
 ##### Episode.4 instance_eval AND class_eval
 ##### Episode.5 9 examples : Memorization
+##### Episode.6 Some Hook Methods
+##### Episode.7 More Hook Methods; Why Details Are Important
