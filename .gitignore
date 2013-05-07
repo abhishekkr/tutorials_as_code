@@ -2,3 +2,6 @@ tmp
 *.un~
 *.swp
 *.swo
+.ropeproject
+temp
+__pycache__
