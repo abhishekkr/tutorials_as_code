@@ -2,6 +2,7 @@ tmp
 *.un~
 *.swp
 *.swo
+*.pyc
 .ropeproject
 temp
 __pycache__
