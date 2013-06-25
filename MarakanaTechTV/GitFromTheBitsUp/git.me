@@ -1,0 +1,59 @@
+#!/bin/bash
+#####
+# Git From The Bits Up
+#   Know how the git objects work internally,
+#   by creaing a git repo without using the Git utilities.
+#####
+# just variable info
+
+gitreponame='gitme'
+anyfilename='ayfilename.txt'
+
+# git repo from bits up starts
+
+mkdir $gitreponame
+cd $gitreponame
+
+mkdir .git
+mkdir .git/objects
+mkdir .git/refs
+mkdir .git/refs/heads
+mkdir .git/refs/tags
+echo 'ref: refs/heads/master' > .git/HEAD
+
+# hash objects
+blob_hash=`echo 'This will add data object, blob.' | git hash-object -w --stdin`
+
+echo "Hash object just added can be seen at .git/objects as "$blob_hash
+echo "=+\nPrinting the hash-object's content: "
+git cat-file -p $blob_hash
+echo 'hash-object type: '
+git cat-file -t $blob_hash
+echo 'size of the blob: '
+git cat-file -s $blob_hash
+git status
+
+# stage it with permission,hash,filename
+git update-index --add --cacheinfo 100644 $blob_hash $anyfilename
+git status
+tree_hash=`git write-tree`
+echo 'Staged Tree Hash: '$tree_hash
+echo 'Type of Hash: '
+git cat-file -t $tree_hash
+git cat-file -p $tree_hash
+
+# commit it
+commit_hash=`git commit-tree $tree_hash -m 'initial commit, added anyfilename'`
+echo 'Ref need to be updated with this commit hash: '$commit_hash
+echo 'Type of Hash: '
+git cat-file -t $commit_hash
+git cat-file -p $commit_hash
+
+# update refs to know the commit in branch
+echo $commit_hash > .git/refs/heads/master
+git status
+
+# getting the file from blob
+git checkout HEAD -- $anyfilename
+git status
+ls

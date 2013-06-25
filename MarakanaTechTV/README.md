@@ -5,3 +5,6 @@
 
 ### Python Fundamentals 4Day Course
 [youtube link](http://www.youtube.com/playlist?list=PL26BA8B9FC33789FF)
+
+### Git From The Bits Up
+[youtube link](http://www.youtube.com/watch?v=MYP56QJpDr4)
