@@ -1,0 +1,11 @@
+<div class="container" ng-controller="SimpleController">
+  <input type="text" ng-model="filter.name" />
+  <ul>
+    <li ng-repeat="angular in angulars | filter:filter.name"><b>{{angular.name}}</b> can be loaded from <i><a href="{{angular.cdnjs_uri}}">{{angular.cdnjs_uri}}</a></i></li>
+  </ul>
+  <br/>
+  Angular Name: <input type="text" ng-model="newAngular.name" /><br/>
+  CDNjs URI for it: <input type="text" ng-model="newAngular.cdnjs_uri" /><br/>
+  <button ng-click="addAngulars()">Add Angular</button><br/><br/>
+  <a href="#/show">Show All Angles</a>
+</div>

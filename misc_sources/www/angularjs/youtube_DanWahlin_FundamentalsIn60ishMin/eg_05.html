@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="desk01">
+  <head>
+    <title>AngularJS Views, Controllers and Scope &gt;&gt; Modules, Routes &amp; Factories</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script>
+      var desk01 = angular.module('desk01', []); //empty array is for DependencyInjection in case it relies on another module, those names go in here
+
+      desk01.config(function ($routeProvider){
+        $routeProvider
+          .when('/', {controller: 'SimpleController', templateUrl: '/eg_05_view2.html'})
+          .when('/add', {controller: 'SimpleController', templateUrl: '/eg_05_view1.html'})
+          .when('/show', {controller: 'SimpleController', templateUrl: '/eg_05_view2.html'})
+          .otherwise({ redirectTo: '/'});
+      });
+
+      // Controller
+      desk01.controller('SimpleController', function($scope){
+        $scope.angulars = [
+          { name: 'angular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'},
+          { name: 'angular-ui', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js'}
+        ];
+
+        $scope.addAngulars = function(){
+          $scope.angulars.push(
+            {name: $scope.newAngular.name, cdnjs_uri: $scope.newAngular.cdnjs_uri}
+          );
+        };
+      })
+    </script>
+  </head>
+  <body>
+    <h3>Routes</h3>
+    <div>
+      <div ng-view=""></div>
+    </div>
+    <div class="notes">
+      Either have templates embedded in Shell Page, tell Angular about ViewID to load.
+      <br/>
+      or can have partials at server and tell URL.
+    </div>
+  </body>
+</html>
