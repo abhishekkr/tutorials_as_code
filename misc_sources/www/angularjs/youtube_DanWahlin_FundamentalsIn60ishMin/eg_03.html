@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>AngularJS Views, Controllers and Scope</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script>
+      function SimpleController($scope){
+        $scope.angulars = [
+          { name: 'angular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'},
+          { name: 'angular-ui', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js'},
+          { name: 'restangular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/restangular/0.5.1/restangular.min.js'},
+          { name: 'angular-fire', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angularFire/0.2.0/angularfire.min.js'},
+          { name: 'angular-ui-router', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.0.1/angular-ui-router.min.js'}
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container" ng-controller="SimpleController">
+      <ul>
+        <li ng-repeat="angular in angulars"><b>{{angular.name}}</b> can be loaded from <i><a href="{{angular.cdnjs_uri}}">{{angular.cdnjs_uri}}</a></i></li>
+      </ul>
+    </div>
+  </body>
+</html>
