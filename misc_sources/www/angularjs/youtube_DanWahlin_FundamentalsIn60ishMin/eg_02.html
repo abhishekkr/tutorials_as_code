@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>AngularJS Filters</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+  </head>
+  <body>
+    <div class="container"
+      data-ng-init="names=['Raguel', 'ShowMan', 'n00bRAT'] ;
+                    attribs=[{c:'Good', java:'Bad', go:'Awesome'},
+                            {c:'Awesome', java:'Still bad', go:'Beginner'}]">
+      <h3>
+        using <a href="http://docs.angularjs.org/api/ng.filter:filter">filter's filter</a>
+        and also <a href="http://docs.angularjs.org/api/ng.filter:uppercase">filter uppercase</a> &amp;
+        <a href="http://docs.angularjs.org/api/ng.filter:orderBy">filter orderBy</a>
+        <br/>there are more filter take a look at <a href="http://docs.angularjs.org/api/">APIs</a>
+      </h3>
+      <ul>
+        <li data-ng-repeat="name in names"> {{name | uppercase}} </li>
+      </ul>
+      There is attribute data for {{attribs.length}} people:
+      <ul>
+        <li> Filter Results: <input data-ng-model="nameText" type="test" /> </li>
+        <li data-ng-repeat="attrib in attribs | filter:nameText | orderBy:'c'">
+          {{$index +1}}.) {{attrib.c}} in C, {{attrib.java | lowercase}} in Java &amp; {{attrib.go | lowercase}} in Go
+        </li>
+      </ul>
+    </div>
+    <h2>we can write custom directives and filters</h2>
+  </body>
+</html>
