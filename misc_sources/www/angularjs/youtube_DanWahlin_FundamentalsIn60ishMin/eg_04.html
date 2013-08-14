@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="desk01">
+  <head>
+    <title>AngularJS Views, Controllers and Scope &gt;&gt; Modules, Routes &amp; Factories</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script>
+      var desk01 = angular.module('desk01', []); //empty array is for DependencyInjection in case it relies on another module, those names go in here
+
+      // First Way
+      desk01.controller('SimpleController', function($scope){
+        $scope.angulars = [
+          { name: 'angular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'},
+          { name: 'angular-ui', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js'},
+          { name: 'restangular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/restangular/0.5.1/restangular.min.js'},
+          { name: 'angular-fire', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angularFire/0.2.0/angularfire.min.js'},
+          { name: 'angular-ui-router', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.0.1/angular-ui-router.min.js'}
+        ]
+      })
+
+      // Second Way
+      var desk02 = angular.module('desk02', []);
+      var controllers = {};
+      controllers.SimpleController = function($scope){
+        $scope.angulars = [
+          { name: 'angular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'},
+          { name: 'angular-ui', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js'}
+        ];
+      };
+      controllers.AdvancedController = function($scope){
+        $scope.angulars = [
+          { name: 'restangular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/restangular/0.5.1/restangular.min.js'},
+          { name: 'angular-fire', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angularFire/0.2.0/angularfire.min.js'},
+          { name: 'angular-ui-router', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.0.1/angular-ui-router.min.js'}
+        ];
+      };
+      desk02.controller(controllers);
+
+      // Third Way
+      var desk03 = angular.module('desk03', []);
+      function SimpleController($scope){
+        $scope.angulars = [
+          { name: 'angular', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'},
+          { name: 'angular-ui', cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js'}
+        ]
+      };
+      desk03.controller('SimpleController', SimpleController);
+    </script>
+  </head>
+  <body>
+    <h3>Modules</h3>
+    <div class="container" ng-controller="SimpleController">
+      <ul>
+        <li ng-repeat="angular in angulars"><b>{{angular.name}}</b> can be loaded from <i><a href="{{angular.cdnjs_uri}}">{{angular.cdnjs_uri}}</a></i></li>
+      </ul>
+    </div>
+    <div class="notes">
+      Modules can be used to create other things like Controllers, Routes,..
+      <br/>
+      Modules can have 'Config' function which can be used to defined Routes.
+      <br/>
+      If you have different Views which needed to be loaded into Shell page,
+      we need to take control of what route we are on and what view is that associated with,
+      what controller goes with that view. There comes Routes.
+      <br/>
+      When you define a Route, you can define View and Controller on that.
+      <br/>
+      Instead of hard-coding Controller into View. Bind it using Route.
+      <br/>
+      Controller will call out to Factories (/Services/Providers/*) for CRUD.
+      <br/>
+      View will have Directives, Filters.
+    </div>
+  </body>
+</html>
