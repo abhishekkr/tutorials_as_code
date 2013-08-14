@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="desk01">
+  <head>
+    <title>AngularJS Views, Controllers and Scope &gt;&gt; Modules, Routes &amp; Factories</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script>
+      var desk01 = angular.module('desk01', []) //empty array is for DependencyInjection in case it relies on another module, those names go in here
+      desk01.factory('simpleFactory', function(){
+          var factory = {};
+          var angulars = [
+            { name: 'angular',
+              cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'},
+            { name: 'angular-ui',
+              cdnjs_uri: '//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js'}
+          ];
+          factory.getAngulars = function(){ return angulars ; }
+          return factory;
+        })
+
+      // Controller
+      desk01.controller('SimpleController', function($scope, simpleFactory){
+        $scope.angulars = simpleFactory.getAngulars();
+      })
+    </script>
+  </head>
+  <body>
+    <h3>Factories</h3>
+    <div class="container" ng-controller="SimpleController">
+      <ul>
+        <li ng-repeat="angular in angulars"><b>{{angular.name}}</b> can be loaded from <i><a href="{{angular.cdnjs_uri}}">{{angular.cdnjs_uri}}</a></i></li>
+      </ul>
+    </div>
+    <div class="notes">
+      One Facotry can even rely on another Factory.
+      <br/>
+    </div>
+  </body>
+</html>
