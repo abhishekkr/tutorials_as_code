@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>AngularJS Directive and Data Binding</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+  </head>
+  <body>
+  <h3><a href="http://docs.angularjs.org/api/ng.directive:ngApp">ng-app</a> directive, and bind using <a href="http://docs.angularjs.org/api/ng.directive:ngModel">ng-model</a></h3>
+    <div class="container">
+      Name: <input type="text" ng-model="name" /> {{name}}
+    </div>
+    <br/>
+    <div class="container_part2"
+      data-ng-init="names=['Raguel', 'ShowMan', 'n00bRAT'] ;
+                    attribs=[{c:'good', java:'bad', go:'awesome'},
+                            {c:'awesome', java:'still bad', go:'beginner'}]">
+      <h3>assigning var with <a href="http://docs.angularjs.org/api/ng.directive:ngInit">ng-init</a> and looping with <a href="http://docs.angularjs.org/api/ng.directive:ngRepeat">ng-repeat</a> directive</h3>
+      <ul>
+        <li data-ng-repeat="name in names"> {{name}} </li>
+      </ul>
+      There is attribute data for {{attribs.length}} people:
+      <ul>
+        <li data-ng-repeat="attrib in attribs">
+          {{$index +1}}.) {{attrib.c}} in C, {{attrib.java}} in Java &amp; {{attrib.go}} in Go
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
