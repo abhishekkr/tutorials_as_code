@@ -39,6 +39,8 @@ type rectangle struct {
   r_area int32
 }
 
+type UUID int32
+
 //main
 func main(){
   hm := make(Hashmap)
@@ -67,6 +69,10 @@ func main(){
 
   var f Figure // structs use
   fmt.Println(f)
+
+  var my_uuid UUID
+  my_uuid = 12345
+  fmt.Println(my_uuid)
 
   fmt.Println("")
 }
