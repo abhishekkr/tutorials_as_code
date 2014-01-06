@@ -6,3 +6,5 @@ tmp
 .ropeproject
 temp
 __pycache__
+.venv
+example-webapp
