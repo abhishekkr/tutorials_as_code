@@ -1,0 +1,112 @@
+#!/usr/bin/env gradle -q helloworld -b
+// gradle -b $file $task
+// example gradle script
+// 3 stages: Initialization, Configuration and Execution
+
+
+task helloWorld
+
+// task injected with left-shift operators are Action code
+helloWorld << {
+  print 'hello, '
+}
+
+helloWorld << {
+  println 'world'
+}
+
+
+task hello << {
+  print 'hello '
+}
+
+
+// to make another task run before a task as pre-req
+task ora(dependsOn: hello) << {
+  println 'ora'
+  if(tasks.hello.didWork) {
+    // requires hello.onlyIf to be true so hello didWork gets to set
+    println '~~ ~~ ~~~~~~~~ ~~ ~~ ~~~~~~~~'
+  }
+}
+
+// task without left-shift operator are configuration block,
+// ran before execution of Action code
+// will run irrespective of that task being executed or not
+helloWorld {
+  print 'oh! '
+}
+helloWorld {
+  println 'you are here'
+}
+ora {
+  println "So am I"
+}
+
+
+// different dependsOn
+task alpha {
+  dependsOn "ora", "helloWorld"
+}
+alpha << {
+  println "do alpha task"
+}
+
+// creates DAG before execution so just once run of 'hello'
+task alpha02
+alpha02.dependsOn "hello", "alpha"
+
+
+//doFirst, doLast
+alpha02 << { println "alpha02: injected first" }
+alpha02.doFirst { println "alpha02: injected second" }
+alpha02.doFirst { println "alpha02: injected third" }
+alpha02.doLast { println "alpha02: injected fourth" }
+alpha02.doLast { println "alpha02: injected fifth" }
+alpha02.doFirst { println "alpha02: injected sixth" }
+alpha02 << { println "injected seventh" }
+
+
+task alpha03 {
+  doFirst {
+    println "This is alpha03"
+  }
+  dependsOn alpha02
+}
+
+// run a task only-if, still all depended on it will do their task
+hello.onlyIf {
+  // -Dsome.prop.bool=true
+  System.properties['some.prop.bool'] == 'true'
+}
+
+// disable enable any task
+alpha02.enabled = false
+
+// task's path
+task echoMyPath << {
+  some_values = ["some", "values"]
+  println "This task's path is ${path}"
+}
+
+// logging and description
+task logLevel(description: "just a show of outputs with diff log levels",
+              dependsOn: "echoMyPath") << {
+  def levels = ["DEBUG", "INFO", "LIFECYCLE", "QUIET", "WARN", "ERROR"]
+  levels.each { level ->
+    logging.level = level
+    def logMessage = "setting LogLevel to ${level}"
+    logger.error logMessage
+    logger.error "~" * logMessage.size()
+    logger.debug "enabled debug"
+    logger.info "enabled info"
+    logger.lifecycle "enabled lifecycle"
+    logger.quiet "enabled quiet"
+    logger.warn "enabled warn"
+    logger.error "enabled error"
+    // dynamic properties
+    logger.println "just println: ${echoMyPath.some_values}"
+    logger.error '---'
+  }
+}
+
