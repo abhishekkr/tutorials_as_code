@@ -1,0 +1,47 @@
+// gradle -b $file
+
+// importing full ant build file for tasks
+ant.importBuild "antFromGradle_build.xml"
+
+defaultTasks = ['tryAntTaskInGradle', 'antStandAloneHello', 'afterTheAntTask']
+
+task beforeTheAntTask << {
+    println "A Gradle task that precedes the Ant target"
+}
+
+task afterTheAntTask(dependsOn: "antHello") << {
+    println "A Gradle task that precedes the Ant target"
+}
+
+
+// using Ant tasks in here
+task tryAntTaskInGradle << {
+  def msg = "trying ant task in gradle for echo"
+  ant.echo msg
+}
+
+
+// process data grasped from ant
+task echoDirListViaAntBuilder() {
+    description = 'Uses the built-in AntBuilder instance to echo and list files'
+    //Docs: http://ant.apache.org/manual/Types/fileset.html
+
+    //Echo the Gradle project name via the ant echo plugin
+    ant.echo(message: project.name)
+    ant.echo(path)
+    ant.echo("${projectDir}/buildSrc")
+
+    //Gather list of files in a subdirectory
+    ant.fileScanner{
+        fileset(dir:"buildSrc")
+    }.each{
+        //Print each file to screen with the CWD (projectDir) path removed.
+        println "~~~~~"
+        println it.toString() - "${projectDir}"
+    }
+}
+
+
+//
+/* ant class path can be inferred in gradle and gradle can inject path into ant */
+
