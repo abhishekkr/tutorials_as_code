@@ -9,7 +9,7 @@ helloWorld << {
 }
 
 task copyAToB(type: Copy) {
-  def parentDir = "/home/abhishekkr/ABK/dev/abhishekkr/on_github/tutorials_as_code/misc_sources/gradle"
+  def parentDir = "SOME_DIR"
   from "${parentDir}/A"
   into "${parentDir}/B"
   include "**/*.json", "**/*.txt", "**/*.properties"

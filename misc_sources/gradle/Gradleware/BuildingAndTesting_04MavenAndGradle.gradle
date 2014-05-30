@@ -1,0 +1,4 @@
+// Maven with Gradle
+// gradle -b BuildingAndTesting_04MavenAndGradle.gradle tasks
+
+apply plugin: 'java'
