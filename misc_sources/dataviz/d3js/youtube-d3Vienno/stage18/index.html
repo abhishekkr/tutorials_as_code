@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 18...");
+
+	var width = 800,
+		height= 400,
+		padding = 25;
+
+	var drawHistogram = function(map_data, histogram_data){
+
+		var all_array_lengths = histogram_data.map(function(_d){return _d.length;});
+		var yScale = d3.scale.linear()
+				.domain([0, d3.max(all_array_lengths)])
+				.range([0, height - 50]);
+		var xScale = d3.scale.linear()
+				.domain([0, d3.max(map_data)])
+				.range([0, width]);
+
+		var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+		var canvas = d3.select("body").append("svg")
+						.attr("width", width)
+						.attr("height", height + padding)
+						.append("g")
+						.attr("transform", "translate(20,0)")
+
+		var group = canvas.append("g")
+						.attr("transform", "translate(0, "+height+")")
+						.call(xAxis);
+
+		var bars = canvas.selectAll(".bar")
+					.data(histogram_data)
+					.enter()
+					.append("g")
+
+		bars.append("rect")
+			.attr("x", function(_data){return xScale(_data.x);})
+			.attr("y", function(_data){return height - yScale(_data.y);})
+			.attr("width", function(_data){return xScale(_data.dx);})
+			.attr("height", function(_data){return yScale(_data.y);})
+			.attr("fill", "steelblue")
+			.attr("stroke", "black")
+			.attr("stroke-width", 2)
+			;
+
+		var shiftX = width/(histogram_data.length*2)
+		bars.append("text")
+		//	.attr("x", function(_data){return xScale(_data.x);})
+		//	.attr("y", function(_data){return height - yScale(_data.y);})
+			.attr("dy", function(_data){return  (height - yScale(_data.y) - 2) + "px";})
+			.attr("dx", function(_data){return xScale(_data.x) + shiftX;})
+			.attr("fill", "#000")
+			.attr("text-anchor", "middle")
+			.text(function(_data){return _data.y;})
+			;
+
+
+
+	}
+
+	d3.csv("../stage17/smallData.csv", function(smallData){
+		
+		var map = smallData.map(function(_data){return parseInt(_data.age);});
+		console.log("Map: ~", map, "~");
+
+		var histogram = d3.layout.histogram()
+						.bins(7)
+						(map)
+		console.log("Histogram: ~", histogram, "~")
+
+		drawHistogram(map, histogram);
+	});			
+
+	console.log("ddd Histogram charts part2");
+	</script>
+</body>
+</html>

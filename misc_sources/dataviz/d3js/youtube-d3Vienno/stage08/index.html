@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 8...");
+
+	var smallData = [100, 150];
+	var map_same = function(_data){return _data}
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 500)
+					.attr("height", 500);
+
+
+	 var circles_placeholder = canvas.selectAll("circle")
+	 				.data(smallData)
+	 				.enter();
+	 var circles = circles_placeholder.append("circle")
+	 				.attr("cx", map_same)
+	 				.attr("cy", map_same)
+	 				.attr("r", 25)
+	 				.transition()
+	 				.delay(500)
+	 				.attr("cx", 250)
+	 				.attr("fill", "red");
+
+
+	 smallData = [200, 250];
+	 circles_placeholder = canvas.selectAll("circle")
+	 				.data(smallData)
+	 				.enter();
+	 circles = circles_placeholder.append("circle")
+	 				.attr("cx", map_same)
+	 				.attr("cy", map_same)
+	 				.attr("r", 25)
+	 				.transition()
+	 				.delay(1000)
+	 				.attr("cx", 250)
+	 				.attr("fill", "blue");
+	 
+
+	 smallData = [200, 250, 300];
+	 circles_placeholder = canvas.selectAll("circle")
+	 				.data(smallData)
+	 				.enter();
+	 circles = circles_placeholder.append("circle")
+	 				.attr("cx", map_same)
+	 				.attr("cy", map_same)
+	 				.attr("r", 25)
+	 				.transition()
+	 				.delay(1500)
+	 				.duration(1000)
+	 				.attr("cx", 250)
+	 				.attr("fill", "green");
+
+	 smallData = [100, 150, 250];
+	 circles_all = canvas.selectAll("circle")
+	 				.data(smallData);
+	 circles = circles_all.attr("cx", map_same)
+	 				.attr("cy", map_same)
+	 				.attr("r", 25)
+	 				.transition()
+	 				.delay(3000)
+	 				.duration(1500)
+	 				.attr("cx", 250)
+	 				.attr("fill", "orange");
+
+
+	 smallData = [100];
+	 circles_remaining = canvas.selectAll("circle")
+	 				.data(smallData)
+	 				.attr("fill", "black")
+	 				.exit();
+	 circles = circles_remaining.transition()
+	 				.delay(5000)
+	 				.duration(1000)
+	 				.attr("cx", 250)
+	 				.attr("fill", "purple")
+	 				.transition()
+	 				.duration(1000)
+	 				.attr("cy", 350)
+	 				.each("end", function(){ d3.select(this).attr("fill", "yellow");} );
+
+	console.log("ddd transition");
+	</script>
+</body>
+</html>

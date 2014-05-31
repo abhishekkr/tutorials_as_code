@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 16...");
+
+	var width = 700, height= 500;
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", width)
+					.attr("height", height)
+					.append("g")
+					.attr("transform", "translate(50, 50)");
+
+	var pack = d3.layout.pack()
+				.size([width, height - 50])
+				.padding(10);
+
+	var FunkyPack = function(smallData){
+		var nodes = pack.nodes(smallData);
+
+		var translate_vertical = function(_data){return "translate(" + _data.x + "," + _data.y + ")"; }
+		var node = canvas.selectAll(".node")
+					.data(nodes)
+					.enter()
+					.append("g")
+						.attr("class", "nodes")
+						.attr("transform", translate_vertical);
+
+		var map_radius = function(_data){return _data.r; }
+		node.append("circle")
+			.attr("r", map_radius)
+			.attr("fill", "steelblue")
+			.attr("opacity", 0.25)
+			.attr("stroke", "#ADADAD")
+			.attr("stroke-width", "2" );
+
+		node.append("text")
+			.text(function(_data){return _data.children ? "" : _data.name;});
+
+	}
+
+
+	d3.json("./clusterData.json", FunkyPack)
+			
+
+	console.log("ddd Pack charts");
+	</script>
+</body>
+</html>

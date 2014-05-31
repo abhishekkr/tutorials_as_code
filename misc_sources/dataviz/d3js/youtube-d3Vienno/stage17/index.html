@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 17...");
+
+	var width = 800,
+		height= 600;
+
+	var drawHistogram = function(histogram_data){
+
+		var canvas = d3.select("body").append("svg")
+						.attr("width", width)
+						.attr("height", height)
+						.append("g")
+						.attr("transform", "translate(50, 50)");
+
+		var bars = canvas.selectAll(".bar")
+					.data(histogram_data)
+					.enter()
+					.append("g")
+
+		bars.append("rect")
+			.attr("x", function(_data){return _data.x * 5;})
+			.attr("y", 0)
+			.attr("width", function(_data){return _data.dx * 5 - 5;})
+			.attr("height", function(_data){return _data.y * 10;})
+			.attr("fill", "steelblue")
+			.attr("stroke", "black")
+			.attr("stroke-width", 2)
+			;
+
+
+
+	}
+
+	d3.csv("./smallData.csv", function(smallData){
+		
+		var map = smallData.map(function(_data){return parseInt(_data.age);});
+		console.log("Map: ~", map, "~");
+
+		var histogram = d3.layout.histogram()
+						.bins(5)
+						(map)
+		console.log("Histogram: ~", histogram, "~")
+
+		drawHistogram(histogram);
+	});			
+
+	console.log("ddd Histogram charts part1");
+	</script>
+</body>
+</html>

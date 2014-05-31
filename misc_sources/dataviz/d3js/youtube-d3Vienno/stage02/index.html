@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title").text("Demo for Stage 2...");
+
+	d3.select("p").append("i").text("2:");
+
+	d3.select("p")
+	.append('i')
+	.style('color', "red")
+	.text("3");
+
+
+	d3.select("body")
+	.append('a')
+	.attr('href', 'http://d3js.org')
+	.text('D3js.org')
+
+	
+	d3.select("body").append("i").text("@abionic");
+
+	console.log(d3);
+	</script>
+</body>
+</html>

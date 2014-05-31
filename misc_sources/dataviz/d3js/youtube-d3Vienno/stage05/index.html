@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 5...");
+
+	var smallData = [1, 5, 10, 55, 100, 15]; //domain
+
+	var width = 500;
+	var height = 500;
+	var widthScale = d3.scale.linear()
+						.domain([0, 150])
+						.range([0, width]);
+	var colorScale = d3.scale.linear()
+						.domain([0, 150])
+						.range(["orange", "blue"]);
+
+	var map_same = function(_dat){ return widthScale(_dat);}
+	var map_color = function(_dat){ return colorScale(_dat);}
+	var map_y = function(_dat, _idx){ return _idx*50}
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", width)
+					.attr("height", height);
+
+	var bars_placeholder = canvas.selectAll("rect")
+					.data(smallData)
+					.enter()
+	var bars = bars_placeholder.append("rect")
+					.attr("width", map_same)
+					.attr("height", 50)
+					.attr("y", map_y)
+					.attr("fill", map_color)
+
+	console.log("ddd Scales~ width and color range");
+	</script>
+</body>
+</html>

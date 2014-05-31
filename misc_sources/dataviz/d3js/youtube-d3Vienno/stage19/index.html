@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 19...");
+
+	var colorScale = d3.scale.category10();
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 700)
+					.attr("height", 500);
+
+	var FunkyTreeMap = function(smallData){
+
+		var treemap = d3.layout.treemap()
+				.size([450, 450])
+				.nodes(smallData);
+		console.log("Treemap: ~", treemap, "~");
+
+		var cells = canvas.selectAll(".cell")
+					.data(treemap)
+					.enter()
+					.append("g")
+					.attr("class", "cell")
+
+		cells.append("rect")
+			.attr("x", function(_d){return _d.x})
+			.attr("y", function(_d){return _d.y})
+			.attr("width", function(_d){return _d.dx})
+			.attr("height", function(_d){return _d.dy})
+			.attr("fill", function(_d){return _d.children ? null : colorScale(_d.parent.name);})
+			.attr("stroke", "#ADADAD")
+			.attr("stroke-width", "1px")
+			;
+
+		cells.append("text")
+			.attr("x", function(_d){return _d.x + _d.dx/2})
+			.attr("y", function(_d){return _d.y + _d.dy/2})
+			.text(function(_data){return _data.name;})
+			.attr("fill", "black")
+			;
+	}
+
+	var jsonData = d3.json("../stage16/clusterData.json", FunkyTreeMap)
+
+	console.log("ddd treemap layout");
+	</script>
+</body>
+</html>

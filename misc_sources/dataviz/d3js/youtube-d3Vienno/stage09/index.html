@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 9 ...");
+
+	var smallData = [100, 150, 50, 10, 125, 225, 200, 250, 175];
+
+	console.log("<p>smallData</p>")
+	console.log(smallData);
+
+	console.log("<p>smallData.shift()</p>")
+	console.log(smallData.shift());
+
+	console.log("<p>smallData.sort(d3.descending)</p>");
+	console.log(smallData.sort(d3.descending));
+
+	console.log("<p>d3.min(smallData)</p>");
+	console.log(d3.min(smallData));
+
+	console.log("<p>d3.max(smallData)</p>");
+	console.log(d3.max(smallData));
+
+	console.log("<p>d3.extent(smallData)</p>");
+	console.log(d3.extent(smallData));
+
+	console.log("<p>d3.sum(smallData)</p>");
+	console.log(d3.sum(smallData));
+
+	console.log("<p>d3.mean(smallData)</p>");
+	console.log(d3.mean(smallData));
+
+	console.log("<p>d3.median(smallData)</p>");
+	console.log(d3.median(smallData));
+
+	console.log("<p>d3.shuffle(smallData)</p>");
+	console.log(d3.shuffle(smallData));
+
+	console.log("<p>d3.shuffle(smallData) again</p>");
+	console.log(d3.shuffle(smallData));
+
+	console.log("<br/>ddd arrays");
+	</script>
+</body>
+</html>

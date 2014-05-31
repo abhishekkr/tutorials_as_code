@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 16...");
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 700)
+					.attr("height", 500)
+					.append("g")
+					.attr("transform", "translate(20, 20)");
+
+	var cluster = d3.layout.cluster()
+				.size([450, 450])
+
+	var Funkycluster = function(smallData){
+		var nodes = cluster.nodes(smallData);
+		var links = cluster.links(nodes);
+
+		var node = canvas.selectAll(".node")
+					.data(nodes)
+					.enter()
+					.append("g")
+						.attr("class", "nodes")
+						.attr("transform", function(_data){return "translate(" + _data.y + "," + _data.x + ")"; });
+
+		node.append("circle")
+			.attr("r", 10)
+			.attr("fill", "steelblue");
+
+		node.append("text")
+			.text(function(_data){return _data.name;})
+
+		var diagonal = d3.svg.diagonal()
+						.projection(function(_data){return [_data.y, _data.x] });
+
+
+		canvas.selectAll(".link")
+			.data(links)
+			.enter()
+				.append("path")
+				.attr("class", "links")
+				.attr("fill", "none")
+				.attr("stroke", "#ADADAD")
+				.attr("d", diagonal);
+
+	}
+	
+
+	var jsonData = d3.json("./clusterData.json", Funkycluster)
+
+	console.log("ddd cluster layout");
+	</script>
+</body>
+</html>

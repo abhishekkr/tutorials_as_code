@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 15...");
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 700)
+					.attr("height", 500)
+					.append("g")
+					.attr("transform", "translate(20, 20)");
+
+	var tree = d3.layout.tree()
+				.size([450, 450])
+
+	var FunkyTree = function(smallData){
+		var nodes = tree.nodes(smallData);
+		var links = tree.links(nodes);
+
+		//var map_translate = nodeVerticalTree  // assign here nodeHorizonatlTree for horizontal node mapping
+		var map_translate = nodeHorizonatlTree
+		var node = canvas.selectAll(".node")
+					.data(nodes)
+					.enter()
+					.append("g")
+						.attr("class", "nodes")
+						.attr("transform", map_translate);
+
+		node.append("circle")
+			.attr("r", 10)
+			.attr("fill", "steelblue");
+
+		var map_name = function(_data){return _data.name;}
+		node.append("text")
+			.text(map_name)
+
+		var diagonal = d3.svg.diagonal()
+						//.projection(linkVerticalTree); // assign here linkHorizonatlTree for horizontal links tree
+						.projection(linkHorizonatlTree);
+
+
+		canvas.selectAll(".link")
+			.data(links)
+			.enter()
+				.append("path")
+				.attr("class", "links")
+				.attr("fill", "none")
+				.attr("stroke", "#ADADAD")
+				.attr("d", diagonal);
+
+	}
+
+	function nodeVerticalTree(_data){
+		return "translate(" + _data.x + "," + _data.y + ")";
+	}
+	function nodeHorizonatlTree(_data){
+		return "translate(" + _data.y + "," + _data.x + ")";
+	}
+	function linkVerticalTree(_data){
+		return [_data.x, _data.y];
+	}
+	function linkHorizonatlTree(_data){
+		return [_data.y, _data.x]
+	}
+
+	var jsonData = d3.json("./someData.json", FunkyTree)
+
+	console.log("ddd tree layout");
+	</script>
+</body>
+</html>

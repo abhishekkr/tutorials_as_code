@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 14...");
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 500)
+					.attr("height", 500)
+					.append("g")
+					.attr("transform", "translate(20, 10)");
+
+	var diagonal = d3.svg.diagonal()
+					.source({x: 10, y: 10})
+					.target({x: 250, y: 250});
+
+	canvas.append("path")
+		.attr("fill", "none")
+		.attr("stroke", "black")
+		.attr("d", diagonal)
+
+
+	console.log("ddd diagonal paths");
+	</script>
+</body>
+</html>

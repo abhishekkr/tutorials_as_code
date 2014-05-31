@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 11...");
+
+	var smallData = [
+		{x: 1, y: 5},
+		{x: 10, y: 55},
+		{x: 100, y: 15}
+	]; //domain
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 500)
+					.attr("height", 500);
+
+	var group = canvas.append("g")
+					.attr("transform", "translate(20, 10)");
+
+	var map_x = function(_data){ return _data.x; }
+	var map_y = function(_data){ return _data.y; }
+	var line = d3.svg.line()
+				.x(map_x).y(map_y);
+
+	group.selectAll("path")
+		.data([smallData])
+		.enter()
+			.append("path")
+			.attr("d", line)
+			.attr("fill", "none")
+			.attr("stroke", "#000")
+			.attr("stroke-width", 10)
+	
+
+	console.log("ddd paths");
+	</script>
+</body>
+</html>

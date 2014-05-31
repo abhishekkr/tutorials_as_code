@@ -1,0 +1,25 @@
+{
+	"name": "Bob",
+	"value": 150,
+	"children": [
+		{
+			"name": "Alice",
+			"value": 70,
+			"children": [
+				{"name": "Don", "value": 35}
+			]
+		},
+		{
+			"name": "Eve",
+			"value": 100,
+			"children": [
+				{"name": "Trudy", "value": 55},
+				{"name": "Spy", "value": 55}
+			]
+		},
+		{
+			"name": "Jumbo",
+			"value":	100
+		}
+	]
+}

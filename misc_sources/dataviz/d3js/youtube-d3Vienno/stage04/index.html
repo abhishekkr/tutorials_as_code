@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 4...");
+
+	var smallData = [1, 5, 10, 55, 100, 15];
+
+	var map_same = function(_dat){ return _dat}
+
+	var map_y = function(_dat, _idx){ return _idx*50}
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 500)
+					.attr("height", 500);
+
+	var bars_placeholder = canvas.selectAll("rect")
+					.data(smallData)
+					.enter()
+	var bars = bars_placeholder.append("rect")
+					.attr("width", map_same)
+					.attr("height", 50)
+					.attr("y", map_y)
+
+	console.log("ddd data");
+	</script>
+</body>
+</html>

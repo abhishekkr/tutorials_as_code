@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 20...");
+
+	var colorScale = d3.scale.category10();
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 700)
+					.attr("height", 500);
+
+	var FunkyMap = function(mapData){
+		console.log(mapData)
+
+		var group = canvas.selectAll("g")
+					.data(mapData.features)
+					.enter()
+					.append("g");
+
+		var projection = d3.geo.mercator().scale(700).translate([-700, 500]); //.scale(300).translate([0,100]);
+
+		var path = d3.geo.path().projection(projection);
+
+		var areas = group.append("path")
+					.attr("d", path)
+					.attr("class", "area")
+					.attr("fill", "steelblue");
+
+		group.append("text")
+			.attr("x", function(_d){return path.centroid(_d)[0];})
+			.attr("y", function(_d){return path.centroid(_d)[1];})
+			.attr("text-anchor", "middle")
+			.text(function(_d){ return _d.properties.NAME})
+	}
+
+	var jsonData = d3.json("./countries_partial.geojson", FunkyMap)
+
+	console.log("ddd maps, has different projections, try out");
+	</script>
+</body>
+</html>

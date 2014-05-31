@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 13...");
+
+	var smallData = [1, 5, 10, 55, 100, 15];
+	// several layouts available which takes data and return objects, here we use pie layout
+
+	var color = d3.scale.ordinal()
+					.range(["red", "blue", "orange", "yellow", "green", "purple", "black"])
+
+	var radIus = 250;
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 1500)
+					.attr("height", 1500);
+
+	var group = canvas.append("g")
+					.attr("transform", "translate(250, 250)");
+
+	var arc = d3.svg.arc()
+				.innerRadius(0) //keep it some number for arch chart
+				.outerRadius(radIus);
+
+
+	var map_same = function(_data){return _data;}
+	var pie = d3.layout.pie()
+				.value(map_same);
+
+	var arcs = group.selectAll(".arc")
+			.data(pie(smallData))
+			.enter()
+				.append("g")
+				.attr("class", "arc");
+
+	var map_color = function(_data){ return color(_data.data);}
+	arcs.append("path")
+		.attr("d", arc)
+		.attr("fill", map_color);
+
+	var map_centroid = function(_data){return "translate(" + arc.centroid(_data) + ")";}
+	var map_title = function(_data){ return _data.data; }
+	arcs.append("text")
+		.attr("transform", map_centroid)
+		.attr("text-anchor", "middle")
+		.attr("font-size", "1.4em")
+		.text(map_title);
+			
+
+	console.log("ddd pie charts");
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script type="text/javascript" src="/z-resources/d3.v3.min.js"></script>
+</head>
+<body>
+	<p>Demo</p>
+
+	<script type="text/javascript">
+	d3.select("title")
+	.text("Demo for Stage 12...");
+
+	var radIus = 100;
+	var p = Math.PI * 2;
+
+	var canvas = d3.select("body")
+					.append("svg")
+					.attr("width", 500)
+					.attr("height", 500);
+
+	var group = canvas.append("g")
+					.attr("transform", "translate(125, 125)");
+	var arc = d3.svg.arc()
+				.innerRadius(radIus - 25)
+				.outerRadius(radIus)
+				.startAngle(0)	// angle measured as radian
+				.endAngle(p);
+
+	var arc02 = d3.svg.arc()
+				.innerRadius(radIus - 25)
+				.outerRadius(radIus)
+				.startAngle(0)	// angle measured as radian
+				.endAngle(p - 1);
+
+	group.append("path")
+			.attr("d", arc)
+			.attr("fill", "orange");
+
+	group.append("path")
+			.attr("d", arc02)
+			.attr("fill", "black");
+	
+
+	console.log("ddd arcs layout");
+	</script>
+</body>
+</html>
