@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>HTML5 Photo Booth</title>
+    <link rel="stylesheet" href="./snapr.css"></link>
+  </head>
+  <body>
+    <h2>HTML5 Photo Booth</h2>
+
+    <div id="main">
+      <div class="domRow">
+        <video id="live" class="domCol" autoplay></video>
+        <canvas id="snapshot" class="domCol" style="display:none"></canvas>
+        <img src="./snapr.jpeg" id="photo" class="domCol" alt="photo" />
+      </div>
+      <div id="startbutton" class="button domCol">Take photo</div>
+      <div id="filmroll"></div>
+    </div>
+
+    <script type="text/javascript" src="./snapr.js"></script>
+  </body>
+</html>
+

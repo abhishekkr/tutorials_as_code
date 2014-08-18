@@ -1,0 +1,24 @@
+* {
+  text-align: center;
+}
+.domRow {
+  display: block;
+}
+.domCol {
+  display: inline-block;
+}
+
+.button {
+  cursor: hand;
+  background: #12C2F1;
+  color: #fff;
+
+  font-weight: bolder;
+  font-size: 115%;
+
+  padding-left: 1.0em;
+  padding-right: 1.0em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
