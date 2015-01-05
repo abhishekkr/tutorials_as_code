@@ -1,0 +1,1 @@
+"github.com/chai2010/go-opencv/opencv"
