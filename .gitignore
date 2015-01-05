@@ -10,3 +10,4 @@ __pycache__
 example-webapp
 .gradle
 build
+**/bower_components

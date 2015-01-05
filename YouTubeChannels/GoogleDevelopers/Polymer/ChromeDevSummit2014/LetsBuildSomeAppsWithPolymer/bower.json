@@ -1,0 +1,32 @@
+{
+  "name": "checkoutPolymer",
+  "version": "0.0.1",
+  "homepage": "https://github.com/abhishekkr/tutorials_as_code",
+  "authors": [
+    "AbhishekKr <abhikumar163@gmail.com>"
+  ],
+  "description": "trying out polymer features",
+  "keywords": [
+    "polymer",
+    "chromedevsummit",
+    "2014"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1",
+    "core-toolbar": "Polymer/core-toolbar#~0.5.1",
+    "paper-icon-button": "Polymer/paper-icon-button#~0.5.1",
+    "paper-menu-button": "Polymer/paper-menu-button#~0.5.1",
+    "paper-dropdown": "Polymer/paper-dropdown#~0.5.1",
+    "core-menu": "Polymer/core-menu#~0.5.1",
+    "paper-item": "Polymer/paper-item#~0.5.1"
+  }
+}
