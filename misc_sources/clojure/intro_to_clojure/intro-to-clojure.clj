@@ -2,11 +2,38 @@
 ;
 ; CLOJURE
 ;
-; Intro To Clojure
-; -by Brian Will
-;  http://www.youtube.com/playlist?list=PLAC43CFB134E85266
+; combination of extracts of talks
+;
+; * Intro To Clojure
+;   -by Brian Will (http://www.youtube.com/playlist?list=PLAC43CFB134E85266)
+;
+; * Uncle Bob Martin presents Clojure
+;   - by Uncle Bob
+;
+; * LearnXinYMinutes.com/doc/clojure
+;
 
-(println "I WAZ CLISP BEFORE! NOT THIS IN SINGLE-QUOTE")
+; to quick help
+;(doc first)
+
+; first call should be to set namespace
+(ns clojureintro)
+
+; tick ` :: means its data not a func so eval and place
+'("I WAZ CLISP BEFORE!")
+'(+ 5 10)
+(println '(+ 5 10))
+(eval '(+ 5 10))
+(println `(+ 5 10))
+(println (eval `(+ 5 10)))
+
+(println (/ 20 5 2))
+(println (repeat 2 5))
+(println (apply + (repeat 2 5)))
+(println (first [20 5 2]))
+(println (next [20 5 2]))
+
+(println "NOT STRING IN SINGLE-QUOTE")
 (println (+ 1 2 3 4 5))
 (println *clojure-version* "\n" + "\n" *file* "\n" - "\n" :KEYWORD_SYMBOL)
 (println *compile-path* :key "abcde" 1 2)
@@ -17,6 +44,14 @@
 (println ({"f" "u" 1 2} 1))
 
 ;special forms list
+; boolean states
+(println (or))
+(println (or true false false))
+(println (and))
+(println (and true true false))
+(println true false (not true))
+; equality condition and str concatenating every argument as string
+(println (str (= 1 1) (= 1 2)))
 ; if conditional
 (println ">>>>> if conditional")
 (println ( if (< 1 2) "what" "now"))
@@ -88,6 +123,17 @@
 (def plus (+ 3 7))
 (println plus)
 
+(ns clojureintro)
+(def currentnsVar 1)
+(println currentnsVar)
+(ns newns)
+(def currentnsVar 10)
+(println currentnsVar)
+(ns clojureintro)
+(println currentnsVar)
+
+
+
 ; tail recursion [end-of-function recursion drop calling func frame optimization]
 (println ">>>>> tail recursion")
 (def showUpto100
@@ -109,10 +155,19 @@
   )
 (println)
 
-; Macros
+; creating methods
+;; Macros
 (println ">>>>> using Macros in-built")
 (defn mul [n1 n2] (* n1 n2)) ; => (def mul (fn [n1 n2] (* n1 n2)))
 (println (mul 5 10))
+;; also nameless function defs
+(def div (fn [n1 n2] (/ n1 n2)))
+(println (div 50 10))
+;; also shortcut to nameless function defs
+(def Div #(/ %1 %2))
+(println (Div 10 5))
+(def Sqr #(* % %))
+(println (Sqr 10))
 ;(println ">>>>> creating Macros")
 ;(defmacro name [parameter*] expression*)
 
