@@ -1,5 +1,11 @@
 ### Golang
 
+* [jsDOM](https://github.com/tmpvar/jsdom)
+> A JavaScript implementation of the WHATWG DOM and HTML standards
+
+* [Zombie.Js](https://github.com/assaf/zombie/blob/master/README.md)
+> Insanely fast, headless full-stack testing using Node.js
+
 * [joewalnes/websocketd](https://github.com/joewalnes/websocketd)
 > Turn any program that uses STDIN/STDOUT into a WebSocket server. Like inetd, but for WebSockets.
 > [Wiki: Ten Seconds Tutorial](https://github.com/joewalnes/websocketd/wiki/Ten-second-tutorial)
@@ -104,6 +110,9 @@
 * [spf13/nitro](https://github.com/spf13/nitro)
 > Quick and easy performance analyzer library for golang
 
+* [andlabs/ui](https://github.com/andlabs/ui)
+> Platform-native GUI library for Go.
+
 ---
 
 ### Vim
@@ -160,6 +169,13 @@
 
 * [hintjens/vtx](https://github.com/hintjens/vtx)
 > Virtual Transport Extension Layer for ØMQ
+
+---
+
+### DevOps Toolbox
+
+* [Terraform](http://www.hashicorp.com/blog/terraform.html)
+> a tool for safely and efficiently building, combining, and launching infrastructure. From physical servers to containers to SaaS products
 
 ---
 
