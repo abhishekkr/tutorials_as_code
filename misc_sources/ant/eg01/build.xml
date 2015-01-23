@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<project name="ohk" default="nfo" basedir="">
+  <target name="i">
+    <echo>Oh Ok...</echo>
+  </target>
+
+  <target name="nfo" depends="i">
+    <echo>So after all new tools gotta do Ant. :(</echo>
+  </target>
+</project>

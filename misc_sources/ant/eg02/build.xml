@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name="ohk" default="nfo" basedir="">
+  <property file="prop/some.properties" />
+
+  <target name="i">
+    <echo>Oh Ok...</echo>
+    <echo>${SOME_TEMP_DIR}</echo>
+    <echo>${OTHER_TEMP_DIR}</echo>
+    <mkdir dir="${SOME_TEMP_DIR}"></mkdir>
+    <mkdir dir="${OTHER_TEMP_DIR}"></mkdir>
+  </target>
+
+  <target name="nfo" depends="i">
+    <echo>So after all new tools gotta do Ant. :(</echo>
+  </target>
+</project>
