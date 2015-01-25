@@ -1,0 +1,124 @@
+# Mem Management Part.2
+
+#### Dynamic loading
+* good for memory mgmt.; but overhead of confirmations
+
+#### Dynamic Linking and shared libs
+* re-entrant can be used
+* easy upgrades via SO/DDLs
+* only first call gets overhead for transfer
+
+***
+
+### Swapping
+PCB can be swapped out to backing store from main meory and back.
+* Standard Swapping
+  > time consuming for transfer
+  > cpu-scheduler calls dispatcher to see whether next process in queue is in memory 
+  > modified version use where only swapping happens when main-mem falls below threshold
+  > another form swaps just part of process
+* Swapping on Mobile Systems
+  > don't support swapping at all
+  > or at most have flash memory where they tend to write application state to restore on restart
+
+***
+
+### Contiguous Memory Allocation
+> O.S. & UserSpaceProc can either reside in low or high memory
+> depends on Interrupt Vector which is mostly in low memory and hence so is O.S.
+
+* Mem Protection
+  > relocation & limit registers
+
+* Mem Allocation
+  > in Variable-Partition scheme, O.S. keeps a table indicating which parts of memory are available and which occupied
+    > free block of mem ar holes; with freeing memory from process intermediate holes come up and need to allocated if suits
+    > if there are process which can't fit any hole, they wait for memory
+    > as more holes get created, adjacent holes merge and waiting process' requirement is rechecked
+      > dynamic-storage allocation gets satisfied by First-Fit; Best-Fit and Worst-Fit(leaves largest left-over than best-fit)
+        > first-fit and best-fit are betterin time and storage utilization than worst-fit... as per simulations
+        > first-fit is generally more faster as no clear de-markation has been found in both their behaviors
+
+* Fragmentation
+  > mainly depends if first-fit is better for particular system or best-fit
+  > also what to leave as left-over piece, the top block or bottom
+  > 2 Types:
+    > External Fragmentation: b/w two proc blocks
+    > Internal Fragmentation: in a proc block because mem can be allocated in chunks
+  > 2 solution to External Fragmentation
+    > compaction
+    > Virtual memory addressing by using paging and segmentation
+
+***
+
+### Segmentation
+  > can have varying size, avoids internal fragmentation
+* Basic Method: get broken into logical pieces where each piece represnts a group of related info as code segment, global variables, thread stack, user data segment, so on
+* segmentation H/w: (segment number)segment base and (segment offset)segment limit
+
+### Paging
+  > avoids external fragmentation, solves considerable problem of fitting varied size chunks on backing store
+* Basic Method
+  > breaking phy mem into fixed size chunks called frames and breaking logical mem into same size blocks called pages
+  > referred as page number and page offset
+* H/w support
+  > standard solution to have Paging is special small fast-lookup h/w caches TLB (translation lookaside buffer) having mapping to memory maintained page-table
+  > TLB is associative high-speed memory
+  > this h/w is part of intruction pipeline for no perf. penalty
+  > a TLB miss requires memory reference to page table made
+* Protection
+  > one extra bit is generally attached to each page-table entry valid-invalid making O.S. allow/disallow access for a process to a particular page
+* Shared Pages
+  > Re-entrant code need to be non-self-modifying
+
+
+// can frame have multiple pages
+
+***
+___
+
+## Virtual Memory
+> main advantage is program can be larger than main memory
+
+### Demand Paging
+> quite similar to paging with swapping, page loaded only when demanded
+> it's different in context as doesn't consider entire memory block of process as swapper but as lazy swapper (pager) just current concerned individual pages
+> a page is also invalid if it's valid to access by process but still on backing store... access to such cause Page Fault... if in memory referencing it lies within valid range it's loaded else process is punished
+  > * Anticipatory Fetching: locality of reference
+> for better effect use effective PageReplacement and FrameAllocation algo
+
+
+### Copy-on-Write
+Parent and Child sharing a page, until one has to modify it.
+
+
+### Page Replacement
+* Basic PR
+  > find desired page on disk, find a free frame if not find a victim fram to replace... update page and frame tables
+  > * FIFO PR: easy, oldest replaced, might be some global data shared among several procs
+  > * Optimal PR: Replace the page not to be used for longest time, difficult as requires future knowledge
+  > * LRU PR: least recently used... counter at pages or stack of page numbers
+  > * LRU-Approximation PR: when no h/w support... 0/1
+  > * Counting Based PR: LeastFrequentlyUsed or MostFrequentlyUsed
+  > * Page Buffering PR: keep a pool of free frames... get required page in first... then move out a victim frame
+  > * Applications and PR
+
+### Allocation of Frames
+  > min num of frames per process depends on sys-arch
+  > algo:
+    > * equal allocation
+    > * proportional allocation
+  > Global(all frames) vs Local(self frames) Allocation
+    > global can't let proc control it's own page-fault but let it utilize other lesser used mem effectively so more popular
+  > NUMA
+    > with suited algos it reduces overall mem latency
+
+### Thrashing
+> process psends more time paging than executing
+> Causes:
+  > * CPU Sched sees very low CPU utilization and highly increase multi-programming degree
+  > * this can be limited by opting for LocalReplacemnetAlgo
+
+### Allocating Kernel Memory
+* Buddy System: contiguous mem block best-fitting with power-of-2 allocator size
+* Slab Allocation

@@ -1,0 +1,111 @@
+
+...leftovers
+  > long-term-sched (from create---to--->ready); short-term-sched (for time-sharing); mid-term-sched for process swapping (to get better process mix, or free up main-memory on heavy load, reduces degree of multi-prog)
+  > mid-term handles PageFault
+
+* Processor Affinity
+
+* Context Switches
+  > saving/restoring PCB also accounts Idle CPU time
+
+### Process Queues Types
+* Ready Queue
+* Device Queue
+
+*** //which algo currently
+
+### Process Scheduling Algorithms
+* First Come First Serve Sched. : 
+ > easy to understand and implement; poor perf cuz of high wait time (service time - arrival time)
+ > Process | Arrival Time | Exec Time | Service Time
+   > P0         0              5           0
+   > P1         1              3           5
+   > P2         2              8           8
+   > P3         3              6           16
+
+* Shortest Job First Sched. : 
+ > minimal waiting time; impossible to implement as to know process time before-hand; even if guessed raises chances of long-process starving
+ > Process | Arrival Time | Exec Time | Service Time
+   > P0         0              5           0
+   > P1         1              3           3
+   > P2         2              8           8
+   > P3         3              6           16
+ > Shortest Remaining Job First (Pre-emptive Edition)
+
+* Priority Sched. :
+ > each process given a priority; higher priority proc run first; same priority on FCFS; Priority can decided on MemReqmt;TimeReqmt;ResReqmt;Reqmt-of-it-by-its-Parent
+ > indefinite blocking or starvation
+ > Process | Arrival Time | Exec Time | Service Time | Priority
+   > P0         0              5           0              1
+   > P1         1              3           5              2
+   > P2         2              8           8              1
+   > P3         3              6           16             3
+
+* Round Robin Sched. :
+ > each process can run for fixed Quantum time, prempts with context switching
+ > Process | Arrival Time | Exec Time
+   > P0         0              5
+   > P1         1              3
+   > P2         2              8
+   > P3         3              6
+
+* Multilevel Queue Sched.
+ > System Process (highest priority)
+ > Interactive Process
+ > Interactive Edit Process
+ > User Process (lowest priority)
+
+ ### Real-Time CPU Scheduling
+ * Minimize Latency: Interrupt Latency (finish current exec, context switch, perform interrupt service routine) & Dispatch Latency (time taken by dispatcher to stop one and start another)
+ * Priority based
+ * Earliest Deadline First
+
+***
+
+### Types of Threads
+* User-level
+  > doesn't require kernel mode privilege; can run on any O.S.; scheduling can be application specific; fast to create and manage
+  > most system calls are blocking; no utilization of multiprocessor
+* Kernel-level
+  > multiprocessor can be used; 
+  > generally slower to create and manage; transfer control from one thread to another requires mode switch to kernel
+
+##### Multithreading Models
+* Many-to-Many : many user level threads multiplexes to smaller or equal number of kernel threads
+* Many-to-One : many user level threads to one kernel level threads, green threads
+* One-to-One : creating user thread to corresponding kernel thread
+
+***
+
+### Proces Sync
+* Mutex Locks:
+  > must acquire/release locks of critical section before/after atmoic action
+  > requires busywaiting by other processes; 
+* Peterson's Algo: flag[] & turn
+* Semaphores:
+  > a pair composed of an Int variable (counter) & a queue (FIFO) for PIDs waiting on sync. access to shared res the semaphore control
+  > counter can undergo only 2 atomic actions:
+    > * wait(), P: decrement by 1; if -ive then block proc and enter it's ID in Queue
+    > * signal(), V: increase by 1; if -ive then dequeue 1st PID from queue and unblock it
+  > a proc wait() on entering critical section of res and signal() on leaving it
+  > Unix-y
+    > P(sv) : if sv is greater than 0, decrement sv...if sv is 0, suspend proc
+    > V(sv) : if someother process suspended for sv, make it resume... if no proc waiting, incement sv
+  > atomic operations confirmed by suspending preemption for semaphores
+
+* Deadlock (another mess to be handled in case of shared resource among concurrent processes other than value corruption)
+  >  P0      |   P1
+  > wait(S)  |  wait(Q)
+  > wait(Q)  |  wait(S)
+  > ...           ...
+  > signal(S)| signal(Q)
+  > signal(Q)| signal(S)
+
+* Deadlock Handling
+  > Prevention (restraint on res request)
+  > Avoidance (in advance tell O.S. what res to use, O.S. decides whether to make proc wait or not)
+  > Recover (terminate, preemption)
+
+* Classical Sync Problems
+  > Reader-Writer Problems (Readers can read until exclusive lock by writer, writer is waiting to write no more reader reads)
+  > Dining Philosophers Problem

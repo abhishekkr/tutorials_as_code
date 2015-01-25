@@ -1,0 +1,76 @@
+
+// can frame have multiple pages
+
+// Thrashing : virtual mem is in constant stage of paging due to continuous page faults;
+//////// increase RAM || reduce programs || kill heavy paging process || spatial locality
+
+## Disk/File Management
+
+#### Disk H/w
+> coated platters => surface => track => sector
+> all sectors same size, outer tracks more sectors than inner
+
+> Process of getting to particular bit to R/W data involves
+* correct head selection
+* seeking of distance from center   } seek latency
+* rotate to required spot of bit    } rotational latency
+* handling actual r/w task via DMA
+
+> can only r/w from disk in blocks
+
+> Controller
+
+> Daisy Chain arrangement
+> accessed via I/o Ports or RemoteHost
+> I/O Port consists of Status Register; Control Register; Data-in Register; Data-out Register
+
+> Polling : host waits for controller response in loop checking Status Reg's busy bit
+
+> Interrupts : catch, dispatch, clear
+> * need ability to defer interrupt handling during critical processing
+> * need efficient way to dispatch to proper interrupt handler for device, w/o polling all => Interrupt Vector Table
+> * need interrupt priority levels so OS can distinguish
+
+> Direct Mem Access :
+> * wasteful for CPU to keep checking status bits & feed data into controller register a byte a time
+> * offload Programmed I/o workload to DMA
+> * DMA is told Source, Destination and number of Bytes to transfer
+
+#### Disk Scheduling
+
+> total delay seen by process constitutes of
+> * overhead
+> * queuing time
+> * latency
+> * transfer time
+
+FCFS is bad mostly for Disk Queues due to dynamic location points. Better algorithms:
+> Shortest Seek Time First
+> * choose request closest to current head position BUT arbitrarily long starvation
+> The Elevator (SCAN/LOOK) Algorithm
+> * serving closest requirement in progressing direction BUT same cylinder request lead starvation
+> One-way Elevator (C-SCAN/LOOK) Algorithm
+> * no favoritism for middle tracks
+
+SSDs have uniform service read time but not write time. So read in FCFS. Though merge adjacent write requests.
+
+#### Disk Management
+
+> Disk Formatting: phy., logical
+> Boot Block
+> Bad Blocks
+
+#### RAID (Redundant Arrays of Independent Disks) Structure
+... reliability via redundancy, performance via parallelism (block-level, bit-level)
+> RAID 0 : non-redundant block-level stripping
+> RAID 1 : mirrored disks
+> RAID 2 : memory style error correcting codes, bit stripping with Hamming-Code-Parity; more theoretical
+> RAID 3 : byte-interleaved dedicated parity; 
+> RAID 4 : block-interleaved dedicated parity;
+> RAID 5 : block-interleaved distributed parity;
+> RAID 6 : P + Q redundancy; P XORd AND Q Shift-XORd
+
+
+// block, 
+
+// DMA

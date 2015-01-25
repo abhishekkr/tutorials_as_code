@@ -1,0 +1,130 @@
+
+## Process Management
+
+* Scheduler + Interrupt Handlers + IPC
+
+### Concepts
+> MultiProcessing vs MultiThreading
+> Timer
+> init Supreme Parent for User Space with ID#1
+
+### MultiTasking
+> Scheduling Stratgeies
+> * MultiProgramming: some process can utilize CPU all time if current process switches to non-running state, no timely run of all process
+> * TimeSharing: switch CPU among processes so frequently that users can interact with each program
+  > => Cooperative MultiTasking/TimeSharing : relies on each process giving up regular time to other processes, badly designed program can eat up all CPU
+  > => Preemptive MultiTasking/Timesharing : With interrupts and preemption from O.S., I/O bound process could be bound or put on hold pending control from I/O request.
+> * RealTime Systems: waiting tasks are guaranteed CPU time based on linked external event
+
+
+### Process State Transitions
+
+* new, ready, running, waiting, terminated
+
+```ASCII
+
+    					          [Running]--~>/Terminate/
+    			         Preempt__/  __,^ \___                   /Short /
+    					____|  _____/Run      \_Blocked          /Term  /
+                      /       /                       \,         /Sched /
+    		/Create/~-->[Ready]<------------------[Blocked]
+    					 '| |                       '| |
+    					 / /	<Suspend,			 | |         /Medium /
+    					/ /		  Resume>			 | |		 /Term   /
+    					| |,						 | |,		 /Sched  /
+    	     [Suspended Ready]<---Release---[Suspended Blocked]  
+
+```
+
+### Process Control Block (PCB)
+* Process State
+* Program Counter : next instruction to be executed
+* CPU Registers :
+* CPU Scheduling Info :
+* Mem Management Info : Values of base regiesters, page tables, etc.
+* Accounting Info : amount of CPU and real time used, time limits, process numbers, etc.
+* I/O Status Info : list of allocated I/O devices, list of open file descriptors, etc.
+* In a multi-threaded process even Thread specific information comes here
+* Also keeps information on Parent and Sibling Process
+
+### Process Scheduling
+* Scheduling Queues
+  > process starting get added to job queue
+  > one waiting for execution and present on main memory are added to ready queue (linked list of PCBs)
+  > list of process waiting for particular I/O device are moved to device queue of that device
+  > process might create a child and wait for it to exit
+  > process could be forcible removed from CPU by an interrupt and place in ready queue
+* Schedulers
+  [Batch Systems]
+  > long-term-sched OR job-sched picks process spooled over disk to be loaded in main memory for execution
+  > short-term-sched OR CPU-sched picks process from main memory to be executed currently
+  > CPU-sched need to be much faster than Job-sched because of its frequency being much higher which maps to cpu utilization
+  > Job-sched need to pick good combo of I/O-bound-proc and CPU-bound-proc for proper resource utilization
+  > CPU-sched maps to TimeSharing AND Job-sched maps to MultiProg
+  [TimeSharing (long-term-sched is minimal)]
+  > mid-term-sched for process swapping (to get better process mix, or free up main-memory on heavy load)
+* Context Switches
+  > saving/restoring PCB also accounts Idle CPU time
+
+### Operations of Processes
+* Process Creation
+
+### Threads
+> Threads (pre-emptive) vs Fibers (co-operative)
+> Thread Pool
+//////> mgmt of thread pool
+
+### Inter Process Communication (IPC)
+##### Shared Memory (common r/w so faster but cache coherency so relatively poor perf)
+  > Bounded Buffer (when full no push, when empty no pull... must wait) and Unbounded Buffer (pull may wait, push needn't wait) 
+##### Message Passing (sys-call comm so relatively slow but also maps over distributed system)
+  > Direct Communication (know the name of sender&recvr; just know name of recvr) and Indirect Communication (MailBox, POSIX MsgQ usage)
+  > Sync or Async Communication : Blocking(send and wait until received by target)/NonBlocking(send and resume) Send; Blocking(until msg available)/NonBlocking(msg or null)) Recv
+  > Automatic or Explicit Buffering: Zero Buffering; Bounded Capcity and Unbounded Capacity (automatic)
+
+### Communication in Client Server Systems
+* Socket : IP:Port
+* RPC : abstract procedure call mechanism b/w systems with n/w connections, IPC over n/w with added protocol
+* Pipes : one of the basic and initial forms of IPC
+  > 4 points to consider: Bidirectional/Unidirectional ; if BiDir then FullDuplex/HalfDuplex ; do they need to be Parent/Child ; can communicate over n/w or just local
+
+
+*** EXERCISE
+
+Use pstree, htop or similar util and see.
+Checkout and use threading in your prog. lang. of Practice, mention which lang.?
+.....
+Write a process creating a child process using fork()? Printing parent process info. and self info.?
+Write a process printing tables of 1-to-10 with sleep of last number printed after every print alongside?
+.....
+Fork a process, make it turn to zombie? 
+
+***
+
+***
+
+### Process Control
+* allocate/free memory
+* load
+* create process (fork)
+* get/set proc attrib
+* execute
+* wakeup/release/allocate
+* sleep/request
+* terminate
+
+### Process Table Entry
+* Value of not-running Process
+* Stack Pointer
+* CPU Time Used
+* PID
+* PPID
+* UID
+* GID
+* Pointer to Text Segment (Memory of Program Text)
+* Pointer to Data Segment
+* Pointer to Stack Segment
+* UMASK
+* Current Working Dir
+* ...more
+

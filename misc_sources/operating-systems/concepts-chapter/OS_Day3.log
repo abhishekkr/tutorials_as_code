@@ -1,0 +1,70 @@
+
+...leftovers
+  > long-term-sched (from create---to--->ready); short-term-sched (for time-sharing); mid-term-sched for process swapping (reduces degree of multi-prog)
+  > mid-term handles PageFault
+
+* Processor Affinity
+
+* Context Switches
+
+### Process Queues Types
+* Ready Queue
+* Device Queue
+
+### Process Scheduling Algorithms
+* First Come First Serve Sched. : poor perf cuz of high wait time for later smaller proc
+
+* Shortest Job First Sched. : need to know process time before; long-process starving
+ > Shortest Remaining Job First (Pre-emptive Edition)
+
+* Priority Sched. : higher priority proc run first; priority can decided on (Memory; Time; Resource;) requirements
+
+* Round Robin Sched. : preempts with context switching
+
+* Multilevel Queue Sched.
+ > System Process (highest priority)
+ > Interactive Process
+ > Interactive Edit Process
+ > User Process (lowest priority)
+
+ ### Real-Time CPU Scheduling
+ * Minimize Latency: delay in hand-over of control
+ * Priority based
+ * Earliest Deadline First
+
+***
+
+### Types of Threads
+* User-level
+* Kernel-level
+
+##### Multithreading Models
+* Many-to-Many : many user level threads multiplexes to smaller or equal number of kernel threads
+* Many-to-One : many user level threads to one kernel level threads, green threads
+* One-to-One : creating user thread to corresponding kernel thread
+
+***
+
+### Proces Sync
+* Mutex Locks:
+  > must acquire/release locks of critical section before/after atmoic action
+  > busywaiting
+
+* Peterson's Algo: flag[] & turn
+
+* Semaphores:
+  > counter can undergo only 2 atomic actions:
+    > * wait(), P: decrement by 1; if -ive then block proc and enter it's ID in Queue
+    > * signal(), V: increase by 1; if -ive then dequeue 1st PID from queue and unblock it
+  > a proc wait() on entering critical section of res and signal() on leaving it
+  > Unix-y
+    > P(sv) : if sv is greater than 0, decrement sv...if sv is 0, suspend proc
+    > V(sv) : if someother process suspended for sv, make it resume... if no proc waiting, incement sv
+  > suspending preemption for semaphores
+
+* Deadlock
+ > * Deadlock Handling: Prevention; Avoidance; Recover (terminate, preemption)
+
+* Classical Sync Problems
+  > Reader-Writer Problems (Readers can read until exclusive lock by writer, writer is waiting to write no more reader reads)
+  > Dining Philosophers Problem

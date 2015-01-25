@@ -1,0 +1,89 @@
+step2012-interns@tw.com
+
+# Pre-Context
+
+### Normal Computing Experiences
+
+* Hardware: CPU, Memory and I/O devices
+
+* Software: User Applications, Admininstrative Applications
+
+
+### Types of System running O.S.
+
+* Desktop, Mobile, Embedded, Stacked, Virtual
+
+* StandAlone, Distributed, Client-Server, P2P
+
+***
+
+
+## What's an O.S.
+
+* middleman to control, procure, secure... the reusable user-app engine
+
+* kernel modules: system calls, bus drivers, executable formats, data streams, scheduling algorithms, file systems, device drivers, miscellaneous
+
+* How a typical system runs
+```FLOW
+PowerUp => Firmware => Boot => Kernel => KernelSpace => UserService.0 => SystemDaemons...GETTY
+```
+
+* Managing: Process, Memory, Files, Device, Security, SysPerf, Job A/c, Errors, System Interface to Users
+
+* Types: Batch O.S., Time Sharing O.S., Distributed O.S., Network O.S., Real-Time O.S.
+
+> BIOS/UEFI, POST, Monolithic/Micro/Hybrid Kernel
+> API/ABI, Loadable Kernel Modules, Security concern, Disable with Initramfs
+
+
+#### Process Management
+
+* SingleTasking AND MultiTasking (MultiProgramming, TimeSharing)
+
+* SingleProcessor AND MultiProcessor (MultiChip, MultiCore) EVEN Clustered
+
+> JobScheduling, IPC, Interrupts/Traps, AssymetricMultiProc/SymmetricMultiProc
+
+
+#### Memory Management
+
+* Registers, Cache (Internal,External), RAM, Disk Buffers, Disk
+
+* Caching, Spooling, Buffering
+
+> Instruction Cache, Virtual Memory, Paging, UMA/NUMA, Cache Coherence
+
+
+#### File Management
+
+* CRUD of Files
+
+
+#### Protector
+
+* Kernel Mode, User Mode (, VM Mode)
+
+* Users/Groups with Access Privileges; Control Groups
+
+* Timers and Traps
+
+***
+
+
+## Specific Context over Examples
+
+* Mainstream: Unix, [GNU/Linux], [BSD Unix], [Solaris], Windows, iOS, Android
+* Quickstream: IBM AIX, HP UX, QNX, JunOS, Cisco IOS
+* and some: Menuet, ReactOS
+
+##### Exercise
+* Using of VirtualBox/other for any O.S. suitable VM creation
+* lookup JSLinux
+
+
+
+
+
+QUERIES:
+http://windows.microsoft.com/en-us/windows7/32-bit-and-64-bit-windows-frequently-asked-questions

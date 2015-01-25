@@ -1,0 +1,14 @@
+#### RAID and O.S. :(
+
+#### RAID Z parity: avoids need of read-modify-write due to varied size stripe
+
+#### RAID 5 Write Hole
+> lose power after writing data block but parity block, will remain inconsistent... will even serve corrupt data if a data disk fails
+
+#### RAID 1+0 (stripe of mirrors) vs RAID 0+1 (mirror of stripes)
+> 1+0 require minimum 4disks       |  requires min of 3disks
+
+#### RAID 5+0 {{ stripe of block-level-distributed-parity arrays }}
+> 5+1 mirrored block-level-distributed-parity arrays
+#### RAID 5+3 {{ stripe of bit-level-dedicated-parity arrays }} actually 3+0
+#### RAID 6+0

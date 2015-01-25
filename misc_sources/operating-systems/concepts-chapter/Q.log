@@ -1,0 +1,75 @@
+[ Questions - one line answers ]
+
+Q1. What is the first task that BIOS performs after loading?
+
+Q2. Why BIOS doesn't directly loads O.S. and defer that task to other entity?
+    To which entity is the task defered to?
+    What is the newer alternative for traditional BIOS?
+
+Q3. Why all Memory Units (RAM, HDD, etc) not made of same technology as on-chip caches for better speed?
+
+Q4. How many Run Modes are there for Process categorization and what is this categorization useful for?
+
+Q5. What process is Parent Process for all User-space Processes on Linux?
+
+Q6. On Context Switch, what Memory Level task need to be taken care of?
+
+Q7. What's the one main difference in Threads and Fibers?
+
+Q8. What (level) Process Scheduler need to take care of mix for cpu-bound and i/o-bound processes?
+    What (level) Process Scheduler need to take care of time-sharing?
+
+Q9. What's the one main benefit of Shared Memory over Message Passing?
+    What's the one main benefit of Message Passing over Shared Memory?
+
+Q10. What are the main decision points before estabilishing Pipes for IPC?
+
+Q11. What handles the Read/Write requests made from Process to offload it from CPU?
+
+Q12. What is the field for deciding Process Priority in CPU Fail Scheduling Scheme?
+
+Q13. What happens to Process that gets pre-empted by Process Scheduler in Multi-level Feedback Queue mechanism?
+
+Q14. Name any Real-Time OS CPU Scheduling Algo. and one line description of it?
+
+Q15. What are Green Threads?
+
+Q16. Let Semaphore S1 belong to Resource R1. Suppose there are 2 processes A & B. Answer following steps based on it...
+     a.) A.wait(S1) gets called, after this what's value of S1
+     b.) B.wait(S1) gets called, after this what's the state of B
+
+
+Q17. Load Time mapped object modules to Process gets referenced as absolute code or re-locatable code?
+
+Q18. What is the concept of Re-entrant Process block?
+
+Q19. What is the concept of Copy-on-write?
+
+Q20. Using what O.S. keeps check on Process to let it only access the memory allotted to it?
+
+Q21. What's the main overhead while managing process with Dynamic Link Loaded libraries?
+
+Q22. How Mobile O.S. were initially handling Process Swapping?
+
+Q23. What's the major advantage for First-Fit Memory Allocation scheme over Best-Fit Scheme?
+
+Q24. Memory Compaction solves which variety of Fragementation?
+
+Q25. What effect does Translation Lookaside Buffer (TLB) has on Paging?
+
+Q26. Name any 3 Page Replacement Algorithms?
+
+Q27. What's the phenomenon when Process faces Page Faults almost every (at very increase rate) CPU cycle?
+
+Q28. What's difference in Seek Time and Rotational Latency?
+
+Q29. What's benefit of 1-Way-Elevator Disk Scheduling Algo over Elevator Scheduling Algo?
+
+Q30. What scheduling algo gets in use for SSDs?
+
+Q31. Suppose there is a Nested-RAID RAID-611.
+     a.) How many levels will be there?
+     b.) What RAID Scheme is implemented at what level?
+     c.) What will happen in all implemented RAID Schemes?
+
+Q32. Name one RAID Scheme using FileSystem level capabilities AND one using Hardware-Caching capabilities?

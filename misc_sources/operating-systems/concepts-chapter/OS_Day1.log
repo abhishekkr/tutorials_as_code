@@ -1,0 +1,65 @@
+# [ covered today ]
+
+### Type of Platforms running O.S. [ Hardware Based ]
+* Desktop/Laptop
+* MobilePhones/Tablets
+* Embedded
+* Rack-Mounted Servers
+* Virtual Machines
+
+### Basic Info. of
+* Monolithic Kernel, MicroKernel, HybridKernel
+* Kernel Mode, User Mode
+* Loadable Kernel Modules, their Security concern, Disable dynamic loading post-boot
+
+### How a typical system Boots up
+```ASCII
+PowerUp
+    \/
+Instruction Register (in CPU; told to run Firmware)
+    \/
+Firmware (BIOS -or- UEFI; POST and then told to load Bootloader)
+    \/
+Bootloader (load the O.S.)
+    \/
+Kernel
+    \/
+KernelModules (DeviceDrivers,...)
+    \/
+Initial UserMode Service (for linux: init -or- upstart -or- openrc -or- systemd)
+```
+
+### Few of the Types of O.S.:
+* Time Sharing O.S.
+* Real-Time O.S.
+
+### Basics on Process Management
+* SingleTasking AND MultiTasking (MultiProgramming, TimeSharing)
+* SingleProcessor AND MultiProcessor (MultiChip, MultiCore)
+
+***
+
+# [ to finish before moving ahead ]
+
+### What's an O.S.
+* middleman to control, procure, secure... the reusable engine to control hardware resource for user applications
+* kernel modules: system calls, bus drivers, executable formats, i/o streams, scheduling algorithms, file systems, device drivers, miscellaneous
+* handles managing: Process, Memory, Files, Device, Security, SysPerf, Job A/c, Errors, System Interface to Users
+
+### Type of Platforms running O.S. [ Hardware Based ]
+* Rack-Mounted Servers
+* Virtual Machines
+
+### Type of Platforms running O.S. [ Software Based ]
+* StandAlone
+* Distributed
+* Client-Server
+* P2P
+
+### Types of O.S.:
+* Batch O.S.
+* Distributed O.S.
+* Network O.S.
+
+### Basics on Process Management
+* Clustered

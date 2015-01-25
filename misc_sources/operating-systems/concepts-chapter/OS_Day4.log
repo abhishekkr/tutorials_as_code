@@ -1,0 +1,57 @@
+...remaining
+####Proc Mgmt
+> CPU Sched
+```Linux since 2.6.x ```
+* Completely Fair Scheduler
+  > * stores record of planned tasks in red-black-tree(BinSearch Auto-Balanced) by spent-time key
+  > * allows it to pick the proc that has utilized CPU for least time
+
+``` FreeBSD, Solaris Mac```
+* Multilevel Feedback Queue
+  > * a process is given chance at a queue
+  > > * if finished leave
+  > > * if releases control, comes back at end of same queue when ready again
+  > > * if preempted, demoted to lower queue level
+
+...
+***
+
+## Mem Mgmt Unit (MMU)
+
+* to manage main memory
+* uses concept of Base Register and Limit Register for memory protection
+
+
+#### processing of a user program
+
+				(source)
+				    |,
+				[compiler/assembler] {compile time}
+				    |,
+				(object module)
+				    |_
+					  |
+[other obj modules]   |
+				|_____|
+					  |,
+				[linkage editor]    {}
+					  |,			{}
+				(load module)		{}
+					  |				{}
+		(system lib)  |				{load time}
+				|_____|				{}
+					  |,			{}
+				[loader]			{}
+					  |
+(dynamically loaded)  |
+(system lib)	|_____|
+					  |,
+			[in-mem binary image] 	{exec time}
+
+
+#### Instruction/Data mapping to Memory Address have 3 ways
+> knows at compile time where the process will reside
+  * Compile Time : can create the absolute code
+  * Load Time : can create re-locatable code
+> program can be moved around in memory
+* Execution Time : binding delayed to run-time
