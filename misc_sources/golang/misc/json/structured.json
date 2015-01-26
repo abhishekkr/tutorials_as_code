@@ -1,0 +1,27 @@
+[
+  {
+    "source_ip": "127.0.0.1",
+    "source_ports": [8887,8886,8885],
+    "destinations": [
+      {
+        "destination_ip": "127.0.0.1",
+        "destination_ports": [8866,8686,8666],
+        "mode": "partial",
+        "type": "key",
+        "pattern": "^people"
+      },
+      {
+        "destination_ip": "127.0.0.1",
+        "destination_ports": [8877,8787,8777],
+        "mode": "default"
+      },
+      {
+        "destination_ip": "127.0.0.1",
+        "destination_ports": [8855,8585,8555],
+        "mode": "partial",
+        "type": "key",
+        "pattern": "^animal"
+      }
+    ]
+  }
+]
