@@ -1,0 +1,4 @@
+distribute
+docopt
+termcolor
+wsgiref
