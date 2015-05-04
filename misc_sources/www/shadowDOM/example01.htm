@@ -1,0 +1,19 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <p id="hostElement"></p>
+    <script>
+      // create shadow DOM on the <p> element above
+      var shadow = document.querySelector('#hostElement').createShadowRoot();
+      // Add some text to shadow DOM
+      shadow.innerHTML = '<p>Here is some new text</p>';
+      // Add some CSS to make the text red
+      shadow.innerHTML += '<style>p { color: red };</style>';
+      shadow.innerHTML += '<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM">Mozilla : Shadow DOM</a>';
+    </script>
+    <p>
+    Shadow DOM provides encapsulation for the JavaScript, CSS and templating in a Web Component. Shadow DOM makes it so these things remain separate from the DOM of the main document. You can also use Shadow DOM by itself, outside of a web component.
+    </p>
+  </body>
+</html>
