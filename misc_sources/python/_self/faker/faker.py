@@ -72,12 +72,46 @@ def return_false(*args, **kwargs):
     return False
 
 
+def return_success_exit(*args, **kwargs):
+    fake_stack.append(_fake_calls_(args, kwargs))
+    sys.exit(0)
+
+
+def return_failure_exit(*args, **kwargs):
+    fake_stack.append(_fake_calls_(args, kwargs))
+    sys.exit(1)
+
+
 def get_fake_call(call_stack, *args, **kwargs):
     entry = _fake_call_detail_(call_stack, args, kwargs)
     fake_counts = fake_stack.count(entry)
     while(fake_stack.count(entry) > 0):
         fake_stack.remove(entry)
     return fake_counts
+
+
+class FakeConfigParser(object):
+    def __init__(self, config):
+        self.config = config
+    def read(self, _str):
+        return True
+    def get(self, section, attribute):
+        return self.config[section][attribute]
+    def set(self, section, attribute, value):
+        self.config[section][attribute] = value
+        return True
+    def sections(self):
+        return self.config.keys()
+
+
+class FakeStream(object):
+    def __init__( self ):
+        self.stream = ""
+    def write( self, _str ):
+        self.stream += _str
+    def flush( self):
+        print self.stream
+        pass
 
 
 if __name__ == "__main__":

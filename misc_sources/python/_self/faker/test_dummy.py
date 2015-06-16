@@ -4,6 +4,7 @@ import unittest
 
 import os
 import sys
+from cStringIO import StringIO
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 import dummy
@@ -20,6 +21,7 @@ class TestDummy(unittest.TestCase):
 
     def test_u(self):
         faker.fake_it("os.path.isfile", faker.return_pass)
+        faker.fake_it("sys.stdout", faker.FakeStream())
         _path = "/tmp/nopath"
         _u = dummy.u(_path)
         self.assertEqual(_u, 3)
@@ -28,6 +30,8 @@ class TestDummy(unittest.TestCase):
         self.assertEqual(_fake_count, 1)
 
         faker.fake_it("os.path.isfile", faker.return_true)
+        faker.fake_it("sys.stdout", faker.FakeStream())
+        #faker.fake_it("sys.stdout", StringIO())
         _path = "/tmp/somepath"
         _u = dummy.u(_path)
         self.assertEqual(_u, 1)
