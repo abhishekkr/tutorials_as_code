@@ -13,3 +13,5 @@ build
 **/bower_components
 **/node_modules
 **/npm-debug.log
+misc_sources/haskell/**/*.hi
+misc_sources/haskell/**/*.o
