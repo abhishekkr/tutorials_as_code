@@ -172,6 +172,20 @@
 
 ---
 
+### Debug, Profile
+
+* RunSnakeRun (C Profile Output Viz)
+
+
+---
+
+### IoT
+
+* [MQTT](http://mqtt.org/)
+> MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport.
+
+---
+
 ### DevOps Toolbox
 
 * [Terraform](http://www.hashicorp.com/blog/terraform.html)
@@ -193,5 +207,10 @@
 * Tails
 * Whonix
 * [Portal](https://github.com/grugq/portal)
+* [Pass](http://www.passwordstore.org)
+
+#### interesting idea tools
+* [mnfst.io](http://mnfst.io)
+
 ---
 
