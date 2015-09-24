@@ -15,6 +15,7 @@
 > word/text selection tips
 > * Ctrl + 'd'              : Repeat quick-select next
 > * Ctrl + 'u'              : Undo previous quick-select
+> * Ctrl + Shift + 'u'      : Redo previous quick-task
 > * Ctrl + 'k','d'          : Skip next quick-select and quick-select next
 
 > block selection tips
@@ -26,6 +27,18 @@
 > * Ctrl + Shift + 'l'      : Add cursor to each line of selected text block
 
 > text/block move/replace tips
+> * Ctrl + 'y'                : undo/repeat
+> * Ctrl + Shift + 'v'        : paste and indent
+> * Ctrl + 'f'                : find in current file
+> * Ctrl + 'h'                : find/replace in current file
+> * Ctrl + Shift + 'f'        : find in all files at a path
+> * Ctrl + 'k','k'            : remove line from cursor location to end
+> * Ctrl + 'k', Ctrl + <BKSP> : remove line from cursor to start
+> * Ctrl + <ENTER>            : insert a line after cursor
+> * Ctrl + Shift + <ENTER>    : insert a line before cursor
+
+> *
+> *
 > * Ctrl + 'j'                : join lines
 > * Ctrl + Shift + 'd'        : duplicate lines
 > * Ctrl + Shift + 'v'        : paste + indent

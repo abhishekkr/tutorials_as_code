@@ -1,3 +1,10 @@
+* Stomp (https://stomp.github.io/, https://en.wikipedia.org/wiki/Streaming_Text_Oriented_Messaging_Protocol)
+* Siddhi (https://github.com/wso2/siddhi)
+* Protobuf
+* Thrift
+* Memcache
+
+
 ### Golang
 
 * [jsDOM](https://github.com/tmpvar/jsdom)
@@ -172,6 +179,15 @@
 
 ---
 
+### unordered
+
+* [ceramic](https://ceramic.github.io)
+* [sparsehash](https://code.google.com/p/sparsehash)
+* [cityhash](https://code.google.com/p/cityhash)
+* [farmhash](https://code.google.com/p/farmhash)
+
+---
+
 ### Debug, Profile
 
 * RunSnakeRun (C Profile Output Viz)
@@ -190,6 +206,18 @@
 
 * [Terraform](http://www.hashicorp.com/blog/terraform.html)
 > a tool for safely and efficiently building, combining, and launching infrastructure. From physical servers to containers to SaaS products
+
+* [Gollum](http://gollum.readthedocs.org/en/latest/git)
+> NxM message multiplexer in Go
+
+* [Aeron](https://github.com/real-logic/Aeron)
+> TCP Layer 4 based efficient reliable unicast andd multicast message transport library
+
+* [RPM-OSTree](https://github.com/cgwalters/rpm-ostree)
+> http://patrick.uiterwijk.org/2014/01/21/rpm-ostree/ storing RPM in OSTree
+
+* [OSTree](https://wiki.gnome.org/Projects/OSTree)
+> git for OS binaries; managing bootable, immutable, versioned filesystem trees
 
 ---
 
