@@ -40,20 +40,77 @@ fn oops() -> ! {
     panic!("oye bye")
 }
 
-fn primitive_types(){
-    let sach = true
-    let jhoot: bool = false
+fn primitive_types() -> fn(i32) -> i32 {
+    let sach = true;
+    let jhoot: bool = false;
 
-    let chr = 'c'
-    let unicode_chr = '💕'
+    let chr = 'c';
+    let unicode_chr = '💕';
+    println!("{} {} {} {}", sach, jhoot, chr, unicode_chr);
+
+    //arrays
+    let arr = [1, 10, 10000, 1000, 100];
+    let all = [7; 20]; // a: [i32; 20] //20 elements, all init to 7
+    println!("{}\n{} {}", all.len(), all[0], all[19]); //doesn't interpolate array
+    for x in &all {
+        print!("{}, ", x);
+    }
+
+    //slice
+    let middle_arr = &arr[1..3];
+    let full_arr = &arr[..];
+    println!("len {} :@0 {}\nlen {} :@0 {}", middle_arr.len(), middle_arr[0], full_arr.len(), full_arr[0]);
+    // coercing an array to a slice
+    let str_slice: &[&str] = &["one", "two", "three"];
+    // above were shared slice, mutable slice is following
+    let mut_slice = &mut ["oh", "ok"];
+    mut_slice[1] = "no";
+    println!("len {} :@1 {}\nlen {} :@1 {}", str_slice.len(), str_slice[1], mut_slice.len(), mut_slice[1]);
+    print!("window of 2: ");
+    for x in str_slice.windows(2) {
+        print!("{:?}, ", x);
+    }
+    print!("\nchunk of 2: ");
+    for x in str_slice.chunks(2) {
+        print!("{:?}, ", x);
+    }
+
+    let tada = "tada";
+    let nada: &str = "nada";
+    println!("\n{} <> {}", tada, nada);
+
+    //tuples
+    let tupl01 = (1, "ohk");
+    let tupl02: (i32, &str) = (1, "oh ok");
+    let tupl03: (i32, &str) = (1, "ohk");
+    if tupl01 == tupl02 {
+      println!("don't compare it")
+    } else if tupl01 == tupl03 {
+      println!("just compare it; tuple indexes {}, {}", tupl01.0, tupl03.1)
+    }
+
+    fn some_foo(x: i32) -> i32 { x+1 }
+    return some_foo
 }
 
+/// * rustdoc for main
 fn main() {
+    // rust got 2 types of comments: line-comment and doc-comment
+    // this is line-comment; doc-comment got /// or //! and supports Markdowno
+
+    //! these **//!** are used for non-method rustdoc
+    //! * rustdoc can be used to generate document from doc-comment
+    //! usage:
+    //! ```
+    //! rustdoc -w html -o a.html src/main.rs
+    //! ```
+
     println!("Hello, Rust!");
-    
+
     using_let(40);
 
-    primitive_types();
+    let some_fn: fn(i32) -> i32 = primitive_types(); //function primitive and others
+    println!("increment 1 to {}", some_fn(1));
 
     // let xyz: String = oops(); // a diverging function can be used as any type
     oops();
