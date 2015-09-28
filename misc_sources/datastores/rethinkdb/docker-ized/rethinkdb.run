@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+rethinkdb -d /rethinkdb/data --bind all --log-file /rethinkdb/log/rethinkdb.log --config-file /rethinkdb.conf
