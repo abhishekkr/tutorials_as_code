@@ -1,0 +1,32 @@
+<hudson>
+  <A>ohk</A>
+  <views>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>SUNCORP_BUILD</name>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>                
+        <string>CORE_ANNOTATION</string>                                     
+        <string>CORE_BWB_BUILD</string>                                      
+        <string>CORE_CREATE_OID_RESOURCE</string>                            
+        <string>CORE_ENTITY_STATISTICS_REPORT</string>                       
+        <string>CORE_FORTIFY_HOST</string>                                   
+        <string>CORE_FORTIFY_UI</string>                                     
+        <string>CORE_HOST</string>                                           
+        <string>CORE_MAIL_RELEASE_NOTES</string>                             
+        <string>CORE_MERGE</string>                                          
+        <string>CORE_METAGEN</string>                                        
+        <string>CORE_OSB</string>                                            
+        <string>CORE_OVERRIDE_PROPERTY</string>                              
+        <string>CORE_POST_BUILD</string>                                     
+        <string>CORE_PRE_BUILD</string>                                      
+        <string>CORE_PRE_BUILD_WS_CLIENT</string>                            
+        <string>CORE_STAGING_AREA</string>                                   
+        <string>CORE_STAGING_BRANDING</string>                               
+        <string>CORE_UI</string>                                             
+        <string>CORE_WORKFLOW_PROCESS</string>                               
+        <string>CORE_WS_INTERNAL_CLIENT</string> 
+      </jobNames>
+    </listView>
+  </views>
+</hudson>
