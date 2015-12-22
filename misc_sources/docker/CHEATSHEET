@@ -1,0 +1,50 @@
+[CHEATSHEET]
+
+## running docker service
+docker daemon
+
+## current alive docker instances
+docker ps
+
+## container IDs of current alive docker instances
+docker ps -q
+
+## checking all ran docker instances
+docker ps -a
+
+## will download run and exit
+docker run IMAGENAME
+
+## run in interactive mode
+docker run -i IMAGENAME
+
+## run with pseudo-tty mode
+docker run -t IMAGENAME
+
+## working within docker proper
+docker run -it IMAGENAME
+
+## give your name to docker running instances
+docker run --name INSTANCE_NAME -it IMAGENAME
+
+## run it in detach mode, useful for service containers
+docker run -d IMAGENAME
+
+## attach to detached run
+docker attach CONTAINER_ID_FROM_PS
+
+## info on container
+docker inspect CONTAINER_ID_FROM_PS
+
+## stop a running container
+docker stop CONTAINER_ID_FROM_PS
+docker stop INSTANCE_NAME
+
+## to kill a docker instance
+docker kill CONTAINER_ID_FROM_PS
+docker kill $(docker ps -q)
+
+## to clean-up instances created for docker run
+docker rm CONTAINER_ID_FROM_PS
+docker rm $(docker ps -aq)
+
