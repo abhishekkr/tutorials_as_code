@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 """
 What-To-Play-First-For-Disk-Space
 
@@ -124,7 +124,7 @@ if __name__ == "__main__":
         print(__doc__)
         sys.exit(0)
     if subprocess.call("which ffprobe > /dev/null", shell=True) != 0:
-        print("Need FFMPEG(https://en.wikipedia.org/wiki/FFmpeg) insstalled.")
+        print("Need FFMPEG(https://en.wikipedia.org/wiki/FFmpeg) installed.")
         sys.exit(1)
     if len(sys.argv) < 2:
         print("Usage: %s <Path-To-Media-Dir> <Output-Option>" % (sys.argv[0]))
