@@ -2,6 +2,10 @@
 """
 What-To-Play-First-For-Disk-Space
 
+Requirements:
+    * Python (https://en.wikipedia.org/wiki/Python_(programming_language))
+    * FFMPEG (https://en.wikipedia.org/wiki/FFmpeg)
+
 This utility helps with two problems:
     * Need to empty some disk-space quickly but have lots of videos/podcasts on it yet to finish.
     * Just have too many videos/podcasts to finish and confused in what order.
@@ -116,12 +120,15 @@ def mediafiles_to_pls(mediafiles, filename):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: %s <Path-To-Media-Dir> <Output-Option>" % (sys.argv[0]))
-        sys.exit(1)
     if sys.argv[1] in ["--help", "-help", "help", "-h", "--h"]:
         print(__doc__)
         sys.exit(0)
+    if subprocess.call("which ffprobe > /dev/null", shell=True) != 0:
+        print("Need FFMPEG(https://en.wikipedia.org/wiki/FFmpeg) insstalled.")
+        sys.exit(1)
+    if len(sys.argv) < 2:
+        print("Usage: %s <Path-To-Media-Dir> <Output-Option>" % (sys.argv[0]))
+        sys.exit(1)
     mediapath = sys.argv[1]
     if not os.path.exists(mediapath):
         print("Path (%s) for media-files doesn't exists." % (mediapath))
