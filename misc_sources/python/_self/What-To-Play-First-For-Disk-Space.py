@@ -1,7 +1,35 @@
 #!/usr/bin/env python
 """
 What-To-Play-First-For-Disk-Space
-Shows sorted mediafiles with ratio of file-size to play-time.
+
+This utility helps with two problems:
+    * Need to empty some disk-space quickly but have lots of videos/podcasts on it yet to finish.
+    * Just have too many videos/podcasts to finish and confused in what order.
+
+It prints or let you create a playlist(m3u,pls) for all Media Filetypes (supported by 'filetype_is_media').
+The playlist is in order of playing files with largest ratio of Play-Time of file with its disk-space.
+Like if we have 2 files: A{size: 10MB, length: 5min} and B{size: 9MB, length: 7min}
+The playlist will have File.A listed before File.B.
+
+Syntax:
+
+* Print the order of files to be played on console
+```
+What-To-Play-First-For-Disk-Space.py <Path-With-Media>
+```
+
+* To create M3U Playlist of order of files
+```
+What-To-Play-First-For-Disk-Space.py <Path-With-Media> <Playlist-Path-With-m3u-extension>
+```
+
+* To create PLS Playlist of order of files
+```
+What-To-Play-First-For-Disk-Space.py <Path-With-Media> <Playlist-Path-With-pls-extension>
+```
+
+Dramatic Version:
+There comes a time in one's life, when you have too many videos or podcasts to finish and too little HardDisk space left free.
 """
 
 import os
@@ -43,7 +71,6 @@ def mediafiles_spec(path, files):
         if not filetype_is_media(file):
             continue
         spec["size"] = file_size_in_bytes(spec["filename"])
-        #spec["ratio"] = spec["size"] / spec["length"]
         mediafiles.append(spec)
     return mediafiles
 
@@ -52,7 +79,6 @@ def path_walker(dirpath):
     mediafiles = []
     for (path, dirs, files) in os.walk(dirpath):
         mediafiles += mediafiles_spec(path, files)
-    #return sorted(mediafiles, key=lambda k: k['size']/k['length'], reverse=True)
     return sorted(mediafiles, key=lambda k: (k['size']/k['length'], k['size']), reverse=True)
 
 
@@ -93,9 +119,13 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: %s <Path-To-Media-Dir> <Output-Option>" % (sys.argv[0]))
         sys.exit(1)
-    if sys.argv[1] in ["--help", "-help", "help", "-h"]:
-        pprint.pprint(self.__doc__)
+    if sys.argv[1] in ["--help", "-help", "help", "-h", "--h"]:
+        print(__doc__)
+        sys.exit(0)
     mediapath = sys.argv[1]
+    if not os.path.exists(mediapath):
+        print("Path (%s) for media-files doesn't exists." % (mediapath))
+        sys.exit(1)
     output = "stdout"
     if len(sys.argv) > 2:
         output = sys.argv[2]
