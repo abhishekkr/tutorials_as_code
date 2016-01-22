@@ -1,6 +1,8 @@
 * [UCLA CamlBack WebApp](http://camlback.cs.ucla.edu/phpredux.php)
 * [UCLA CamlBack Project @github](http://camlback.github.io/)
 
+* [Micro Haskell SampleCode](./lecture16.example00.hs)
+
 ---
 
 * (n+k) patterns
