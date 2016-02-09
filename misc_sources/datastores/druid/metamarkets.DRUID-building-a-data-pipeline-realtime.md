@@ -138,8 +138,8 @@ It's a system really optimized for reads.
 ```
                           Storm
                           Kafka          Tranquility
-[Kafka    ]\   [ Kafka]  /----->[Storm  ]------------->[DRUID Real] [DRUID     ]
-[Producers]->--[Broker]->                                           [Historical]
+[Kafka    ]\   [ Kafka]  /----->[Storm  ]----------+-->[DRUID Real] [DRUID     ]
+[Producers]->--[Broker]->                           \               [Historical]
 [         ]/             \----->[Hadoop ]----------( \__ )--------> [Cluster   ]
                           Camus          Druid         .\,                ./,
                                                         [DRUID Query Broker]
