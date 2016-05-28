@@ -1,0 +1,6 @@
+* in insert mode
+* Ctrl+v , Esc
+* `[5m commit msg`
+* Ctrl+v, Esc
+* `[0m`
+* save
