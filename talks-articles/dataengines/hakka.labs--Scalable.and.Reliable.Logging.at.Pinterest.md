@@ -112,9 +112,9 @@ Staged Event Driven Architecture
 ```
 ---
 
-#### Running Kafka in Cloud
+### Running Kafka in Cloud
 
-##### Challenges
+#### Challenges
 
 * brokers can die unexpectedly
 * disk i/o perf can degrade due to resource contention
@@ -138,6 +138,25 @@ Staged Event Driven Architecture
 * load distribution
 * horizontal scalability
 * configurable upload policies
+
+##### Secor, consensus-based workload distribution
+
+* uses high-level Kafka Consumer distributed over multiple workers
+* uses ZK to keep track of each topic from workers to avoid duplication, strong consistency
+* fault-tolreant, workers can crash and load is managed
+
+##### Challenges with consensus-based workload distribution
+
+* kafka consumer group re-balancing prevent consumer from making progress in high data volume
+* worsen by high-level consumer lags behind same topic partitions
+* manual tuning for workload distribution
+* inconvenient to add new topics
+
+##### Merced
+
+* central workload distribution
+* master-worker topology decoupled with Zookeeper to keep tap on others
+* master creates tasks, workers pick up and perform, master keeps track of progress
 
 ---
 ---
