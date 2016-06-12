@@ -181,7 +181,7 @@ unless use a smart solution like **Weave**
 
 ---
 
-[Crate + Weave](crate.io/blog/crate-with-docker-and-weave)
+[Crate + Weave](https://crate.io/blog/crate-with-docker-and-weave)
 
 Make Crate work without Host hack, feeling running on same host.
 Docker support.
