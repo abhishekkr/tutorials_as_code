@@ -32,6 +32,11 @@ docker ps
 docker ps -q
 ```
 
+* checking latest created docker instances
+
+```
+docker ps -l
+
 * checking all ran docker instances
 
 ```
@@ -74,6 +79,20 @@ docker run --name INSTANCE_NAME -it IMAGENAME
 docker run -d IMAGENAME
 ```
 
+* start a previously run container by name
+
+```
+docker start $CONTAINER_NAME
+```
+
+* get a quick insight into container state
+
+```
+docker top $CONTAINER_NAME    ## like 'top' inside container
+docker logs $CONTAINER_NAME   ## listing logs from container
+docker stats CONTAINER_NAME   ## tap on cpu/mem/network stats used
+```
+
 * attach to detached run
 
 ```
@@ -97,6 +116,22 @@ docker history CONTAINER_ID_FROM_PS
 ```
 docker stop CONTAINER_ID_FROM_PS
 docker stop INSTANCE_NAME
+```
+
+* pause/resume/restart a container
+
+```
+docker pause $CONTAINER_NAME
+docker unpause $CONTAINER_NAME
+docker restart $CONTAINER_NAME
+```
+
+* save and load an Image to-from tarball
+
+```
+docker save -o $CONTAINER_TARBALL $IMAGE_NAME
+
+docker load -i $CONTAINER_TARBALL
 ```
 
 * to kill a docker instance
@@ -169,6 +204,71 @@ docker run -it --name someImage --volumes-from templateImage alpine
 
 ```
 docker run --rm --volumes-from templateImage -v $(pwd):/backup alpine tar cvf /backup/some.tar /someVolume
+```
+
+---
+
+### Network
+
+* List port mappings for a container
+
+```
+docker port $CONTAINER_NAME
+```
+
+* List network artefacts
+
+```
+docker network ls
+```
+
+* Inspect details of any Network Artefact
+
+```
+docker network inspect $DOCKER_NETWORK_ID
+
+## for all
+docker network ls -q | xargs -I '{}' docker network inspect {}
+```
+
+* can create/remove networks, connect/disconnect containers to a network
+
+---
+
+## Filesystem Level Recon
+
+* Containers in action
+
+```
+sudo ls /var/lib/docker/containers
+```
+
+The list here will be directory per container named by their ID. These will be containing a log file of history by ID name.
+JSON config file for image config as 'config.v2.json' and host level details as 'hostconfig.json'.
+Then more files like 'hosts, 'hostname', 'resolv.conf', etc.
+
+* Images
+
+```
+sudo ls /var/lib/docker/image
+```
+
+* Volume
+
+```
+sudo ls /var/lib/docker/volume
+```
+
+* Network
+
+```
+sudo ls /var/lib/docker/network
+```
+
+* Devicemapper
+
+```
+sudo ls /var/lib/docker/devicemapper
 ```
 
 ---
