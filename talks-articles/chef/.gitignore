@@ -1,0 +1,3 @@
+.kitchen.*yml
+**/.chef/**
+**/.kitchen/**
