@@ -1,3 +1,7 @@
+# Terminal Whispering
+
+PyGotham2015
+by, Thoman Ballinger
 
 ## Notes
 
