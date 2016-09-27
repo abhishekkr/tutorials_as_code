@@ -11,6 +11,11 @@
 
 * repeat last mode instruction with `.`
 
+* and yes you exit via `:q`
+> `:wq` if wanna save and quit
+> `:q!` if wanna discard changes and quit
+
+now lets move to smooth user experience
 
 ### Navigate
 
