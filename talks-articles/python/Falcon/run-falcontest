@@ -1,0 +1,9 @@
+virtualenv $PWD/.venv
+
+source $PWD/.venv/bin/activate
+
+pip install -r setup-requirements.txt
+
+echo "access us at http://127.0.0.1:8000/tut"
+
+gunicorn falcontest:api
