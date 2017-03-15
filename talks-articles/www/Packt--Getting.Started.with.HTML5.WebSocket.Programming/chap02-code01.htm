@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+  <title>html5 websockets</title>
+  <style>
+    h1 {
+      color: blue;
+      text-align: center;
+      font-family: "Helvetica Neue", Arial, Sans-Serif;
+      font-size: 1em;
+    }
+  </style>
+  <script>
+    if (window.WebSocket) {
+      console.log("[info] WebSockets supported.");
+    } else {
+      console.log("[erro] WebSockets not supported.");
+      alert("Consider updating your browser for a richer experience.");
+    }
+
+    function setLabel(msg){
+      var label = document.getElementById("status-label");
+      label.innerHTML = msg;
+    }
+
+    function handleWSMessage(event){
+      if (typeof event.data === "string") {
+        setLabel(event.data);
+      }
+    }
+
+    function handleWSClose(event){
+      if (event.wasClean) {
+        setLabel("~ connection closed");
+      } else {
+        setLabel("~ connection crashed for " + event.reason + "( Code: " + event.code + " )")
+      }
+    }
+
+    function handleWSSend(wsSock){
+      var textView = document.getElementById("text-view");
+      wsSock.send(textView.value);
+    }
+  </script>
+</head>
+<body>
+  <h1> HTML5 WebSocket chat. </h1>
+  <input type="text" id="text-view" />
+  <input type="button" id="send-button" value="Send!" />
+  <input type="button" id="stop-button" value="Stop" />
+  <br/>
+  <label id="status-label">Status</label>
+  <script>
+    var socket = new WebSocket("ws://echo.websocket.org");
+    socket.onopen = function(event) {
+      console.log("[info] connection established");
+      setLabel("~ connection established");
+    }
+    socket.onmessage = function(event) {
+      console.log("[info] data received");
+      handleWSMessage(event);
+    }
+    socket.onclose = function(event) {
+      console.log("[info] connection closed");
+      handleWSClose(event);
+    }
+    socket.onerror = function(event) {
+      console.log("[info] error occurred");
+      setLabel("Error: " + event);
+    }
+
+    var buttonSend = document.getElementById("send-button");
+    buttonSend.onclick = function() {
+      console.log("[info] send button clicked");
+      if (socket.readyState === WebSocket.OPEN){
+        handleWSSend(socket);
+      }
+    }
+
+    var buttonStop = document.getElementById("stop-button");
+    buttonStop.onclick = function() {
+      console.log("[info] close button clicked");
+      if (socket.readyState === WebSocket.OPEN){
+        socket.close();
+      }
+    }
+  </script>
+</body>
