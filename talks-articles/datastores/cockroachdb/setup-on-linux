@@ -1,0 +1,19 @@
+
+MY_BIN_DIR="${HOME}/bin"
+
+TARBALL_NAME="cockroach-latest.linux-amd64.tgz"
+
+BIN_TAR_URL="https://binaries.cockroachdb.com/${TARBALL_NAME}"
+
+
+################
+
+
+wget -c -O /tmp/${TARBALL_NAME} "${BIN_TAR_URL}"
+
+cd /tmp/
+tar xfz ${TARBALL_NAME}
+cp -i cockroach-latest.linux-amd64/cockroach ${MY_BIN_DIR}/
+chmod +x ${MY_BIN_DIR}/cockroach
+cockroach version
+

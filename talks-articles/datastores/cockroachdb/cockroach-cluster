@@ -1,0 +1,18 @@
+
+cockroach_01(){
+  cockroach start --insecure --store=hello-1 --host=localhost
+}
+
+cockroach_02(){
+  cockroach start --insecure --store=hello-2 --host=localhost --port=26258 --http-port=8081 --join=localhost:26257
+}
+
+cockroach_03(){
+  cockroach start --insecure --store=hello-3 --host=localhost --port=26259 --http-port=8082 --join=localhost:26257
+}
+
+cockroach_init(){
+  cockroach user set abk --insecure
+  cockroach sql --insecure -e 'CREATE DATABASE preacher'
+  cockroach sql --insecure -e 'GRANT ALL ON DATABASE preacher TO abk'
+}
