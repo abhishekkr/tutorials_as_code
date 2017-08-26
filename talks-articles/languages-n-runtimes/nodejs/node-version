@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -e
+
+[[ ! -z "$1" ]] && export LOCAL_BIN="$1"
+[[ -z "${LOCAL_BIN}" ]] && export LOCAL_BIN="${HOME}/bin"
+[[ ! -d "${LOCAL_BIN}" ]] && mkdir -p "${LOCAL_BIN}"
+
+[[ -z "${NODEJSVERSION}" ]] && export NODEJSVERSION="6.11.2"
+[[ -z "${NODEJSOS}" ]] && export NODEJSOS="linux"
+[[ -z "${NODEJSARCH}" ]] && export NODEJSARCH="x64"
+
+export NODEJSROOT="${LOCAL_BIN}/node-v${NODEJSVERSION}-${NODEJSOS}-${NODEJSARCH}"
+
+export NODEJS_DIST_URI="https://nodejs.org/dist/v${NODEJSVERSION}/node-v${NODEJSVERSION}-${NODEJSOS}-${NODEJSARCH}.tar.xz"
+
+export NODEJS_DIST_LOCAL="/tmp/node-${NODEJSVERSION}.tar.xz"
+export NODEJS_DIST_LOCAL_TAR="/tmp/node-${NODEJSVERSION}.tar"
+export NODEJS_TEMP_ROOT="/tmp/node-v${NODEJSVERSION}-${NODEJSOS}-${NODEJSARCH}"
+
+if [[ ! -f "${NODEJSROOT}/bin/nodejs" ]]; then
+  if [[ ! -f "${NODEJS_DIST_LOCAL_TAR}" ]]; then
+    wget -c -O "${NODEJS_DIST_LOCAL}" "${NODEJS_DIST_URI}"
+    xz --decompress "${NODEJS_DIST_LOCAL}"
+  fi
+
+  tar xf "${NODEJS_DIST_LOCAL_TAR}" -C "${LOCAL_BIN}"
+
+  mv "${NODEJS_TEMP_ROOT}" "${NODEJSROOT}"
+
+else
+  echo "the required NodeJS binary is locally available"
+
+fi
+
+export PATH="${NODEJSROOT}/bin:${PATH}"
+
+echo ""
+echo "add following line to your profile:"
+echo ""
+echo "                 export NODEJSROOT=\"${LOCAL_BIN}/node-v${NODEJSVERSION}-${NODEJSOS}-${NODEJSARCH}\""
+echo "                 export PATH=\"${NODEJSROOT}/bin:\${PATH}\""
