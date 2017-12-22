@@ -28,6 +28,7 @@ ARG RUNTIME_DEPS="libintl"
 RUN apk add --update $RUNTIME_DEPS && \
     apk add --virtual build_deps $BUILD_DEPS &&  \
     cp /usr/bin/envsubst /usr/local/bin/envsubst && \
+    apk upgrade && \
     apk del build_deps
 
 
