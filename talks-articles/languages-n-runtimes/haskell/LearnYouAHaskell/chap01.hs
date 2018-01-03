@@ -38,4 +38,7 @@ True                -- []
 'C' : "at"          -- Cat
 1 : 2 : 3 : []      -- [1,2,3]
 
+-- running any assignment task on 'ghci', prefix with 'let '
+
 -}
+

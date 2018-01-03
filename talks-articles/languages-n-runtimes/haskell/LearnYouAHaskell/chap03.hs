@@ -5,6 +5,16 @@
 
 justAddXAndY :: Int -> Int -> Int
 justAddXAndY x y = x + y
+{-
+    *Main> :t justAddXAndY
+        justAddXAndY :: Int -> Int -> Int
+
+    *Main> :t 'a'
+        'a' :: Char
+
+    *Main> :t 100
+        100 :: Num a => a
+-}
 
 -- | Int typed Integer is bounded
 -- | Integer typed Integer is unbounded
@@ -62,7 +72,7 @@ Read is opposite of Show. It takes a string and returns it of type for second ar
     10
     Prelude> read "[1,2,3]" ++ [4,5]
     [1,2,3,4,5]
-    Prelude> 
+    Prelude>
 
 
 Just providing a string to read results to error as target type is not known
@@ -90,23 +100,23 @@ Enum numbers are sequentially ordered types. Enum typeclass can be used in list 
 
 Types in this class:
 (), Bool, Char, Ordering, Int, Integer, Float and Double
-    Prelude> 
+    Prelude>
     Prelude> ['a'..'e']
     "abcde"
     Prelude> [LT .. GT]
     [LT,EQ,GT]
-    Prelude> 
+    Prelude>
     Prelude> [3..5]
     [3,4,5]
     Prelude> succ 'B'
     'C'
     Prelude> pred 'B'
     'A'
-    Prelude> 
+    Prelude>
 
 
 Bounded members have an upper and lower bound
-    Prelude> 
+    Prelude>
     Prelude> minBound :: Int
     -9223372036854775808
     Prelude> maxBound :: Int
@@ -119,7 +129,7 @@ Bounded members have an upper and lower bound
     ('\NUL',-9223372036854775808,False)
     Prelude> maxBound :: (Char,Int,Bool)
     ('\1114111',9223372036854775807,True)
-    Prelude> 
+    Prelude>
 
 -}
 

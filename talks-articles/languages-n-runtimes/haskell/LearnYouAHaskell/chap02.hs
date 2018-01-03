@@ -72,6 +72,9 @@ numTensOfFives' = replicate 10 5
 doubleOfFirstTenNaturalNumbers = [x*2 | x <- [1..10]]
 dForDivBy5 = [x*2 | x <- [1..10], mod x 5==0]
 
+tripleForXElvn = [x*3 | x <- [1,11..], x `mod` 11 == 0 ]
+fiveFromTripleForXElvn = take 5 tripleForXElvn
+
 boomBangs xs = [if odd x then "BOOM!" else "BANG!" | x <- xs]
 
 numDivBy5And7And13 = [x | x <- [1..], mod x 5 == 0, mod x 7 == 0, mod x 13 == 0 ] -- multiple checks
@@ -85,7 +88,7 @@ calcLengthOfList xs = sum [1 | _ <- xs] -- use underscore for variable placehold
 
 -- | string using list comprehension
 
-removeUppercase st = [ c | c <- st, elem c ['A'..'Z'] ]
+pickUppercase st = [ c | c <- st, elem c ['A'..'Z'] ]
 
 -- | nested list using list comprehension
 xxs = [[1..5], [6..10], [11..15]]
@@ -94,7 +97,8 @@ xxsEven = [[x | x <- xs, even x] | xs <- xxs]
 
 -- |---------------------------- Tuples
 -- | Tuples are heterogeneous
--- | But a List of Tuple can have Tuples of same length and order od types, as that will be type for List
+-- | tuples are of fixed length but don't have to have homogeneous typed elem
+-- | it's like parameters use-case, where you expect a specific count of elems
 tupleOneToTwo = (1,2)
 tupleOneToFive = (1,2,3,4,5)
 
@@ -103,14 +107,14 @@ firstElement = fst tupleOneToTwo
 secondElement = snd tupleOneToTwo
 
 
--- |---------------------------- Zip 2 lists
+-- |---------------------------- Zip 2 lists into pairs of list of tuples
 
 -- |zip-ping lists (not tuples)
 zipFirst10With5 = zip [1..10] (replicate 10 5)   -- [(1,5),(2,5),(3,5),(4,5),(5,5),(6,5),(7,5),(8,5),(9,5),(10,5)]
 zipColors = zip ["azul", "amarilla", "blanca"] ["blue", "yellow", "white"]
 
 -- | can zip easily with infinite ranges, it being Lazy
-zipDifferentTypes = zip [1..] ["manzana", "oranges"]
+zipDifferentTypes = zip [1..] ["manzana", "oranges"] -- [(1, "manzana"), (2, "oranges")]
 
 
 -- |---------------------------- Problem: Triangles
@@ -121,6 +125,7 @@ rightTriangles = [(a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 ==
 
 rightTrianglesBig = [(a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c>20]
 
+rightTrianglesX trixxs = [(a,b,c) | (a,b,c) <- trixxs, (a^2 + b^2) ==  (c^2)]
 
 -- |----------------------------
 
