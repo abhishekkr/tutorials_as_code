@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package logr;
+
+// creating logr service
+service Logr {
+  rpc GetLogs(LogrFilter) returns (stream LogrRequest) {}
+  rpc CreateLog(LogrRequest) returns (LogrResponse) {}
+}
+
+// to create logr request
+message LogrRequest {
+  string app = 1;
+  string logline = 2;
+
+  message LogrTags {
+    string tag = 1;
+  }
+  repeated LogrTags tags = 3;
+}
+
+// to create logr response
+message LogrResponse {
+  bool success = 1;
+  string msg = 2;
+}
+
+// to create logr filter
+message LogrFilter {
+  string app = 1; 
+
+  message LogrTags {
+    string tag = 1;
+  }
+  repeated LogrTags tags = 2;
+}
