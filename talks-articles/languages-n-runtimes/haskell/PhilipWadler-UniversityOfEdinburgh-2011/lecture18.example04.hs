@@ -70,7 +70,7 @@ choose rng = MkGen (\r _ -> randomR rng r)
 
 oneof :: [Gen a] -> Gen a
 oneof [] = error "oneof used with empty list"
-oneof gs = do { i <- choose (0, length gs - 1); gs !! 1 }
+oneof gs = do { i <- choose (0, length gs - 1); gs !! i }
 
 elements :: [a] -> Gen a
 elements xs = oneof (map return xs)
