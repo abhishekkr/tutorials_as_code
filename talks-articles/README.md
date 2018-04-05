@@ -14,55 +14,62 @@
 
 ---
 
-* [config-mgmt](./config-mgmt)
+#### [config-mgmt](./config-mgmt)
 > [ansible](./config-mgmt/ansible), [chef](./config-mgmt/chef)
 
-* [datacenters](./datacenters)
+#### [datacenters](./datacenters)
 > [misc](./datacenters/README.md)
 
-* [dataengines](./dataengines)
+#### [dataengines](./dataengines)
 > [kafka](./dataengines/kafka)
 > [spark](./dataengines/spark)
 > [misc](./dataengines/README.md)
 
-* [datastores](./datastores)
+#### [datastores](./datastores)
+> [mysql](./datastores/mysql), [postgresql](./datastores/postgresql), [redis](./redis), [elasticsearch](./datastores/elasticsearch),
+> [cayley](./datastores/cayley), [cockroachdb](./datastores/cockroachdb), [crate](./datastores/crate), [druid](./datastores/druid),
+> [gundb](./datastores/gundb), [influxdata](./datastores/influxdata), [rethinkdb](./datastores/rethinkdb), [rrdtool](./datastores/rrdtool),
+> [genre-timeseries](./datastores/genre-timeseries)
 
-* [dataviz](./dataviz)
+#### [dataviz](./dataviz)
+> [d3js](./dataviz/d3js), [raphaeljs](./dataviz/raphaeljs)
 
-* [google](./google)
+#### [google](./google)
+> [google-cloud-platform](./google/google-cloud-platform), [gmail-api-email-access](./google/gmail-api-email-access)
 
-* [hacks](./hacks)
+#### [hacks](./hacks)
+> [misc](hacks/README.md)
 
-* [hashicorp](./hashicorp)
+#### [hashicorp](./hashicorp)
 
-* [how-it-works](./how-it-works)
+#### [how-it-works](./how-it-works)
 
-* [ibm](./ibm)
+#### [ibm](./ibm)
 
-* [id.e.ditor](./id.e.ditor)
+#### [id.e.ditor](./id.e.ditor)
 
-* [languages-n-runtimes](./languages-n-runtimes)
+#### [languages-n-runtimes](./languages-n-runtimes)
 
-* [lb-proxy](./lb-proxy)
+#### [lb-proxy](./lb-proxy)
 
-* [machine-learning](./machine-learning)
+#### [machine-learning](./machine-learning)
 
-* [metrics](./metrics)
+#### [metrics](./metrics)
 
-* [network](./network)
+#### [network](./network)
 
-* [operating-systems](./operating-systems)
+#### [operating-systems](./operating-systems)
 
-* [reference](./reference)
+#### [reference](./reference)
 
-* [scm](./scm)
+#### [scm](./scm)
 
-* [secure](./secure)
+#### [secure](./secure)
 
-* [self](./self)
+#### [self](./self)
 
-* [virtualization](./virtualization)
+#### [virtualization](./virtualization)
 
-* [www](./www)
+#### [www](./www)
 
 ---
