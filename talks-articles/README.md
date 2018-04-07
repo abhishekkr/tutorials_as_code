@@ -14,8 +14,23 @@
 
 ---
 
+#### [languages-n-runtimes](./languages-n-runtimes)
+> [golang](./languages-n-runtimes/golang) ,[haskell](./languages-n-runtimes/haskell), [python](./languages-n-runtimes/python), [ruby](./languages-n-runtimes/ruby),
+> [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [clojure](./languages-n-runtimes/clojure), [rust](./languages-n-runtimes/rust),
+> [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
+>
+> build: [ant](./languages-n-runtimes/0-build/ant), [gradle](./languages-n-runtimes/0-build/gradle)
+
+#### [virtualization](./virtualization)
+> [aws](./virtualization/aws), [docker](./virtualization/docker), [kuberentes](./virtualization/kuberentes), [kvm](./virtualization/kvm)
+
 #### [config-mgmt](./config-mgmt)
 > [ansible](./config-mgmt/ansible), [chef](./config-mgmt/chef)
+
+#### [www](./www)
+> [angularjs](./www/angularjs), [materialize](./www/materializecss), [html5 devconf 2013](./www/HTML5DevConf-2013),
+> [polymer](./www/polymer), [shadowDOM](./www/shadowDOM), [webrtc-photobooth](./www/webrtc-photobooth),
+> [misc](./www/README.md)
 
 #### [datacenters](./datacenters)
 > [misc](./datacenters/README.md)
@@ -50,34 +65,28 @@
 
 #### [id.e.ditor](./id.e.ditor)
 
-#### [languages-n-runtimes](./languages-n-runtimes)
-> [golang](./languages-n-runtimes/golang) ,[haskell](./languages-n-runtimes/haskell), [python](./languages-n-runtimes/python), [ruby](./languages-n-runtimes/ruby),
-> [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [clojure](./languages-n-runtimes/clojure), [rust](./languages-n-runtimes/rust),
-> [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
->
-> build: [ant](./languages-n-runtimes/0-build/ant), [gradle](./languages-n-runtimes/0-build/gradle)
-
 #### [lb-proxy](./lb-proxy)
 
 #### [machine-learning](./machine-learning)
 > [tensorflow](./machine-learning/tensorflow), [torch/pytorch](./machine-learning/torch), [misc](./machine-learning/README.md)
 
 #### [metrics](./metrics)
+> [sysdig](./metrics/sysdig)
 
 #### [network](./network)
+> [sdn](./network/sdn)
 
 #### [operating-systems](./operating-systems)
+> [OS concepts](./concepts-chapter), [coreos](./operating-systems/coreos), [..linux](./operating-systems/linux)
 
 #### [reference](./reference)
 
 #### [scm](./scm)
+> [git](./scm/git), [svn](./scm/svn)
 
 #### [secure](./secure)
+> [misc](./secure/README.md)
 
 #### [self](./self)
-
-#### [virtualization](./virtualization)
-
-#### [www](./www)
 
 ---
