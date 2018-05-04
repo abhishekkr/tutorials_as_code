@@ -9,6 +9,13 @@
 
 * [Chapter.3 Dipping our toes in the pool](./chapter03-dipping-our-toes-in-the-pool.md)
 
+
+### Part.2 Data Types
+
+* [Chapter.4 On Scalars](./chapter04-on-scalars.md)
+
+* [Chapter.5 Composite Data Types](./chapter05-composite-data-types.md)
+
 ---
 
 _ack_ : [Rich Hickey](#), [Stuart Halloway](#), [David Edgar Liebke](#), [Chrsitophe Grand](#), [Chas Emerick](#)

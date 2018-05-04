@@ -141,6 +141,12 @@
 
 #### Experimenting with sequence
 
+* identify class info of things in clojure
+
+```
+(class #"pattern")
+```
+
 * to get usable sequence, `range`
 
 ```
