@@ -1,5 +1,8 @@
 
-## 
+## Changing Live Audio with WebAudioAPI
+
+> by Sam Bellen
+> at JSConf Budapest 2016
 
 ### step.1 get audio in browser
 
