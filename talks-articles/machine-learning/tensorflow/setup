@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+if [[ $(pip list | grep -c tensorflow) -lt 1 ]]; then
+  export ANON_VIRTUALENV="${HOME}/.venv"
+
+  virtualenv --python=python3 ${ANON_VIRTUALENV}
+  source ${ANON_VIRTUALENV}/bin/activate
+  export PATH=${ANON_VIRTUALENV}/bin:$PATH
+
+  pip install -U pip
+
+  pip install -U tensorflow # keras torch torchvision numpy scipy
+
+  python -c "import tensorflow as tf; print(tf.__version__)"
+fi
+
+export TF_TYPE="cpu" # Change to "gpu" for GPU support
+export TARGET_DIRECTORY='/usr/local'
+
+if [[ ! -f "${TARGET_DIRECTORY}/lib/libtensorflow.so" ]]; then
+  curl -L \
+    "https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-${TF_TYPE}-$(go env GOOS)-x86_64-1.10.0.tar.gz" |
+  sudo tar -C $TARGET_DIRECTORY -xz
+fi
+
+export LIBRARY_PATH=$LIBRARY_PATH:${TARGET_DIRECTORY}/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${TARGET_DIRECTORY}/lib
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:${TARGET_DIRECTORY}/lib
