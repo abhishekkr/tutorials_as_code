@@ -68,4 +68,6 @@ export default class HelloWorldApp extends Component<Props> {
 }
 ```
 
+* [details here](https://reactjs.org/docs/react-component.html#setstate)
+
 ---
