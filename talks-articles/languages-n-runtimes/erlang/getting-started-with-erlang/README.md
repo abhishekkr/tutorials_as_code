@@ -2,8 +2,9 @@
 ## Getting Started with Erlang
 
 [source](http://erlang.org/download/getting_started-5.4.pdf)
+[source](http://erlang.org/doc/getting_started/intro.html)
 
-> v5.4
+> v5.4, v10.1
 
 ### Chapter 1.1
 

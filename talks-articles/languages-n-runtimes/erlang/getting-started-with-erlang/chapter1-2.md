@@ -150,7 +150,7 @@ a
 ```
 
 * `list_len` from module [chapter1-2-04.erl](./chapter1-2-04.erl) uses pattern-matching in list
-> `_` used as placeholder for variable which don't have a use
+> `_` is anonymous variable, used as placeholder for variable which don't have a use
 >
 > used model is not tail-recursion
 
@@ -349,9 +349,9 @@ ok
 if
   Condition1 ->
     action1;
-  Condition2, Condition22 ->
+  Condition2, Condition22 -> %% "," marks "and", as "Condition2 && Condition22"
     action2;
-  Condition3; Condition33 ->
+  Condition3; Condition33 -> %% ";" marks "or", as "Condition3 || Condition33"
     action3
 end
 ```
@@ -472,6 +472,36 @@ ok
 2> lists:sort(fun({A, B}, {X, Y}) -> B < Y end, [{3,4},{6,5},{2,1}]).
 [{2,1},{3,4},{6,5}]
 ```
+
+---
+
+### (update from 2.6 v10.1) 1.2.u14 Maps
+
+* key-value association encapsulated with `#{...}`, like `#{r => R, g => G, b => B}`
+> * `=>` is allowed when creating a new map
+>
+> * `:=` is used while updating value in existing map
+
+* module [chapter1-2-u14.erl](./chapter1-2-u14.erl) shows color blending with alpha channels
+> * check functions like `red` to see pattern matching in parameters for maps
+>
+> * macro `is_channel` is defined to be ised with guard tests; checks value range and type
+
+```
+1> Rgb1 = 'chapter1-2-u14':new(0.2,0.3,0.4,0.5).
+#{alpha => 0.5,blue => 0.4,green => 0.3,red => 0.2}
+
+2> Rgb2 = 'chapter1-2-u14':new(0.3,0.4,0.5,1.0).
+#{alpha => 1.0,blue => 0.5,green => 0.4,red => 0.3}
+
+3> 'chapter1-2-u14':blend(Rgb1, Rgb2).
+#{alpha => 1.0,blue => 0.45,green => 0.35,red => 0.25}
+
+4> 'chapter1-2-u14':blend(Rgb2, Rgb1).
+#{alpha => 1.0,blue => 0.5,green => 0.4,red => 0.3}
+```
+
+* can check [The Preprocessor](http://erlang.org/doc/reference_manual/macros.html) for more information on macros
 
 ---
 ---

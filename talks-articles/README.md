@@ -15,8 +15,9 @@
 ---
 
 #### [languages-n-runtimes](./languages-n-runtimes)
-> [golang](./languages-n-runtimes/golang) ,[haskell](./languages-n-runtimes/haskell), [python](./languages-n-runtimes/python), [ruby](./languages-n-runtimes/ruby),
-> [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [clojure](./languages-n-runtimes/clojure), [rust](./languages-n-runtimes/rust),
+> [golang](./languages-n-runtimes/golang), [python](./languages-n-runtimes/python), [ruby](./languages-n-runtimes/ruby),
+> [erlang](./languages-n-runtimes/erlang), [haskell](./languages-n-runtimes/haskell), [clojure](./languages-n-runtimes/clojure),
+> [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [rust](./languages-n-runtimes/rust),
 > [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
 >
 > build: [ant](./languages-n-runtimes/0-build/ant), [gradle](./languages-n-runtimes/0-build/gradle)
@@ -69,7 +70,8 @@
 #### [lb-proxy](./lb-proxy)
 
 #### [machine-learning](./machine-learning)
-> [tensorflow](./machine-learning/tensorflow), [torch/pytorch](./machine-learning/torch), [misc](./machine-learning/README.md)
+> [tensorflow](./machine-learning/tensorflow), [torch/pytorch](./machine-learning/torch)
+> [caffe2](./machine-learning/caffe2), [misc](./machine-learning/README.md)
 
 #### [metrics](./metrics)
 > [sysdig](./metrics/sysdig)
