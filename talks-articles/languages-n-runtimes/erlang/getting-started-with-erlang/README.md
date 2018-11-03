@@ -1,10 +1,9 @@
 
 ## Getting Started with Erlang
 
-[source](http://erlang.org/download/getting_started-5.4.pdf)
-[source](http://erlang.org/doc/getting_started/intro.html)
-
-> v5.4, v10.1
+> [source v5.4](http://erlang.org/download/getting_started-5.4.pdf), [source v10.1](http://erlang.org/doc/getting_started/intro.html)
+>
+> ran with Erlang/OTP 19; Eshell V8.3.5.5
 
 ### Chapter 1.1
 
