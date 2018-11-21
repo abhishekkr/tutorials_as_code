@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>to-do app</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+    <style>
+    .deleteItem {
+        display:inline-block;
+        padding:2px 5px;
+        background:#ccc;
+        cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <h2>ToDo~</h2>
+
+    <div class="todolist">
+      <ul></ul>
+    </div>
+
+    <form>
+      <input></input>
+      <button>new task</button>
+    </form>
+
+    <script>
+    var gun = Gun();
+
+    var items = gun.get("items");
+
+    function addItem(e){
+      e.preventDefault();
+      items.set($('input').val());
+      $('input').val("");
+    }
+
+    function removeItem(e){
+      e.preventDefault();
+      var this_line = this.closest('li');
+      items.get(this_line.id).put(null);
+      this_line.remove();
+    }
+
+    function refreshToDo(item, id) {
+      var li = $('#' + id).get(0) || $('<li>').attr('id', id).appendTo('ul');
+      if (item) {
+var x_item = item + " <span class='deleteItem'>x</spann>"
+        $(li).append(x_item);
+      } else {
+        $(li).hide();
+      };
+      $('.deleteItem').click(removeItem);
+    }
+
+    $('form').on('submit', addItem);
+
+    items.map().on(refreshToDo);
+    </script>
+  </body>
+</html>
