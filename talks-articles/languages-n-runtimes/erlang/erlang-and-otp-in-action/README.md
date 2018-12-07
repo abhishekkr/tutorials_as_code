@@ -1,5 +1,5 @@
 
-_notes from_ pg22 55of431
+_notes from_ pg93 126of379/431
 
 ## Erlang and OTP in Action
 
@@ -42,7 +42,7 @@ _notes from_ pg22 55of431
 
 * [Chapter 1 The Erlang/OTP platform](./chapter1.md)
 
-* [Chapter 2 Erlang language essentials](#)
+* [Chapter 2 Erlang language essentials](./chapter2.md)
 
 * [Chapter 3 Writing a TCP-based RPC service](#)
 
