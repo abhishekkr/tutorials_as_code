@@ -16,7 +16,8 @@
 
 #### [languages-n-runtimes](./languages-n-runtimes)
 > [golang](./languages-n-runtimes/golang), [python](./languages-n-runtimes/python), [ruby](./languages-n-runtimes/ruby),
-> [erlang](./languages-n-runtimes/erlang), [haskell](./languages-n-runtimes/haskell), [clojure](./languages-n-runtimes/clojure),
+> [erlang](./languages-n-runtimes/erlang), [elixir](./languages-n-runtimes/elixir), [haskell](./languages-n-runtimes/haskell),
+> [clojure](./languages-n-runtimes/clojure),
 > [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [rust](./languages-n-runtimes/rust),
 > [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
 >
