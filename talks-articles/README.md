@@ -30,6 +30,7 @@
 > [ansible](./config-mgmt/ansible), [chef](./config-mgmt/chef)
 
 #### [www](./www)
+> [webaudio](./www/webaudio),
 > [angularjs](./www/angularjs), [materialize](./www/materializecss), [html5 devconf 2013](./www/HTML5DevConf-2013),
 > [polymer](./www/polymer), [shadowDOM](./www/shadowDOM), [webrtc-photobooth](./www/webrtc-photobooth),
 > [misc](./www/README.md)
