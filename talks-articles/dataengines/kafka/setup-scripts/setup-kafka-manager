@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -ex
+
+wget -c https://downloads.lightbend.com/scala/2.12.8/scala-2.12.8.deb
+
+wget -c https://sbt.bintray.com/debian/sbt-1.2.8.deb
+
+wget -c https://github.com/yahoo/kafka-manager/archive/1.3.3.22.tar.gz
+
+sudo apt-get -y install ./scala-2.12.8.deb
+
+sudo apt-get -y install ./sbt-1.2.8.deb
+
+tar zxf 1.3.3.22.tar.gz
+pushd ./kafka-manager-1.3.3.22
+sbt clean dist
+
+cp ./target/universal/kafka-manager-1.3.3.22.zip ./
+popd
+
+echo -n "do you want cleanup: "
+read -n ToDel
+
+[[ "${ToDel}" == "y" ]] && exit 0
+
+rm ./scala-2.12.8.deb ./sbt-1.2.8.deb 1.3.3.22.tar.gz
+rm -rf ./kafka-manager-1.3.3.22
