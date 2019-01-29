@@ -1,15 +1,17 @@
 
 ## Ballerina By Example
 
+> practice on version `Ballerina 0.990.2`
+
 ### Language Concepts
 
 * [Hello World](./01-hello-world/README.md)
 
 * [Ballerina Basics](./02-ballerina-basics/README.md)
 
-* Functions
+* [Functions](./03-functions/README.md)
 
-* Flow Control
+* [Flow Control](./04-flow-control/README.md)
 
 * Values and Types
 

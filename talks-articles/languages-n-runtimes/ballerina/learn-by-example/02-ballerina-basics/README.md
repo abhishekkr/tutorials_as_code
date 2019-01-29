@@ -43,6 +43,8 @@ public function main() {
 
 * same as other languages defined using `function` keyword, scope can be made public with `public function`
 
+* example [function-example.bal](./function-example.bal) showcases a simple function with uses of error handling
+> * if a function returns something, assignment is mandatory at it's calling to avoid run error
 
 * `public function main() {...}` is default entry point to ballerina programs
 
