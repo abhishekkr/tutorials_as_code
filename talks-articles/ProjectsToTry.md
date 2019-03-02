@@ -4,6 +4,15 @@
 * Thrift
 * Memcache
 
+## Timeseries
+
+* Gorilla compression storage from Facebook
+
+### Security
+
+* `x-goldmon`
+* `datasploit`
+
 
 ### Golang
 
@@ -219,9 +228,36 @@
 * [OSTree](https://wiki.gnome.org/Projects/OSTree)
 > git for OS binaries; managing bootable, immutable, versioned filesystem trees
 
+* [Velero](https://github.com/heptio/velero)
+> (earlier Ark) helps backup and restore Kubernetes cluster resources and persistent volumes
+
+* [Sonobuoy](https://github.com/heptio/sonobuoy)
+> a diagnostic tool making it easier to understand state of Kubernetes cluster by running conformance tests
+
+* [Draft](https://draft.sh/#whats-draft)
+> makes it easy build applications and run on kubernetes, before even SCM push
+
+* [Skaffold](https://skaffold.dev/docs/)
+> handle build, push and deploy of applications on kubernetes
+
+* [Kubeheira](https://gitlab.com/msvechla/kubehiera)
+> renders go template file based on heirarchical data, supports encryption backends
+
+---
+
+### Infra
+
+#### LoadBalancers
+
+* [Katran](https://github.com/facebookincubator/katran)
+> a C++ lib and BPF to build high-perf L4 LB, leverages XDP infra from Kernel
+
 ---
 
 ### Security Toolbox
+
+* [Moloch](https://molo.ch/)
+> large scale full packet capturing, indexing and database system
 
 #### AntiSurviellance Toolbox
 * obfs4
@@ -242,3 +278,11 @@
 
 ---
 
+### Frontend
+
+#### React
+
+* [Evergreen](https://github.com/segmentio/evergreen)
+> a react-ui framework to build ambitious products
+
+---

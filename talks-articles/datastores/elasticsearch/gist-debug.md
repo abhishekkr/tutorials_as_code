@@ -1,5 +1,5 @@
 
-### some quick ElasticSearch debugging tips
+### Some quick ElasticSearch debugging tips
 
 
 consider `ES_URI` to be something like `http://127.0.0.1:9200`

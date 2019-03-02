@@ -72,7 +72,8 @@
 #### [lb-proxy](./lb-proxy)
 
 #### [machine-learning](./machine-learning)
-> [tensorflow](./machine-learning/tensorflow), [torch/pytorch](./machine-learning/torch)
+> [rasa](./machine-learning/rasa/README.md),
+> [tensorflow](./machine-learning/tensorflow), [torch/pytorch](./machine-learning/torch),
 > [caffe2](./machine-learning/caffe2), [misc](./machine-learning/README.md)
 
 #### [metrics](./metrics)
