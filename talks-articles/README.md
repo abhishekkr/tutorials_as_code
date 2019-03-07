@@ -19,6 +19,7 @@
 > [erlang](./languages-n-runtimes/erlang), [elixir](./languages-n-runtimes/elixir), [haskell](./languages-n-runtimes/haskell),
 > [ballerina](./languages-n-runtimes/ballerina), [clojure](./languages-n-runtimes/clojure),
 > [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [rust](./languages-n-runtimes/rust),
+> [typescript](./languages-n-runtimes/typescript/README.md),
 > [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
 >
 > build: [ant](./languages-n-runtimes/0-build/ant), [gradle](./languages-n-runtimes/0-build/gradle)
