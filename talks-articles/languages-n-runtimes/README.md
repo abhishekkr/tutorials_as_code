@@ -23,6 +23,8 @@
 
 * 1990 : Haskell : Simon Peyton Jones
 
+* 1993 : Lua : Roberto Ierusalimschy
+
 * 1995 : Java : Sun Microsystems
 
 * 2007 : Clojure : Rich Hickey

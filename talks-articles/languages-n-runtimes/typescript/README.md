@@ -9,4 +9,6 @@ npm -g install typescript
 
 * [TypeScript in 5 minutes](./typescript-in-5-minutes/README.md)
 
+* [Basic Types](./basic-types.md)
+
 ---
