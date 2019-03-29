@@ -23,6 +23,8 @@
 > [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
 >
 > build: [ant](./languages-n-runtimes/0-build/ant), [gradle](./languages-n-runtimes/0-build/gradle)
+>
+> debug: [gdb](./languages-n-runtimes/0-debug/gdb/README.md)
 
 #### [virtualization](./virtualization)
 > [aws](./virtualization/aws), [docker](./virtualization/docker), [kuberentes](./virtualization/kuberentes), [kvm](./virtualization/kvm)

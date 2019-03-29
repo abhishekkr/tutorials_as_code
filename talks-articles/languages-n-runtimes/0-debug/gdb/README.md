@@ -25,4 +25,6 @@
 
 * [Debugging with GDB by BetterExplained.com](./betterexplaned-com--debugging-with-gdb.md)
 
+* [CMSC212 GDB Tutorial: A Walkthrough with Examples](./cmsc212-gdb-tutorial.md)
+
 ---
