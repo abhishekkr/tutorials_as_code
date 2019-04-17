@@ -22,6 +22,8 @@
 > [typescript](./languages-n-runtimes/typescript/README.md),
 > [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
 >
+> [TLA+](./languages-n-runtimes/tla-plus)
+>
 > build: [ant](./languages-n-runtimes/0-build/ant), [gradle](./languages-n-runtimes/0-build/gradle)
 >
 > debug: [gdb](./languages-n-runtimes/0-debug/gdb/README.md)
