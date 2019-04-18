@@ -53,7 +53,7 @@ if pc = "start"
 
 ```
 IF pc = "start"
-  THEN (i' \in 0..65535) /\ (pc' = "middle")
+  THEN (i' \in 0 .. 65535) /\ (pc' = "middle")
   ELSE IF pc = "middle"
          THEN (i' = i + 1) /\ (pc' = "done")
          ELSE FALSE
@@ -86,7 +86,7 @@ IF pc = "start"         | (pc = "start") /\ A is true
 
 ```
 (    (pc = "start")
-  /\ (i' \n 0..65535)
+  /\ (i' \in 0 .. 65535)
   /\ (pc' = "middle"))
 \/
 (    (pc = "middle")
@@ -98,7 +98,7 @@ IF pc = "start"         | (pc = "start") /\ A is true
 
 ```
 (    pc = "start"
-  /\ i' \n 0..65535
+  /\ i' \in 0 .. 65535
   /\ pc' = "middle")
 \/
 (    pc = "middle"
@@ -110,7 +110,7 @@ IF pc = "start"         | (pc = "start") /\ A is true
 
 ```
   /\ pc = "start"
-  /\ i' \n 0..65535
+  /\ i' \in 0 .. 65535
   /\ pc' = "middle"
 \/
   /\ pc = "middle"
@@ -122,7 +122,7 @@ IF pc = "start"         | (pc = "start") /\ A is true
 
 ```
 \/ /\ pc = "start"
-   /\ i' \n 0..65535
+   /\ i' \in 0 .. 65535
    /\ pc' = "middle"
 \/ /\ pc = "middle"
    /\ i' = i + 1
@@ -137,7 +137,7 @@ IF pc = "start"         | (pc = "start") /\ A is true
    /\ i' = i + 1
 \/ /\ pc = "start"
    /\ pc' = "middle"
-   /\ i' \n 0..65535
+   /\ i' \in 0 .. 65535
 ```
 
 * Initial-state formula can also be written as following, but one above takes less space
@@ -165,7 +165,7 @@ Next ==  \/ /\ pc = "middle"
             /\ i' = i + 1
           \/ /\ pc = "start"
             /\ pc' = "middle"
-            /\ i' \n 0..65535
+            /\ i' \in 0 .. 65535
 ```
 
 
@@ -176,6 +176,7 @@ Next ==  \/ /\ pc = "middle"
 * split it into smaller parts by using `definition`
 
 ```
+----------------------- MODULE SimpleSpec ------------------------------------
 EXTENDS Integers
 VARIABLES i, pc
 
@@ -190,6 +191,9 @@ Add1 ==  /\ pc = "start"
          /\ pc' = "middle"
 
 Next ==  Pick \/ Add1
+------------------------------------------------------------------------------
+\* way to place comment
+\* model for a increment by 1 for any integer
 ```
 
 ---
