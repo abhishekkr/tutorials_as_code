@@ -29,7 +29,7 @@
 > debug: [gdb](./languages-n-runtimes/0-debug/gdb/README.md)
 
 #### [virtualization](./virtualization)
-> [aws](./virtualization/aws), [docker](./virtualization/docker), [kuberentes](./virtualization/kuberentes), [kvm](./virtualization/kvm)
+> [aws](./virtualization/aws), [docker](./virtualization/docker), [kuberentes](./virtualization/kuberentes), [kvm](./virtualization/kvm), [podman](./virtualization/podman)
 
 #### [config-mgmt](./config-mgmt)
 > [ansible](./config-mgmt/ansible), [chef](./config-mgmt/chef)
@@ -57,7 +57,7 @@
 > [d3js](./dataviz/d3js), [raphaeljs](./dataviz/raphaeljs)
 
 #### [frameworks](./frameworks)
-> [react-native](./frameworks/react-native),
+> [flutter](./frameworks/flutter), [react-native](./frameworks/react-native),
 > [phoenix](./frameworks/phoenix)
 
 #### [google](./google)
