@@ -27,9 +27,53 @@
 * Cupertino package provides 2 kind page scaffolds.
 
 > * `CupertinoPageScaffold` supports single pages and accepts Cupertino style widgets and visual flow.
+>
+> * `CupertinoTabScaffold` supports pages with tabs.
 
 * Update [pubspec.yaml](./cupertino_app/pubspec.yaml) for [shrine_images](https://pub.dev/packages/shrine_images) to manage image assets, [provider](https://pub.dev/packages/provider) for dependency injection, [intl](https://pub.dev/packages/intl) for internationalization, [cupertino_icons](https://pub.dev/packages/cupertino_icons) for default icons
 
 > add an image asset in pubspec.yaml as well
+
+
+### Create structure for 3-tab app
+
+* Final app to have 3 tabs: `Product List`, `Product Search` and `Shopping Cart`
+
+* Cupertino tab has a separate scaffold because on iOS, bottom tab is commonly persistent above nested routes instead of inside pages.
+
+* [lib/app.dart](./cupertino_app/lib/app.dart) to be updated
+
+> * Use `CupertinoTabScaffold` with 3 tabs to be returned with `CupertinoStoreHomePage`; also with data-source providing item list.
+>
+> * With `tabBar` mentioning 3 BottomNavigationBarItem  populated CupertinoTabBar; add `tabBuilder` with switch returning a CupertinoTabView for each tab.
+>
+> * CupertinoTabView returning CupertinoPageScaffold.
+
+* add stub class for product list content via [lib/product_list_tab.dart](./cupertino_app/lib/product_list_tab.dart), returns `Consumer` from `provider` package assisting with state-management
+
+> 2 types of navigation bar on iOS, common short static type and tall scrollable large title type; latter implemented inside `CustomScrollView` with a `CupertinoSliverNavigationBar` widget
+
+* add search page stub, create [lib/search_tab.dart](./cupertino_app/lib/search_tab.dart) a state-ful widget
+
+* add shopping cart page stub [lib/shopping_cart_tab.dart](./cupertino_app/lib/shopping_cart_tab.dart), maintains list of purchases and customer's info
+
+* update [lib/app.dart](./cupertino_app/lib/app.dart) to import new tab widgets
+
+
+### Add State Management
+
+* for common data to be shared across multiple screens, need a simple way to flow data to each objects that need it; [scoped_model](https://pub.dartlang.org/packages/scoped_model) package allows it
+
+* define data model used to pass data from parent widget to its descendants, wrapping model in `ScopedModel` widget allows that
+
+* add [lib/model/product.dart](./cupertino_app/lib/model/product.dart) for product data source; each instance of `Coffee` class describes a product for sale
+
+* add product repository at [lib/model/products_repository.dart](./cupertino_app/lib/model/products_repository.dart) for sale; with mock data better loaded  via an API
+
+* now we can define [lib/model/app_state_model.dart](./cupertino_app/lib/model/app_state_model.dart) with `AppStateModel` class providing methods for accessing data
+
+> add method to access cart total, a list for selected products to purchase, for shipping cost, and more
+
+* add `app_state_model.dart` to wire `AppStateModel` at top of widget tree using `ChangeNotifierProvider`
 
 ---
