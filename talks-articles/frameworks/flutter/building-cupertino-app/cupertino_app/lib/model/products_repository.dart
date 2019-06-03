@@ -5,7 +5,7 @@ class CoffeeRepository {
     Coffee(
       category: Category.robusta,
       roast: Roast.medium,
-      id: 0,
+      id: 10,
       isFeatured: true,
       name: 'Kahawa Sug (Phillipine)',
       price: 700,
@@ -13,7 +13,7 @@ class CoffeeRepository {
     Coffee(
       category: Category.arabica,
       roast: Roast.medium,
-      id: 1,
+      id: 11,
       isFeatured: true,
       name: 'Sagada Arabica',
       price: 580,
@@ -21,7 +21,7 @@ class CoffeeRepository {
     Coffee(
       category: Category.arabica,
       roast: Roast.dark,
-      id: 2,
+      id: 12,
       isFeatured: true,
       name: 'Benguet Arabica',
       price: 790,
@@ -29,7 +29,7 @@ class CoffeeRepository {
     Coffee(
       category: Category.liberica,
       roast: Roast.dark,
-      id: 1,
+      id: 13,
       isFeatured: true,
       name: 'Kapeng Barako',
       price: 930,
@@ -37,7 +37,7 @@ class CoffeeRepository {
     Coffee(
       category: Category.arabica,
       roast: Roast.light,
-      id: 1,
+      id: 14,
       isFeatured: true,
       name: 'Bourbon',
       price: 580,
@@ -45,7 +45,7 @@ class CoffeeRepository {
     Coffee(
       category: Category.arabica,
       roast: Roast.light,
-      id: 1,
+      id: 15,
       isFeatured: true,
       name: 'Maragogipe',
       price: 1180,

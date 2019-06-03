@@ -76,4 +76,14 @@
 
 * add `app_state_model.dart` to wire `AppStateModel` at top of widget tree using `ChangeNotifierProvider`
 
+
+### List products for sale
+
+* to display products for sale in product list tab using [lib/product_row_item.dart](./cupertino_app/product_row_item.dart)
+
+* import it in `product_list_tab.dart`, update it to show coffees using `SliverSafeArea`
+
+* `CupertinoSliverNavigationBar` accounts for notch, `SliverSafeArea` notch left true for right and left for horizontal view if required
+
+
 ---

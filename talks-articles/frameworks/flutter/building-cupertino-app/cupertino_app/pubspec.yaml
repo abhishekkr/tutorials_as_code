@@ -21,4 +21,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-   - packages/shrine_images/0-0.jpg
+    - packages/shrine_images/10-0.jpg
+    - packages/shrine_images/11-0.jpg
+    - packages/shrine_images/12-0.jpg
+    - packages/shrine_images/13-0.jpg
+    - packages/shrine_images/14-0.jpg
+    - packages/shrine_images/15-0.jpg
