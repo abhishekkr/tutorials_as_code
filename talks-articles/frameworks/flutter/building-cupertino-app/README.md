@@ -86,4 +86,20 @@
 * `CupertinoSliverNavigationBar` accounts for notch, `SliverSafeArea` notch left true for right and left for horizontal view if required
 
 
+### Add Product Search
+
+* add [lib/search_bar.dart](./cupertino_app/lib/search_bar.dart) with `SearchBar` class to handle search, with custom style to converge changes over iOS
+
+* update [lib/search_tab.dart](./cupertino_app/lib/search_tab.dart) to import `provider`, `app_state_model`, `product_row_item`, `search_bar` and `styles`
+
+> overrde `initState` and `dispose`, add `_onTextChanged` and `_buildSearchBox` methods to `_SearchTabState`
+>
+> then replace `CustomScrollView` in it's build to send `DecoratedBox` utilizing `_buildSearchBox`
+
+
+### Add Customer Info
+
+* update [lib/shopping_cart_tab.dart](./cupertino_app/lib/shopping_cart_tab.dart) to add private methods for building name, email and location fields with `_buildSliverChildBuilderDelegate` for `SliverSafeArea` for `CustomScrollView`
+
+
 ---
