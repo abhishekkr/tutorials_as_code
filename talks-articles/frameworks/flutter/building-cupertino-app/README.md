@@ -3,6 +3,8 @@
 
 > [source](https://codelabs.developers.google.com/codelabs/flutter-cupertino/index.html?index=..%2F..index#0)
 
+[![Demo Video](./demo.png)](./demo.ogv)
+
 ### Introduction
 
 * [Cupertino Widegts](https://docs.flutter.io/flutter/cupertino/cupertino-library.html) is iOS-style app implementing iOS design language based on Apple's Human Interface Guidelines only for Mobile apps; due to font licensing not same feel on Android
@@ -101,5 +103,18 @@
 
 * update [lib/shopping_cart_tab.dart](./cupertino_app/lib/shopping_cart_tab.dart) to add private methods for building name, email and location fields with `_buildSliverChildBuilderDelegate` for `SliverSafeArea` for `CustomScrollView`
 
+
+### Add date picker
+
+* using `CupertinoDatePicker` in shopping cart so user can select a preferred date
+
+* update [lib/shopping_cart_tab.dart](./cupertino_app/lib/shopping_cart_tab.dart)'s `_buildSliverChildBuilderDelegate` with `_buildDateAndTimePicker`
+
+
+### Add selected items for purchase
+
+* import `model/product.dart`; add `_currencyFormat` to `_ShoppingCartTabState`
+
+* add a product index and cart display under `default`
 
 ---

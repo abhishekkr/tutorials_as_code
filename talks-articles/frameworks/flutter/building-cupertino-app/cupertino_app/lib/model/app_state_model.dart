@@ -5,6 +5,7 @@ import 'products_repository.dart';
 
 double _salesTaxRate = 0.09;
 double _shippingCostPerItem = 15;
+const int coffeesStartId = 10;
 
 class AppStateModel extends foundation.ChangeNotifier {
   List<Coffee> _availableCoffees;
@@ -29,7 +30,7 @@ class AppStateModel extends foundation.ChangeNotifier {
 
   double get subtotalCost {
     return _coffeesInCart.keys.map((id){
-      return _availableCoffees[id].price * _coffeesInCart[id];
+      return _availableCoffees[id - coffeesStartId].price * _coffeesInCart[id];
     }).fold(0, (accumulator, extendedPrice){
       return accumulator + extendedPrice;
     });
@@ -46,7 +47,7 @@ class AppStateModel extends foundation.ChangeNotifier {
     return subtotalCost * _salesTaxRate;
   }
 
-  double get totalCast {
+  double get totalCost {
     return subtotalCost + shippingCost + tax;
   }
 
