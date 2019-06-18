@@ -5,6 +5,8 @@
 
 * [How To GraphQL](./how-to-graphql/README.md)
 
+* [graphql-go](./graphql-go/README.md)
+
 ---
 
 * GraphQL is a query language and execution engine originally created at FB in 2012 to describe capabilities and requirements of data models for client-server applications.
