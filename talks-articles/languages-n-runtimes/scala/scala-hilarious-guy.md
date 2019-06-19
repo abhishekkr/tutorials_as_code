@@ -1,5 +1,8 @@
 ## Why Scala
-youtube title: 'Why Scala... by a hilarious Indian guy' from '2009'
+
+> by Venkat Subramaniam, talk before 2011
+
+[source](https://www.youtube.com/watch?v=LH75sJAR0hc)
 
 
 ```
