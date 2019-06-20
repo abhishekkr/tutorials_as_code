@@ -80,7 +80,8 @@
 #### [machine-learning](./machine-learning)
 > [rasa](./machine-learning/rasa/README.md),
 > [tensorflow](./machine-learning/tensorflow), [torch/pytorch](./machine-learning/torch),
-> [caffe2](./machine-learning/caffe2), [misc](./machine-learning/README.md)
+> [caffe2](./machine-learning/caffe2), [NumPy](./machine-learning/numpy/README.md),
+> [misc](./machine-learning/README.md)
 
 #### [metrics](./metrics)
 > [sysdig](./metrics/sysdig)

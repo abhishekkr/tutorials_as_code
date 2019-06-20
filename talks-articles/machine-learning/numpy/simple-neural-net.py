@@ -21,12 +21,31 @@ Perceptron: with no inner layers
 Backpropagation
 
 
+numpy uses here
+exp—for generating the natural exponential
+array—for generating a matrix
+dot—for multiplying matrices
+random—for generating random numbers
+
 """
 
 import numpy as np
 
 
 training_inputs = np.array([
+    [1, 0, 0],
+    [1, 1, 0],
+    [1, 0, 1],
+    [0, 0, 0],
+    [1, 0, 0],
+    [1, 1, 0],
+    [1, 0, 1],
+    [0, 1, 0],
+    [0, 1, 1],
+    [0, 0, 1],
+    [1, 0, 0],
+    [1, 1, 0],
+    [1, 0, 1],
     [0, 0, 0],
     [1, 0, 0],
     [1, 1, 0],
@@ -36,21 +55,9 @@ training_inputs = np.array([
     [0, 0, 1]
 ])
 
-training_outputs = np.array([
-    [0,1,1,1,0,0,0]
-]).T
+training_outputs = np.array([ [1,1,1,0,1,1,1,0,0,0,1,1,1,0,1,1,1,0,0,0] ]).T
 
-
-"""work for input below but not above
-training_inputs = np.array([[0,0,1],
-                            [1,1,1],
-                            [1,0,1],
-                            [1,0,0],
-                            [0,1,1]])
-training_outputs = np.array([[0,1,1,1,0]]).T
-"""
-
-np.random.seed(1)
+np.random.seed(10)
 
 synaptic_weights = 2 * np.random.random((3, 1)) - 1
 
@@ -63,6 +70,12 @@ def sigmoid(x):
 def sigmoid_derivative(x):
     return x * ( 1 - x)
 
+"""
+For sigmoid:
+https://stackoverflow.com/questions/10626134/derivative-of-sigmoid
+https://gist.github.com/jovianlin/805189d4b19332f8b8a79bbd07e3f598
+"""
+
 def think(iteration_input):
     required_input = iteration_input.astype(float)
     return sigmoid(
@@ -70,8 +83,11 @@ def think(iteration_input):
     )
 
 def train():
+    global training_inputs
+    global training_outputs
     global synaptic_weights
-    for iteration in range(100000):
+    iterations = 500 # 100000
+    for iteration in range(iterations):
         input_layer = training_inputs
         outputs = think(input_layer)
         error = training_outputs - outputs
