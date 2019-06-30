@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+"""
+source: http://pyvideo.org/video/398/pycon-2011--how-to-write-obfuscated-python
+"""
+
 object = str
 
 tuple = lambda *x: x

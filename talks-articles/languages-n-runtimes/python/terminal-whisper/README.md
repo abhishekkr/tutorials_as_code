@@ -1,7 +1,13 @@
 # Terminal Whispering
 
-PyGotham2015
-by, Thoman Ballinger
+> at PyGotham2015 by Thoman Ballinger
+
+* [netcat demo with publish delay, typewriter style, progress bars, more](./netcat-sample.py)
+
+* [stdout with progress reports, no echo at all of typing](./stdout-sample.py)
+
+* [git colored commit trick](./git-commit-trick)
+
 
 ## Notes
 
@@ -45,6 +51,7 @@ by, Thoman Ballinger
 ---
 
 ### Command line utils
+
 > checkout manpages
 
 * tput

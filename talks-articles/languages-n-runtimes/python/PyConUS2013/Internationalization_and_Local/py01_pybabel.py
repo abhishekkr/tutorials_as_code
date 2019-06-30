@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+"""
+source: https://pyvideo.org/pycon-us-2013/internationalization-and-localization-done-right.html
+by Ruchi Varshney: http://bit.ly/pyconi18n ; https://github.com/rvarshney
+"""
 # pre-req: pip install babel, pytz  # though talk says pybabel, I can just find babel
 # http://babel.edgewall.org/wiki/Documentation/dates.html
 

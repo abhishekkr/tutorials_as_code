@@ -1,5 +1,6 @@
 ## How Import Works
-> Brett Cannon
+
+> by Brett Cannon, [source](https://pyvideo.org/pycon-us-2013/how-import-works.html)
 
 > More accurate to Python3 latest version by 2013
 
@@ -11,18 +12,19 @@
 
 * Path entry finder : searched in entry from import path
 
-* Meta path finder : found on sys.meta_path
+* Meta path finder : found on `sys.meta_path`
 
 ---
 
 ### how spans out
 
+```
 from ..spam import fly
 
 __import__('spam', globals(), locals(), ['fly'], 2)
+```
 
 > 2 is number of dot(depth) for spam; 0 if direct import
 
----
 ---
 

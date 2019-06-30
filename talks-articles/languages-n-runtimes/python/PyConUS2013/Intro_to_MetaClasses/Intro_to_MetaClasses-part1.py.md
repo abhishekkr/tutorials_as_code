@@ -1,7 +1,12 @@
 ## Python3 & MetaProgramming Part.1(of3)
-* David Beazley
 
-``` python -i $script ```
+> David Beazley @dabeaz at PyCon Santa Clara 2013
+
+[source](http://www.dabeaz.com/py3meta)
+
+* To be tried on Python 3.3 or recent as `python -i $script`.
+
+* MetaProgramming with common examples of Decorators, Metaclasses and Descriptors to keep code DRY and because it's used in frameworks and libraries.
 
 ### debug via decorators
 

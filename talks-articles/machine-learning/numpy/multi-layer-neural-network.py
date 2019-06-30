@@ -71,7 +71,7 @@ if __name__ == "__main__":
     random.seed(1)
 
     neural_layers = [
-        NeuronLayer(4, 3), # Create layer Output-4 (9 neurons, each with 3 inputs)
+        NeuronLayer(4, 3), # Create layer Layer=1 (4 neurons, each with 3 inputs)
         #NeuronLayer(9, 4), # Create layer Output-4 (9 neurons, each with 3 inputs)
         #NeuronLayer(7, 9), # Create layer Output-3 (7 neurons, each with 9 inputs)
         #NeuronLayer(4, 7), # Create layer Output-2 (4 neurons, each with 7 inputs)

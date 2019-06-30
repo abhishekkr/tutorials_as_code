@@ -1,5 +1,7 @@
 ### An Open Success For The Cloud OpenStack
 
+> [source](http://pyvideo.org/video/393/pycon-2011--an-open-success-for-the-cloud--openst)
+
 ##### OpenStack :  2 major components Swift (Data Storage Engine) & Nova (Compute Engine)
 
 * Glance    : Image managing system (VM images get stored and boot from here)

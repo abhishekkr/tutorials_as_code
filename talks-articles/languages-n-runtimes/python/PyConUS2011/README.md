@@ -1,7 +1,9 @@
 ### PyCon US 2011
 
-##### An Open Success for the Cloud: OpenStack
-> http://pyvideo.org/video/393/pycon-2011--an-open-success-for-the-cloud--openst
+> [source](http://pyvideo.org/category/7/pycon-us-2011)
 
-##### How To Write Obfuscated Python
-> http://pyvideo.org/video/398/pycon-2011--how-to-write-obfuscated-python
+* [An Open Success for the Cloud: OpenStack](./An_OpenSuccess_For_TheCloudOpenStack/README.md)
+
+* How To Write Obfuscated Python: [Part.1](./HowToWriteObfuscatedPython/obfus01.py), [Part.2](./HowToWriteObfuscatedPython/obfus02.py), [Part.3](./HowToWriteObfuscatedPython/obfus03.py)
+
+---
