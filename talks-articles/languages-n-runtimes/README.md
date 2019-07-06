@@ -49,6 +49,8 @@
 
 * 2011 : [Elixir : José Valim](./elixir/README.md)
 
+* 2012 : [Julia](./julia-lang/README.md)
+
 * 2012 : [TypeScript](./typescript/README.md)
 
 * 2015 : [GraphQL : Facebook](./graphql/README.md)
