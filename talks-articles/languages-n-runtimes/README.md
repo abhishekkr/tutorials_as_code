@@ -49,7 +49,7 @@
 
 * 2011 : [Elixir : José Valim](./elixir/README.md)
 
-* 2012 : [Julia](./julia-lang/README.md)
+* 2012 : [Julia : Jeff Bezanson](./julia-lang/README.md)
 
 * 2012 : [TypeScript](./typescript/README.md)
 
