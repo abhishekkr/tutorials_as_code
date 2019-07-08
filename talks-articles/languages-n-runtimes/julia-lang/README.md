@@ -6,6 +6,8 @@
 
 ### Sample Code
 
+* [Basic CLI with Fire.jl](./sample-code/basic-cli.jl)
+
 * [Text Summarization](./sample-code/document-summarization.jl)
 
 ---
