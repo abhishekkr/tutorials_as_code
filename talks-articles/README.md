@@ -77,11 +77,12 @@
 
 #### [lb-proxy](./lb-proxy)
 
-#### [machine-learning](./machine-learning)
-> [rasa](./machine-learning/rasa/README.md),
-> [tensorflow](./machine-learning/tensorflow), [torch/pytorch](./machine-learning/torch),
-> [caffe2](./machine-learning/caffe2), [NumPy](./machine-learning/numpy/README.md),
-> [misc](./machine-learning/README.md)
+#### [machine-learning](./machine-learning/README.md)
+> *toolbox*: [rasa](./machine-learning/toolbox/rasa/README.md),
+> [tensorflow](./machine-learning/toolbox/tensorflow), [torch/pytorch](./machine-learning/toolbox/torch),
+> [caffe2](./machine-learning/toolboox/caffe2/README.md), [NumPy](./machine-learning/toolbox/numpy/README.md),
+>
+> [more ML](./machine-learning/README.md)
 
 #### [metrics](./metrics)
 > [sysdig](./metrics/sysdig)
