@@ -1,7 +1,7 @@
 
 ## Julia 1.0 Tutorial
 
-> by [J-Sec](https://www.youtube.com/playlist?list=PLJ39kWiJXSiyegKeVd-praE_jOv6sgCn5)
+> by [J-Sec](https://www.youtube.com/playlist?list=PLJ39kWiJXSiyegKeVd-praE_jOv6sgCn5), updated as per July/2019
 
 * `?<func-name>` to get help at console
 
@@ -345,6 +345,19 @@ sort!(int_arr) == [0,1,3,4,5] ## int_arr == [0,1,3,4,5]
 extrema(int_arr) == (0, 5)
 maximum(int_arr) == 5
 minimum(int_arr) == 0
+```
+
+* list comprehension
+
+```
+## [expression_using_element for element in sequnece_or_range_or_array]
+
+evens = collect(2:2:10)
+[num + 1 for num in evens] == [3, 5, 7, 9, 11]
+
+[num - 1 for num in (2:2:10)] == collect(1:2:10)
+
+[num - 1 for num in collect(2:2:10)] == collect(1:2:10)
 ```
 
 ---
@@ -694,6 +707,174 @@ julia> dump(ystruct1)
 YStruct
   a: Array{Float64}((3,)) [11.0, 14.0, 18.0]
   b: Int64 12
+```
+
+---
+
+### Compound Expressions
+
+* using `begin..end`
+
+```
+fullname = begin
+         firstname = "Julia"
+         lastname  = "1.x"
+         "$firstname $lastname"
+       end
+fullname == "Julia 1.x"
+```
+
+* using `(;)`
+
+```
+abadd = (a=10; b=20; a+b)
+abadd == 30
+```
+
+---
+
+### Filter, Reduce and Fold
+
+* filter a collection for elements which fulfil a condition
+
+```
+## filter(condition/function, collection)
+
+filter(x->x%3==0, evens) == [6] ## evens = [2,4,6,8,10]
+
+filter(x->x%3==0, (2:2:20)) == [6, 12, 18]
+```
+
+* reduce a collection by applying an operation on elements in moving pairs; operation/function shall take 2 params and return 1
+
+```
+reduce(+, 1:2:5) == 9 ## [1,3,5] -> [1+3,5] -> [4+5] -> 9
+
+reduce((x,y)->x+y, 1:2:5) == 9
+```
+
+* folding is available via `foldl` and `foldr` for expressiong where deterministic direction-ality of reduce is important
+
+```
+foldl((x,y)->x+y, 1:2:5) == 9
+
+foldr((x,y)->x+y, 1:2:5) == 9
+
+function fx(x,y)
+  println(x,y)
+  "$x $y"
+end
+
+foldr(fx, [1,2,3,4]) == "1 2 3 4"
+## 34
+## 23 4
+## 12 3 4
+
+
+foldl(fx, [1,2,3,4]) == "1 2 3 4"
+## 12
+## 1 23
+## 1 2 34
+```
+
+---
+
+### Types in Julia
+
+* Type System
+
+```
+               |-Static Type
+Type System => |
+               |-Dynamic Type => |-Data Type => |-Abstract Type
+                                                |-Concrete Type
+```
+
+* enquiries of types
+
+```
+julia> some_int = 1
+1
+
+julia> some_float = 1.2
+1.2
+
+julia> supertype(typeof(some_int))
+Signed
+
+julia> supertype(supertype(typeof(some_int)))
+Integer
+
+julia> supertype(supertype(supertype(typeof(some_int))))
+Real
+
+julia> supertype(supertype(supertype(supertype(typeof(some_int)))))
+Number
+
+julia> supertype(typeof(some_float))
+AbstractFloat
+
+julia> supertype(supertype(typeof(some_float)))
+Real
+
+julia> subtypes(Int64)
+0-element Array{Type,1}
+
+julia> subtypes(Real)
+4-element Array{Any,1}:
+ AbstractFloat
+ AbstractIrrational
+ Integer
+ Rational
+
+julia> subtypes(Number)
+2-element Array{Any,1}:
+ Complex
+ Real
+```
+
+* fetching subtypes trail
+
+```
+
+julia> function type_heirarchy(t::Any, level=0)
+         println("\t"^level, t)
+         for x in subtypes(t)
+           if x == Any
+             continue
+           end
+           type_heirarchy(x, level+1)
+         end
+       end
+type_heirarchy (generic function with 4 methods)
+
+julia> type_heirarchy(Number)
+Number
+	Complex
+	Real
+		AbstractFloat
+			BigFloat
+			Float16
+			Float32
+			Float64
+		AbstractIrrational
+			Irrational
+		Integer
+			Bool
+			Signed
+				BigInt
+				Int128
+				Int16
+				Int32
+				Int64
+				Int8
+			Unsigned
+				UInt128
+				UInt16
+				UInt32
+				UInt64
+				UInt8
+		Rational
 ```
 
 ---

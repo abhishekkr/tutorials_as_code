@@ -57,8 +57,8 @@
 #### [dataviz](./dataviz)
 > [d3js](./dataviz/d3js), [raphaeljs](./dataviz/raphaeljs)
 
-#### [frameworks](./frameworks)
-> [flutter](./frameworks/flutter), [react-native](./frameworks/react-native),
+#### [frameworks](./frameworks/README.md)
+> [flutter](./frameworks/flutter), [react](./frameworks/react/README.md),
 > [phoenix](./frameworks/phoenix)
 
 #### [google](./google)
