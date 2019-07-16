@@ -22,8 +22,10 @@
 
 * [05. Components](./05-components.md)
 
-* _WIP_[06. State](./06-state.md)
+* [06. State | 07. Props Overview | 08. Props Validation](./06-state.md)
 
-* _WIP_[07. Props](#)
+* [09. Component API | 10. Component Lifecycle](./09-component-api-and-lifecycle.md)
+
+* _WIP_
 
 ---
