@@ -10,6 +10,10 @@
 
 * [Depth First Search](./depth-first-search.jl)
 
+* [Binary Search](./binary-search.jl)
+
+* [Interpolation Search](./interpolation-search.jl)
+
 
 ### Pattern/Partial Element
 
