@@ -1,31 +1,33 @@
 ```
 # install erlang
-sudo pacman -S erlang
+sudo pacman -S erlang ## can use suitable: apt-get, dnf, yum
 
 # install elixir
-sudo pacman -S elixir 
+sudo pacman -S elixir ## can use suitable: apt-get, dnf, yum
 
 # install npm
-sudo pacman -S nodejs npm
+sudo pacman -S nodejs npm ## can use suitable: apt-get, dnf, yum
 
 # install hex package manager
 mix local.hex
 
 # cmd to install phoenix archive
-mix archive.install https://github.com/phoenixframework/phoenix/releases/download/v1.0.3/phoenix_new-1.0.3.ez
+mix archive.install hex phx_new 1.4.9
 
 # create a new phoenix project
-mix phoenix.new ./hello-phoenix
+mix phx.new hello_phoenix
+
 ## if wanna avoid nodejs/npm can skip brunch.io
-## mix phoenix.server ./hello-phoenix --no-brunch
-cd hello-phoenix
+## mix phoenix.server hello_phoenix --no-brunch
+cd hello_phoenix
 mix ecto.create
 npm install && node node_modules/brunch/bin/brunch build
 mix deps.get
 
 # start a server
-mix phoenix.server
+mix phx.server
+
 ## can run it from IEx (Interactive Elixir)
-## iex -S mix phoenix.server
+## iex -S mix phx.server
 ## by default runs at http://localhost:4000
 ```
