@@ -37,6 +37,8 @@
 
 * 1995 : [Ruby : Yukihiro Matsumoto](./ruby/README.md)
 
+* 1995 : [Racket : Matthew Flatt, PLT Inc.](./racket/README.md)
+
 * 1999 : [TLA+](./tla-plus/README.md)
 
 * 2004 : [Scala : Martin Odersky](./scala/README.md)

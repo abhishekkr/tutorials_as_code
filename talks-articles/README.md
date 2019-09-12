@@ -19,7 +19,7 @@
 > [erlang](./languages-n-runtimes/erlang), [elixir](./languages-n-runtimes/elixir), [haskell](./languages-n-runtimes/haskell),
 > [julia](./languages-n-runtimes/julia-lang/README.md), [ballerina](./languages-n-runtimes/ballerina), [clojure](./languages-n-runtimes/clojure),
 > [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [rust](./languages-n-runtimes/rust),
-> [typescript](./languages-n-runtimes/typescript/README.md),
+> [racket](./languages-n-runtimes/racket/README.md), [typescript](./languages-n-runtimes/typescript/README.md),
 > [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
 >
 > [TLA+](./languages-n-runtimes/tla-plus),
