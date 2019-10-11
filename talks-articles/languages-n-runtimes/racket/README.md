@@ -3,4 +3,6 @@
 
 * [Racket Programming Basics by Colleen Lewis](./racket-programming--colleen-lewis.md)
 
+* [Cheatsheet](./cheatsheet.md)
+
 ---
