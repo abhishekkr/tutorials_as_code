@@ -15,17 +15,17 @@
 
 * [Control Structures](./a-basics/p05_control_structures.exs)
 
-* [Functions](./a-basics/)
+* [Functions](./a-basics/p06_functions.exs)
+
+* [Pipe Operator](./a-basics/p07_pipe_operator.exs)
+
+* [Modules](./a-basics/p08_modules.exs)
+
+* [Mix](./a-basics/p09_mix.md)
+
+* [Sigils](./a-basics/p10_sigils.exs)
 
 _WIP_
-
-* Pipe Operator
-
-* Modules
-
-* Mix
-
-* Sigils
 
 * Documentation
 
