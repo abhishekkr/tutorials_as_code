@@ -25,21 +25,21 @@
 
 * [Sigils](./a-basics/p10_sigils.exs)
 
+* [Documentation](./a-basics/p11_documentation.md)
+
+* [Testing](./a-basics/p12_testing.md)
+
+* [Comprehensions](./a-basics/p13_comprehensions.exs)
+
+* [Strings](./a-basics/p14_strings.exs)
+
+* [Date and Time](./a-basics/p15_date_and_time.exs)
+
 _WIP_
 
-* Documentation
+* [Custom Mix Tasks](./a-basics/p16_custom_mix_tasks.exs)
 
-* Testing
-
-* Comprehensions
-
-* Strings
-
-* Date and Time
-
-* Custom Mix Tasks
-
-* IEx Helpers
+* [IEx Helpers](./a-basics/p17_iex_helpers.exs)
 
 ---
 
