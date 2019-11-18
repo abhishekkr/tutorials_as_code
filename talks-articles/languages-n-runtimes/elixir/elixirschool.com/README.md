@@ -35,13 +35,13 @@
 
 * [Date and Time](./a-basics/p15_date_and_time.exs)
 
-_WIP_
+* [Custom Mix Tasks](./a-basics/p16_custom_mix_tasks.md)
 
-* [Custom Mix Tasks](./a-basics/p16_custom_mix_tasks.exs)
-
-* [IEx Helpers](./a-basics/p17_iex_helpers.exs)
+* [IEx Helpers](./a-basics/p17_iex_helpers.md)
 
 ---
+
+_WIP_
 
 ### Advanced
 
