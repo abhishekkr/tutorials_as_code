@@ -1,7 +1,7 @@
 
 ## Ballerina By Example
 
-> practice on version `Ballerina 0.990.2`
+> practice on version `Ballerina 0.990.2`; updated for **v1.0.4**
 
 ### Language Concepts
 
@@ -13,7 +13,7 @@
 
 * [Flow Control](./04-flow-control/README.md)
 
-* Values and Types
+* [Values and Types](./05-values-and-types/README.md)
 
 * Record
 

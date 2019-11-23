@@ -46,7 +46,17 @@ public function main() {
 * example [function-example.bal](./function-example.bal) showcases a simple function with uses of error handling
 > * if a function returns something, assignment is mandatory at it's calling to avoid run error
 
+* return value can be ignored using `_` unless it can be `error` in certain cases; ignoring return value completely isn't allowed
+
 * `public function main() {...}` is default entry point to ballerina programs
+
+---
+
+### Required Parameters
+
+> i.e. mandatory arguments
+
+* can be passed as named arguments; all arguments after first need to be then passed by name and order doesn't matter
 
 ---
 
@@ -76,28 +86,9 @@ public function main() {
 
 ### Rest Parameters
 
-* ballerina allows at most 1 rest param which acts like array of same type, like parameter `friends` in example below
+* ballerina allows at most 1 rest param which acts like array of same type
 
-```
-import ballerina/io;
-
-function fnSome(int uid, string name="John", string... friends) {
-  io:println("uid: ", uid, " | name: ", name, " has ", friends.length(), " friends");
-  io:println(friends);
-}
-
-public function main() {
-  fnSome(1);
-  fnSome(2, name="Jack");
-  fnSome(3, "Alice");
-  fnSome(4, "Alice", "Bob");
-  fnSome(5, name="Jack", "Alice", "Bob");
-  fnSome(6, "Alice", name="Jill", "Bob");
-
-  string[] friends = ["Alice", "Bob", "Eve"];
-  fnSome(7, name="Dory", ...friends);
-}
-```
+* example [rest-parameter-example.bal](./rest-parameter-example.bal) showcases a simple function with uses variadic like rest parameter `friends`
 
 ---
 
@@ -108,5 +99,13 @@ public function main() {
 * there will be runtime warnings if you add wrong documentation, say `return` field for a document that doesn't return anything
 
 * example at [documentation-example.bal](./documentation-example.bal)
+
+---
+
+### Quoted Identifiers
+
+* `'function`, `'int` and similar quoted reserved keywords can be used; also variable started with digits `'1plus`
+
+* example at [quoted-id-example.bal](./documentation-example.bal)
 
 ---

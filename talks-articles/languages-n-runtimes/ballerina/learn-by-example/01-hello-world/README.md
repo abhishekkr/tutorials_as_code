@@ -15,8 +15,13 @@
 
 ```
 % ballerina run ./hello-world-svc.bal
-Initiating service(s) in 'hello-world-svc.bal'
-[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
+Compiling source
+	hello-world-svc.bal
+
+Generating executables
+Running executables
+
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
 * usage

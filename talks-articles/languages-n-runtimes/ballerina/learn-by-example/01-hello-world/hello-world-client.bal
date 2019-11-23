@@ -1,4 +1,5 @@
 import ballerina/http;
+import ballerina/io;
 import ballerina/log;
 
 public function main() {
@@ -9,15 +10,15 @@ public function main() {
   if (resp is http:Response) {
     httpResponse(resp);
   } else {
-    log:printError(<string> resp.detail().message);
+    log:printError(resp.reason(), err = resp);
   }
 }
 
 function httpResponse(http:Response resp) {
     var payload = resp.getTextPayload();
     if (payload is string) {
-      log:printInfo(payload);
+      io:println(payload);
     } else {
-      log:printError(<string> payload.detail().message);
+      log:printError("Error parsing text response:", err=payload);
     }
 }
