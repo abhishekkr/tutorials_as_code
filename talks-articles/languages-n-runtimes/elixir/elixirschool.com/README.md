@@ -41,23 +41,23 @@
 
 ---
 
-_WIP_
-
 ### Advanced
 
-* Erlang Interoperability
+* [Erlang Interoperability](./b-advanced/p18_erlang_interoperability.md)
 
-* Error Handling
+* [Error Handling](./b-advanced/p19_error_handling.exs)
 
-* Executables
+* [Executables](./b-advanced/p20_executables.md)
 
-* Concurrency
+* [Concurrency](./b-advanced/p21_concurrency.md)
 
-* OTP Concurrency
+* [OTP Concurrency](./b-advanced/p22_otp_concurrency.md)
 
-* OTP Supervisors
+* [OTP Supervisors](./b-advanced/p23_otp_supervisors.md)
 
-* OTP Distribution
+_WIP_
+
+* [OTP Distribution](./b-advanced/p24_otp_distribution.md)
 
 * Metaprogramming
 
