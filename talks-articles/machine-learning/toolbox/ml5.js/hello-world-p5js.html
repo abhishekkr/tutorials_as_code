@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting Started with ml5.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- p5 -->
+    <script src="js/vendor/p5.min.js"></script>
+    <script src="js/vendor/p5.dom.min.js"></script>
+    <script src="js/vendor/p5.sound.min.js"></script>
+    <!-- ml5 -->
+    <script src="js/vendor/ml5.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      console.log('ml5 version:', ml5.version);
+
+      function setup(){
+        createCanvas(400, 400);
+        background(180);
+
+        let txt = createDiv(ml5.version);
+        txt.position(25,25);
+      }
+
+      function draw(){
+        drawEllipse(mouseX, mouseY, pmouseX, pmouseY);
+      }
+
+      function drawEllipse(x, y, pX, pY) {
+        let speed = abs(x - pX) + abs(y - pY);
+        ellipse(x, y, speed, speed+10); // size correlated to mouse pointer speed
+      }
+    </script>
+  </body>
+</html>
+
