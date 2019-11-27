@@ -17,5 +17,14 @@
 * `<project-root-dir>/sketch.js` with ml5 specific JS constructs
 
 
+### Some code decisions
+
+* `preload()` in `sketch.js` loads model and data as they could be large, so initiated before running rest of code
+
+* `setup()` is used for anything that just need to run once
+
+* `.classify()` receives data and a callback function, in this case `gotResult()`
+
+* `nf(..)` is a `p5.js` function formatting number to a nicer string
 
 ---

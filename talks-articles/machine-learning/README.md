@@ -13,6 +13,8 @@
 
 * [numpy](./toolbox/numpy/README.md)
 
+* [ml5.js](./toolbox/ml5.js/README.md)
+
 ---
 
 ### Approaches

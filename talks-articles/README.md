@@ -81,6 +81,7 @@
 > *toolbox*: [rasa](./machine-learning/toolbox/rasa/README.md),
 > [tensorflow](./machine-learning/toolbox/tensorflow), [torch/pytorch](./machine-learning/toolbox/torch),
 > [caffe2](./machine-learning/toolboox/caffe2/README.md), [NumPy](./machine-learning/toolbox/numpy/README.md),
+> [ml5.js](./machine-learning/toolbox/ml5.js/README.md),
 >
 > [more ML](./machine-learning/README.md)
 

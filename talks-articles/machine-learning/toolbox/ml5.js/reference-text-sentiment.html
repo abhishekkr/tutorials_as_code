@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ml5.js : Sentiment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- p5 -->
+    <script src="js/vendor/p5.min.js"></script>
+    <script src="js/vendor/p5.dom.min.js"></script>
+    <!-- ml5 -->
+    <script src="js/vendor/ml5.min.js"></script>
+  </head>
+
+  <body>
+    <div>details <a href="reference-text-sentiment.md">here</a></div>
+    <h3>ml5.js Sentiment Analysis</h3>
+    <div><ul>
+      <li>default model used is <i>movieReview</i>, reviews truncated to 200 words and only 20K most common words used</li>
+      <li>not good results for negative at least for my test input</li>
+      <li>score would range from 0 to 1, ranging from extreme surity of negative to positive</li>
+    </div>
+    <div><span id="status"></span></div>
+    <!-- sketch -->
+    <script src="js/sentiment-v1.js"></script>
+  </body>
+</html>
+
