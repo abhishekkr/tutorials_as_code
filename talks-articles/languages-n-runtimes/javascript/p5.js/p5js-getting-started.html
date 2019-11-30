@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting Started with p5.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- p5 -->
+    <script src="js/vendor/p5.min.js"></script>
+    <!-- ml5 -->
+  </head>
+
+  <body>
+    <script>
+      console.log('p5.js');
+
+      function setup(){
+        createCanvas(800, 600);
+      }
+
+      function draw(){
+        if (mouseIsPressed) {
+          fill(0);
+        } else {
+          fill(255);
+        }
+        ellipse(mouseX, mouseY, 75, 75);
+      }
+    </script>
+  </body>
+</html>
+

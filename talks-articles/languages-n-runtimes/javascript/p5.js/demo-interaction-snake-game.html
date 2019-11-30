@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting Started with p5.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- p5 -->
+    <script src="js/vendor/p5.min.js"></script>
+    <script src="js/vendor/p5.dom.min.js"></script>
+    <!-- ml5 -->
+  </head>
+
+  <body>
+    <div id="gamescreen"></div>
+    <div id="gamehelp">
+      <div>
+        <b>Controls:</b> 'i' <i>for up</i> | 'j' <i>for right</i> | 'k' <i>for down</i> | 'l' <i>for left</i>
+      </div>
+    </div>
+    <script>
+      let numSegments = 10;
+      let direction = 'right';
+
+      const xStart = 0;
+      const yStart = 250;
+      const diff = 10;
+
+      let xCor = [];
+      let yCor = [];
+
+      let xFruit = 0;
+      let yFruit = 0;
+      let scoreElem;
+      let score = 0;
+
+      function setup() {
+        scoreElem = createDiv('Score = ' + score);
+        scoreElem.position(20, 20);
+        scoreElem.id = 'score';
+        scoreElem.style('color', 'white');
+
+        let gamescreen = select('#gamescreen');
+        let kanvas = createCanvas(500, 500);
+        kanvas.parent(gamescreen);
+        frameRate(15);
+        stroke(255);
+        strokeWeight(10);
+        updateFruitCoordinates();
+
+        for (let i = 0; i < numSegments; i++) {
+          xCor.push(xStart + i * diff);
+          yCor.push(yStart);
+        }
+      }
+
+      function draw() {
+        background(0);
+        drawSnake();
+        updateSnakeCoordinates();
+        checkForFruit();
+        checkGameStatus();
+      }
+
+      function drawSnake() {
+        for (let i = 0; i < numSegments - 1; i++) {
+          line(xCor[i], yCor[i], xCor[i + 1], yCor[i + 1]);
+        }
+      }
+
+      function updateSnakeCoordinates() {
+        for (let i = 0; i < numSegments - 1; i++) {
+          xCor[i] = xCor[i + 1];
+          yCor[i] = yCor[i + 1];
+        }
+        switch (direction) {
+          case 'right':
+            xCor[numSegments - 1] = xCor[numSegments - 2] + diff;
+            yCor[numSegments - 1] = yCor[numSegments - 2];
+            break;
+          case 'up':
+            xCor[numSegments - 1] = xCor[numSegments - 2];
+            yCor[numSegments - 1] = yCor[numSegments - 2] - diff;
+            break;
+          case 'left':
+            xCor[numSegments - 1] = xCor[numSegments - 2] - diff;
+            yCor[numSegments - 1] = yCor[numSegments - 2];
+            break;
+          case 'down':
+            xCor[numSegments - 1] = xCor[numSegments - 2];
+            yCor[numSegments - 1] = yCor[numSegments - 2] + diff;
+            break;
+        }
+      }
+
+      /*
+      I always check the snake's head position xCor[xCor.length - 1] and
+      yCor[yCor.length - 1] to see if it touches the game's boundaries
+      or if the snake hits itself.
+      */
+      function checkGameStatus() {
+        if (
+          xCor[xCor.length - 1] > width ||
+          xCor[xCor.length - 1] < 0 ||
+          yCor[yCor.length - 1] > height ||
+          yCor[yCor.length - 1] < 0 ||
+          checkSnakeCollision()
+        ) {
+          noLoop();
+          scoreElem.html('<b>Game ended!</b> Your score was : <b>' + score + '</b>');
+        }
+      }
+
+      /*
+      If the snake hits itself, that means the snake head's (x,y) coordinate
+      has to be the same as one of its own segment's (x,y) coordinate.
+      */
+      function checkSnakeCollision() {
+        const snakeHeadX = xCor[xCor.length - 1];
+        const snakeHeadY = yCor[yCor.length - 1];
+        for (let i = 0; i < xCor.length - 1; i++) {
+          if (xCor[i] === snakeHeadX && yCor[i] === snakeHeadY) {
+            return true;
+          }
+        }
+      }
+
+      function checkForFruit() {
+        point(xFruit, yFruit);
+
+        if (xCor[xCor.length - 1] === xFruit && yCor[yCor.length - 1] === yFruit) {
+          score += 1;
+          scoreElem.html('Score = <b>' + score + '</b>');
+          xCor.unshift(xCor[0]);
+          yCor.unshift(yCor[0]);
+          numSegments++;
+          updateFruitCoordinates();
+        }
+      }
+
+      function updateFruitCoordinates() {
+        xFruit = floor(random(10, (width - 100) / 10)) * 10;
+        yFruit = floor(random(10, (height - 100) / 10)) * 10;
+      }
+
+      function keyPressed() {
+        switch (keyCode) {
+          case 74:
+            if (direction !== 'right') {
+              direction = 'left';
+            }
+            break;
+          case 76:
+            if (direction !== 'left') {
+              direction = 'right';
+            }
+            break;
+          case 73:
+            if (direction !== 'down') {
+              direction = 'up';
+            }
+            break;
+          case 75:
+            if (direction !== 'up') {
+              direction = 'down';
+            }
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
+
