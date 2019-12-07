@@ -55,19 +55,19 @@
 
 * [OTP Supervisors](./b-advanced/p23_otp_supervisors.md)
 
-_WIP_
-
 * [OTP Distribution](./b-advanced/p24_otp_distribution.md)
 
-* Metaprogramming
+* [Metaprogramming](./b-advanced/p25_metaprogramming.md)
 
-* Umbrella Projects
+* [Umbrella Projects](./b-advanced/p26_umbrella_projects.md)
 
-* Specification and types
+* [Specification and types](./b-advanced/p27_spectypes.md)
 
-* Behaviors
+_WIP_
 
-* GenStage
+* [Behaviors](./b-advanced/p28_behaviors.md)
+
+* [GenStage](./b-advanced/p29_genstage.md)
 
 * Protocols
 
