@@ -63,17 +63,17 @@
 
 * [Specification and types](./b-advanced/p27_spectypes.md)
 
-_WIP_
-
 * [Behaviors](./b-advanced/p28_behaviors.md)
 
 * [GenStage](./b-advanced/p29_genstage.md)
 
-* Protocols
+* [Protocols](./b-advanced/p30_protocols.md)
 
-* Nerves
+* [Nerves](./b-advanced/p31_nerves.md)
 
 ---
+
+_WIP_
 
 ### Ecto
 

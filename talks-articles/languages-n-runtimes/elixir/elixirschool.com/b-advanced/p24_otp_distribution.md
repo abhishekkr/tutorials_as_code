@@ -1,7 +1,7 @@
 
 ## OTP Distribution
 
-> [sample code](p24_otp_distribution.exs)
+> [sample code](p24_otp_distribution.exs), sample app created at [p24_chat](./p24_chat)
 
 * can run app on different nodes across multiple hosts, which can communicate via existing mechanism
 
