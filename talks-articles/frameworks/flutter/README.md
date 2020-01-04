@@ -5,6 +5,10 @@
 
 * [Building a new Cupertino App](./building-cupertino-app/README.md)
 
+* [Building your first Flutter Widget](./google-developers--building-your-first-flutter-widget.md)
+
+* [Fireship's Flutter State Management](./fireship--flutter-state-management.md)
+
 
 ### Self Projects
 
