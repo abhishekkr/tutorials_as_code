@@ -1,0 +1,8 @@
+.links {
+  background: gray;
+  margin: 1em auto;
+  max-width: 300px;
+}
+.link {
+  padding: 5px 5px 5px 5px;
+}
