@@ -1,6 +1,8 @@
 
 ## Caffe2
 
+**===========================DEPRECATED========================**
+
 [source](https://caffe2.ai/docs/intro-tutorial)
 
 * Caffe2 is a Machine Learning framework enabling simple and flexible deep learning; allows utilizing CPU and GPU.
