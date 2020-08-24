@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -ex
+docker build -t abhishekkr/kafka:2.13-2.6.0 -f Dockerfile-main .
+set +ex
