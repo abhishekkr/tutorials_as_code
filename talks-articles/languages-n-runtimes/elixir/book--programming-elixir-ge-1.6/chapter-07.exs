@@ -66,3 +66,40 @@ defmodule ListModule do
 end
 ListModule.partx
 ListModule.party
+
+
+## exercise ListRecursion1to4
+defmodule ListRecursion1to4 do
+  defp do_mapsum(result, [], _foo), do: result
+  defp do_mapsum(result, [h|tail], foo), do: do_mapsum(result+h, tail, foo)
+  def mapsum(lst, foo), do: do_mapsum(0, lst, foo)
+
+  def do_max([], m), do: m
+  def do_max([h|tail], m) do
+    cond do
+      h > m ->
+        do_max(tail, h)
+      true ->
+        do_max(tail, m)
+    end
+  end
+  def max([]), do: nil
+  def max([h|tail]), do: do_max(tail, h)
+
+  def caeser([], _n), do: []
+  def caeser([h|tail], n) when (h+n) > 'z', do: ['?' | caeser(tail, n)]
+  def caeser([h|tail], n), do: [h+n | caeser(tail, n)]
+
+  def do_span(start, fin, lst) when start > fin, do: lst
+  def do_span(start, fin, lst), do: do_span(start+1, fin, lst ++ [start])
+  def span(start, fin), do: do_span(start, fin, [])
+end
+
+ListRecursion1to4.mapsum([1,3,4], &(&1+1)) |> IO.inspect()
+ListRecursion1to4.max([10,3,4]) |> IO.inspect()
+ListRecursion1to4.max([1,3,4]) |> IO.inspect()
+ListRecursion1to4.caeser('hell-o', 10) |> IO.inspect()
+ListRecursion1to4.caeser('hell-o', 18) |> IO.inspect()
+ListRecursion1to4.span(15, 18) |> IO.inspect()
+ListRecursion1to4.span(15, 15) |> IO.inspect()
+ListRecursion1to4.span(18, 15) |> IO.inspect()
