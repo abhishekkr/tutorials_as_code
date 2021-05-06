@@ -7,6 +7,7 @@ defmodule Gitex.MixProject do
       escript: escript_config(),
       version: "0.1.0",
       elixir: "~> 1.9",
+      build_embedded: Mix.env == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
@@ -18,6 +19,15 @@ defmodule Gitex.MixProject do
         main: "Gitex", ## main page in docs
         logo: "./gitex.png",
         extras: ["README.md"]
+      ],
+
+      ## excoveralls config
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
       ]
     ]
   end
@@ -34,9 +44,11 @@ defmodule Gitex.MixProject do
     [
       {:httpoison, "~> 1.8"}, ## http client
       {:poison, "~> 4.0"},    ## json
-      {:mock, "~> 0.3"},    ## json
+      {:stream_data, "~> 0.5.0", only: :test}, ## property testing
+      {:mock, "~> 0.3", only: :test},    ## test mocking
+      {:excoveralls, "~> 0.14.0", only: :test},  ## test coverage
       {:ex_doc, "~> 0.24.2", only: :dev, runtime: false},  ## load only in dev mode
-      {:earmark, "~> 1.4", only: :dev, runtime: false}
+      {:earmark, "~> 1.4", only: :dev, runtime: false} ## doc output formatter
     ]
   end
 

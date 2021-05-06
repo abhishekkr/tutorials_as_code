@@ -10,6 +10,7 @@ defmodule Gitex.GithubIssues do
 
   def fetch(user, project) do
     Logger.info("fetching github issues for #{user}/#{project}")
+
     issues_url(user, project)
     |> HTTPoison.get(@user_agent)
     |> handler_response()
@@ -21,6 +22,7 @@ defmodule Gitex.GithubIssues do
 
   defp parse(body), do: Poison.Parser.parse!(body, %{})
   defp handler_response({:ok, %{status_code: 200, body: body}}), do: {:ok, parse(body)}
+
   defp handler_response({_, %{status_code: code, body: body}}) do
     Logger.error("Github Fetch failed with HTTP #{code}")
     {:error, parse(body)}

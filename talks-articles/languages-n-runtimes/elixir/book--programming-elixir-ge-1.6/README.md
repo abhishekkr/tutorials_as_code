@@ -17,7 +17,6 @@
 
 * [Chapter.5 Anonymous Functions](./chapter-05.md)
 
-_WIP_
 * [Chapter.6 Modules and Named Functions](./chapter-06.md)
 
 * [Chapter.7 Lists And Recursion](./chapter-07.md)
@@ -37,6 +36,7 @@ _WIP_
 * [Chapter.14 Tooling](./chapter-14.md)
 
 
+_WIP_
 ### Part.2 Concurrent Programming
 
 * [Chapter.15 Working with Multiple Processes](./chapter-15.md)
@@ -63,6 +63,9 @@ _WIP_
 * [Chapter.24 Protocols, Polymorphic Functions](./chapter-24.md)
 
 * [Chapter.25 More Cool Stuff](./chapter-25.md)
+
+
+### Appendix
 
 * [Chapter.26 Exceptions, raise and try, catch and throw](./chapter-26.md)
 
