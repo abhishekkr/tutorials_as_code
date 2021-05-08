@@ -1,6 +1,4 @@
-##  Nodes 4 is WIP
 # Clients to make a Ring, where first sends png to 2nd, 2nd to 3rd...
-
 
 defmodule TickeRing do
   @name :tickering
