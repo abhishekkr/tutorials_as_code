@@ -1,0 +1,7 @@
+{"0.2.0",
+ [{"0.1.0",
+   [{update,'Elixir.Distill20.Stack',{advanced,[]},[]},
+    {load_module,'Elixir.Distill20',['Elixir.Distill20.Stack']}]}],
+ [{"0.1.0",
+   [{update,'Elixir.Distill20.Stack',{advanced,[]},[]},
+    {load_module,'Elixir.Distill20',['Elixir.Distill20.Stack']}]}]}.

@@ -1,0 +1,57 @@
+defmodule Distill20 do
+  @moduledoc false
+
+  use Plug.Router
+  require Logger
+
+  plug(Plug.Logger)
+  plug(:match)
+  plug(Plug.Parsers, parsers: [:json], json_decoder: Jason)
+  plug(:dispatch)
+
+  @index_path Application.app_dir(:distill20, "priv/static/index.html")
+
+  get "/" do
+    send_file(conn, 200, @index_path)
+  end
+
+  get "/ping" do
+    send_resp(conn, 200, response(:ok, "pong!🦉"))
+  end
+
+  get "/stack" do
+    {item, _ttl} = Distill20.Stack.pop()
+    case item do
+      nil -> send_resp(conn, 200, response(:ok,  ""))
+      item -> send_resp(conn, 200, response(:ok, item))
+    end
+  end
+
+  post "/stack" do
+    to_push = case conn.body_params do
+      %{"item" => item, "ttl" => ttl } ->
+        Logger.warn ">Stack.push> #{inspect item} ! ttl:#{inspect ttl} <<"
+        Distill20.Stack.push(item, ttl)
+        item
+      %{"item" => item} ->
+        Logger.warn ">Stack.push> #{inspect item} ! ttl: nil <<"
+        Distill20.Stack.push(item)
+        item
+      x ->
+        Logger.error "Bad stack post request: #{inspect x}"
+    end
+    send_resp(conn, 200, response(:ok, to_push))
+  end
+
+  delete "/stack" do
+    Distill20.Stack.cleanup()
+    send_resp(conn, 200, response(:ok, "reset"))
+  end
+
+  match _ do
+    send_resp(conn, 404, response(:error, "try again"))
+  end
+
+  defp response(:ok, msg), do: %{result: msg} |> Jason.encode!()
+  defp response(:error, msg), do: %{error: msg} |> Jason.encode!()
+end

@@ -1,0 +1,99 @@
+defmodule Distill20.Stack do
+  use GenServer
+  require Logger
+
+  @vsn "0"
+
+  @mynameis Application.get_env(:distill20, :stack, :stacksvr)
+
+  #### GenServer implementation
+  def init(list), do: {:ok, list}
+
+  def handle_call(:pop, _from, []), do: {:reply, nil, []}
+  def handle_call(:pop, _from, [h|tail]) do
+    Logger.warn h
+    {:reply, h, tail}
+  end
+
+  def handle_cast({:push, elem}, _list) when is_nil(elem), do: raise "You Have Been Bad!"
+  def handle_cast({:push, elem}, list) do
+    Logger.warn elem
+    Logger.warn list
+    {:noreply, [elem|list]}
+  end
+
+  def handle_cast(:cleanup, _list) do
+    {:noreply, []}
+  end
+
+  def terminate(reason, state) do
+    IO.puts("Reason: #{inspect reason}\n\n")
+    IO.puts("State: #{inspect state}")
+  end
+
+
+  #### External API
+  ## need to be name `start_link` for Supervisor
+  def start_link(state) do
+    GenServer.start_link(__MODULE__, state, name: @mynameis)
+  end
+
+  @doc """
+  Pop a Stack.
+
+  # Example
+
+    iex> Distill20.Stack.cleanup()
+    iex> Distill20.Stack.pop()
+    nil
+
+    iex> Distill20.Stack.push(1)
+    iex> Distill20.Stack.push(10)
+    iex> Distill20.Stack.push(101)
+    iex> Distill20.Stack.pop()
+    101
+    iex> Distill20.Stack.pop()
+    10
+
+    iex> Distill20.Stack.cleanup()
+    :ok
+  """
+  def pop do
+    GenServer.call(@mynameis, :pop)
+  end
+
+  @doc """
+  Push a Stack.
+
+  # Example
+
+    iex> Distill20.Stack.cleanup()
+    iex> Distill20.Stack.push(1)
+    iex> Distill20.Stack.push(101)
+    iex> Distill20.Stack.pop()
+    101
+    iex> Distill20.Stack.pop()
+    1
+
+    iex> Distill20.Stack.cleanup()
+    :ok
+  """
+  def push(newnum) do
+    GenServer.cast(@mynameis, {:push, newnum})
+  end
+
+  @doc """
+  Cleanup Stack.
+
+  # Example
+
+    iex> Distill20.Stack.push(1)
+    iex> Distill20.Stack.push(10)
+    iex> Distill20.Stack.cleanup()
+    iex> Distill20.Stack.pop()
+    nil
+  """
+  def cleanup() do
+    GenServer.cast(@mynameis, :cleanup)
+  end
+end

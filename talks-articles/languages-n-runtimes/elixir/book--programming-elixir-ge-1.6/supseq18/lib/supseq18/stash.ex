@@ -18,6 +18,6 @@ defmodule Supseq18.Stash do
   def start_link(init_state), do: GenServer.start_link(__MODULE__, init_state, name: @me)
 
   def get, do: GenServer.call(@me, {:get})
-  
+
   def update(new_state), do: GenServer.cast(@me, {:update, new_state})
 end

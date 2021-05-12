@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <style>
+      fieldset {background-color: #eeeeee; min-height: 250px;}
+      legend {background-color: gray; color: white; padding: 5px 10px;}
+    </style>
+    <script>
+      async function ping() {
+        let response = await fetch("/ping");
+        let data = await response.json();
+        display(data);
+      }
+      async function pop() {
+        let response = await fetch("/stack");
+        let data = await response.json();
+        display(data);
+      }
+      async function push(item) {
+        console.log("wanna push: "+ item);
+        let opts = {
+          method: 'POST',
+          body: '{"item": "'+item+'"}',
+          headers: {
+          'Content-Type': 'application/json'
+          }
+        };
+        let response = await fetch("/stack", opts);
+        let data = await response.json();
+        display(data);
+      }
+      async function reset() {
+        let response = await fetch("/stack", {method: 'DELETE'});
+        let data = await response.json();
+        display(data);
+      }
+      function display(result) {
+        console.log(result);
+document.getElementById('divResult').innerHTML += "<br/>" + JSON.stringify(result, undefined, 2);;
+      }
+    </script>
+  </head>
+  <body>
+    try:<br/>
+    <ul>
+      <li><a href="#" onClick="ping();">Ping!</a></li>
+      <li><a href="#" onClick="push(1);">Push!1</a></li>
+      <li><a href="#" onClick="push(2);">Push!2</a></li>
+      <li><a href="#" onClick="push(3);">Push!3</a></li>
+      <li><a href="#" onClick="push(4);">Push!4</a></li>
+      <li><a href="#" onClick="push(5);">Push!5</a></li>
+      <li><a href="#" onClick="pop();">Pop!</a></li>
+      <li><a href="#" onClick="reset();">Reset!</a></li>
+    </ul>
+    <fieldset><legend>Result:</legend><div id="divResult"></div></fieldset>
+  </body>
+</html>
