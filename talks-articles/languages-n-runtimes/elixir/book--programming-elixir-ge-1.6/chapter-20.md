@@ -166,10 +166,11 @@ For a complete listing of commands and their use:
 MIX_ENV=prod mix distillery.gen.appup
 ```
 
-> * Appups tell `:systools` on how to generate `relup` file
+> * [Appups](https://hexdocs.pm/distillery/guides/appups.html) tell `:systools` on how to generate `relup` file; upgrade can't succeed without them
 >
 > * `relup` contains low-level instructions for release handler; how to load/remove/change modules in system
 
+* must have a `<app-name>.appup` file under `_build/<env>/lib/<app-name>/ebin`
 
 #### Migrating Server State
 
