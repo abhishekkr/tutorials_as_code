@@ -51,7 +51,8 @@ defmodule TestV4 do
 
   def add_list(list), do: Enum.reduce(list, 0, &(&1+&2))
 
-  def add1(n) when not is_nil(n), do: n+1
+  def add1(n) when is_integer(n), do: n+1
+  def add1(n), do: 1 ## is still not handled, this implementation isn't managing Polymorphs
 end
 
 TestV4.puts_sum_three(1,2,3)

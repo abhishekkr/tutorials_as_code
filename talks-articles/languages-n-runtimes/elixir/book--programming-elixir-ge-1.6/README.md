@@ -59,7 +59,6 @@
 
 * [Chapter.23 Linking Modules, Behaviors and use](./chapter-23.md)
 
-_WIP_
 * [Chapter.24 Protocols, Polymorphic Functions](./chapter-24.md)
 
 * [Chapter.25 More Cool Stuff](./chapter-25.md)
