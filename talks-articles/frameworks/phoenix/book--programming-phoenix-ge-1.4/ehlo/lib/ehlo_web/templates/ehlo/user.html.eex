@@ -1,0 +1,5 @@
+<h1>Ehlo to you, dear <%= if Map.has_key?(assigns, :name) do
+  String.capitalize(@name)
+else
+  "Guest User"
+end %>.</h1>
