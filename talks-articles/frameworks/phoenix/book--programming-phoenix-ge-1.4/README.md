@@ -43,3 +43,7 @@ __WIP__
 * [Chapter.14 What's Next](./chapter-14.md)
 
 ---
+
+* [Mix Phoenix Tasks List](../mix-phx-tasks.md)
+
+---

@@ -1,0 +1,3 @@
+<b>User #<%= @user.id %></b>
+<h1><%= first_name(@user) %></h1>
+<div><%= link "Back to List", to: Routes.user_path(@conn, :index) %></div>

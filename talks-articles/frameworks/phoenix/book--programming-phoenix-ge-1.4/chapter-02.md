@@ -28,6 +28,7 @@ mix phx.new -v
 mix phx.new demo --live
 ```
 
+* `mix phx.new.ecto just_api` and `mix phx.new.web just_frontend_nodb` options are also available
 
 ### Creating a Throaway Project
 
@@ -127,6 +128,5 @@ popd
 ### Wrapping Up
 
 > [chapter-03](./chapter-03.md)
-
 
 ---
