@@ -1,9 +1,13 @@
 <h1>Users</h1>
 <table>
+    <tr>
+      <td></td>
+      <td style="text-align: right;"><%= link "Add New", to: Routes.user_path(@conn, :new) %></td>
+    </tr>
   <%= for user <- @users do %>
     <tr>
       <td><%= user.id %># <b><%= first_name(user) %></b></td>
-      <td><%= link "View", to: Routes.user_path(@conn, :show, user.id) %></td>
+      <td style="text-align: right;"><%= link "View", to: Routes.user_path(@conn, :show, user.id) %></td>
     </tr>
   <% end %>
 </table>

@@ -1,0 +1,17 @@
+<h1>Add New User</h1>
+<%= form_for @changeset, Routes.user_path(@conn, :create), fn acc -> %>
+  <%= if @changeset.action do %>
+    <div>
+      <p>Some inputs aren't as intended; please check errors below.</p>
+    </div>
+  <% end %>
+  <div>
+    <%= text_input acc, :name, placeholder: "Name" %>
+    <%= error_tag acc, :name %>
+  </div>
+  <div>
+    <%= text_input acc, :username, placeholder: "Username (handle)" %>
+    <%= error_tag acc, :username %>
+  </div>
+  <%= submit "Create User" %>
+<% end %>

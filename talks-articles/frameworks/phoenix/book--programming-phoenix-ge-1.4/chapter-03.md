@@ -15,7 +15,7 @@ connection |> endpoint() |> router() |> browser_pipeline() |> UserController.act
 ..connection |> UserController.index() |> UserView.render("index.html")
 ```
 
-> * request enters via `lib/videologue_web/endpoint.ex`; then to `...videologue_web/router.ex`; then calling `UserController` action
+> * request enters via [endpoint.ex](lib/videologue_web/endpoint.ex); then to [router.ex](videologue/lib/videologue_web/router.ex.chapter-03); then calling `UserController` action
 >
 > * assuming request invokes `index` function the View and Template constructs need be prepared
 
@@ -58,7 +58,7 @@ mix phx.server
 
 * create `Accounts` to group user concerns together
 
-> start with file [user.ex](videologue/lib/videologue/accounts/user.ex) with basic struct
+> start with file [user.ex](videologue/lib/videologue/accounts/user.ex.chapter03) with basic struct
 
 ```
 defmodule Videologue.Accounts.User do
@@ -70,7 +70,7 @@ end
 
 * Elixir Structs are special Maps with `__struct__` key
 
-* add `list_users/0`, `get_user/1`, `get_user_by/1` functions to interact with User struct at [accounts.ex](videologue/lib/videologue/accounts.ex) initiationg Accounts Context
+* add `list_users/0`, `get_user/1`, `get_user_by/1` functions to interact with User struct at [accounts.ex](videologue/lib/videologue/accounts.ex.chapter03) initiationg Accounts Context
 
 > this would let you do things like
 
