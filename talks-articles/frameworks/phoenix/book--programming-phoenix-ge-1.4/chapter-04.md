@@ -22,7 +22,7 @@
 
 * can specify Struct with individual fields tied to DB:Table fields through a DSL
 
-* update [Videologue.Accounts.User](videologue/lib/videologue/accounts/user.ex) bare user struct to define Schema
+* update [Videologue.Accounts.User](videologue/lib/videologue/accounts/user.ex.chapter04) bare user struct to define Schema
 
 > DSL used for Schema is built with `schema` & `field` Macros; allowing us to define underlying DB:Table & Elixir Struct together
 
@@ -121,17 +121,17 @@ SELECT u0."id", u0."name", u0."username", u0."inserted_at", u0."updated_at" FROM
 
 > use Phoenix form builder to enable new user creation
 
-* add new user account action to [VideologueWeb.UserController](videologue/lib/videologue_web/controllers/user_controller.ex)
+* add new user account action to [VideologueWeb.UserController](videologue/lib/videologue_web/controllers/user_controller.ex.chapter04)
 
-* add `changeset/2` function to [Videologue.Accounts.User](lib/videologue/accounts/user.ex) doing `cast/2`, `validate_required/1` & `validate_length` imported from Schema module
+* add `changeset/2` function to [Videologue.Accounts.User](videologue/lib/videologue/accounts/user.ex.chapter04) doing `cast/2`, `validate_required/1` & `validate_length` imported from Schema module
 
 * add `change_user/1` function to `Videologue.Accounts.User` which gets utilized in our `new` action in Controller
 
-* `Videologue.Accounts` module itsef shall be only public API our Controllers shall call
+* [Videologue.Accounts](videologue/lib/videologue/accounts.ex.chapter04) module itsef shall be only public API our Controllers shall call
 
 * way of piping in required validations enables flexible stream
 
-* in [router.ex](lib/videologue_web/router.ex), add `resources "/users", UserController, only: [:index, :show, :new, :create]` replacing other `/users...` routes
+* in [router.ex](videologue/lib/videologue_web/router.ex.chapter04), add `resources "/users", UserController, only: [:index, :show, :new, :create]` replacing other `/users...` routes
 
 * doing `mix phx.routes` gives fillowing routes relevant to us
 
@@ -145,7 +145,7 @@ page_path  GET   /                VideologueWeb.PageController :index
 
 > not limiting resources with `only:` will give couple more routes for PUT, PATCH, DELETE, etc.
 
-* add [new.html.eex](videologue/lib/videologue_web/templates/user/new.html.eex); here using Form Builder to generate required fields in association with Model struct
+* add [new.html.eex](videologue/lib/videologue_web/templates/user/new.html.eex.chapter04); here using Form Builder to generate required fields in association with Model struct
 
 > * this introduces a CSRF token for input fields; add proper IDs, Names to them
 >
@@ -156,7 +156,7 @@ page_path  GET   /                VideologueWeb.PageController :index
 
 * our Form submits data for new user and expects `VideologueWeb.UserController.create/2`
 
-* add `Videologue.Accounts.create_user/1` to do `Repo.insert`; then add `VideologueWeb.UserController.create/2` to call this and redirect to Listing on success else render errors on create page if any
+* add [Videologue.Accounts](videologue/lib/videologue/accounts.ex.chapter04) `create_user/1` to do `Repo.insert`; then add `VideologueWeb.UserController.create/2` to call this and redirect to Listing on success else render errors on create page if any
 
 > * `{:ok, user}` gets returned on successful Repo insert; `{:error, changeset}` on erroneous with validation errors
 >

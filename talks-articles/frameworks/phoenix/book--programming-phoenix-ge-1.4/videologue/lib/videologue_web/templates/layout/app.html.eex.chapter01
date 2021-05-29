@@ -13,15 +13,9 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <%= if @current_user do %>
-              <li>Hey <%= @current_user.username %>!</li>
-              <li><%= link "Log-out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete" %></li>
-            <% else %>
-              <li><%= link "Log-in", to: Routes.session_path(@conn, :new) %></li>
-              <li><%= link "Sign-up", to: Routes.user_path(@conn, :new) %></li>
-            <% end %>
+            <li><a href="https://hexdocs.pm/phoenix/overview.html">Phoenix HexDocs</a></li>
             <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "Live Dashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
             <% end %>
           </ul>
         </nav>

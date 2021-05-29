@@ -1,0 +1,24 @@
+<div>
+  <%= if @current_user do %>
+    <h2>Logged-in</h2>
+    <div>
+      <b><%= @current_user.name %></b> is already logged in.
+      <br/>
+      <%= link "Log-out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete" %> to change user session.
+    </div>
+  <% else %>
+    <h2>Log-in</h2>
+    <%= form_for @conn,
+                Routes.session_path(@conn, :create),
+                [as: :session],
+                fn s -> %>
+    <div>
+      <%= text_input s, :username, placeholder: "Username" %>
+    </div>
+    <div>
+      <%= text_input s, :password, placeholder: "Password" %>
+    </div>
+      <%= submit "Log In" %>
+    <% end %>
+  <% end %>
+</div>

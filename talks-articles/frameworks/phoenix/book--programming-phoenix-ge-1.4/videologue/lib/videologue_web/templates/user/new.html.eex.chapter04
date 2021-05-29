@@ -13,9 +13,5 @@
     <%= text_input acc, :username, placeholder: "Username (handle)" %>
     <%= error_tag acc, :username %>
   </div>
-  <div>
-    <%= text_input acc, :password, placeholder: "Password (minimum 8 characters)" %>
-    <%= error_tag acc, :password %>
-  </div>
   <%= submit "Create User" %>
 <% end %>

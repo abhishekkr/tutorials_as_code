@@ -1,12 +1,12 @@
 
 ## Frameworks
 
-* [flutter](./flutter/README.md)
+* [Phoenix](./phoenix/README.md)
 
-* [reactjs](./react/reactjs/README.md)
+* [Flutter](./flutter/README.md)
 
-* [react-native](./react/react-native/README.md)
+* [React](./react/README.md)
 
-* [phoenix](./phoenix/)
+* [GatsbyJS](./gatsbyjs/README.md)
 
 ---
