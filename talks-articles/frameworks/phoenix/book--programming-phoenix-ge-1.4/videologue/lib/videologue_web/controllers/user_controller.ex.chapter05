@@ -4,7 +4,7 @@ defmodule VideologueWeb.UserController do
   alias Videologue.Accounts
   alias Videologue.Accounts.User
 
-  plug :authenticate_user when action in [:index, :show]
+  plug :authenticate when action in [:index, :show]
 
   def index(conn, _params) do
     users = Accounts.list_users()
@@ -34,5 +34,15 @@ defmodule VideologueWeb.UserController do
   def do_create(conn, {:error, %Ecto.Changeset{} = changeset}) do
     conn
     |> render("new.html", changeset: changeset)
+  end
+
+  defp authenticate(conn, _opts) when is_nil(conn.assigns.current_user) do
+    conn
+    |> put_flash(:error, "You are not logged in.")
+    |> redirect(to: Routes.page_path(conn, :index))
+    |> halt()
+  end
+  defp authenticate(conn, _opts) do
+    conn
   end
 end

@@ -23,7 +23,6 @@ defmodule VideologueWeb do
 
       import Plug.Conn
       import VideologueWeb.Gettext
-      import VideologueWeb.Auth, only: [authenticate_user: 2]
       alias VideologueWeb.Router.Helpers, as: Routes
     end
   end
@@ -49,7 +48,6 @@ defmodule VideologueWeb do
 
       import Plug.Conn
       import Phoenix.Controller
-      import VideologueWeb.Auth, only: [authenticate_user: 2]
     end
   end
 

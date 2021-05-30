@@ -41,7 +41,7 @@
 
 * add `Videologue.Accounts.register_user/1` & `change_registration/2` managing a/c registration with passwords; just using `registration_changeset` instead of `changeset`
 
-* update [VideologueWeb.UserController](videologue/lib/videologue_web/controllers/user_controller.ex) `new` to use `change_registration/2` and `create` to use `register_user/1`
+* update [VideologueWeb.UserController](videologue/lib/videologue_web/controllers/user_controller.ex.chapter05) `new` to use `change_registration/2` and `create` to use `register_user/1`
 
 * update [new.html.eex](videologue/lib/videologue_web/templates/user/new.html.eex) to have a new `div` for Password field
 

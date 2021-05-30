@@ -1,6 +1,7 @@
 defmodule VideologueWeb.Auth do
   import Plug.Conn
   alias Videologue.Accounts
+  alias VideologueWeb.Router.Helpers, as: Routes
 
   def init(opts), do: opts
 
@@ -18,4 +19,14 @@ defmodule VideologueWeb.Auth do
   end
 
   def logout(conn), do: configure_session(conn, drop: true)
+
+  def authenticate_user(conn, _opts) when is_nil(conn.assigns.current_user) do
+    conn
+    |> Phoenix.Controller.put_flash(:error, "You are not logged in.")
+    |> Phoenix.Controller.redirect(to: Routes.page_path(conn, :index))
+    |> halt()
+  end
+  def authenticate_user(conn, _opts) do
+    conn
+  end
 end
