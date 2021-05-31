@@ -19,5 +19,6 @@ defmodule Videologue.Multimedia.Video do
     |> cast(attrs, [:url, :title, :description, :category_id])
     |> validate_required([:url, :title, :description])
     |> validate_length(:description, min: 10)
+    |> assoc_constraint(:category)
   end
 end

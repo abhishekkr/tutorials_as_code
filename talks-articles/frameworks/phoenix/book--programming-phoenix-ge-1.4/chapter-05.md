@@ -26,7 +26,7 @@
 
 > `virtual: true` marks Struct only fields for Ecto, which are not to be persisted in backed DB
 
-* add [Videologue.Accounts.User.registration\_changeset/2](videologue/lib/videologue/accounts/user.ex) to handle user registrations
+* add [Videologue.Accounts.User.registration\_changeset/2](videologue/lib/videologue/accounts/user.ex.chapter05) to handle user registrations
 
 > here `registration_changeset/2` resuses `changese/2` as first Pipe; then `cast -> validate_required -> validate_length` the password; then pushes Changeset to `put_pass_hash/1` which persists Hash if Password validated else returns Changeset with errors
 

@@ -4,6 +4,8 @@ defmodule VideologueWeb.VideoController do
   alias Videologue.Multimedia
   alias Videologue.Multimedia.Video
 
+  plug :load_categories when action in [:new, :create, :edit, :update, :show]
+
   def action(conn, _params) do
     args = [conn, conn.params, conn.assigns.current_user]
     apply(__MODULE__, action_name(conn), args)
@@ -33,7 +35,8 @@ defmodule VideologueWeb.VideoController do
 
   def show(conn, %{"id" => id}, current_user) do
     video = Multimedia.get_user_video!(current_user, id)
-    render(conn, "show.html", video: video)
+    videoo = Videologue.Repo.preload(video, :category)
+    render(conn, "show.html", video: videoo)
   end
 
   def edit(conn, %{"id" => id}, current_user) do
@@ -69,6 +72,10 @@ defmodule VideologueWeb.VideoController do
         |> put_flash(:info, "Video deletion failed.")
         |> redirect(to: Routes.video_path(conn, :index))
     end
+  end
 
+  defp load_categories(conn, _params) do
+    categories = Multimedia.list_alphabetical_categories()
+    assign(conn, :categories, categories)
   end
 end

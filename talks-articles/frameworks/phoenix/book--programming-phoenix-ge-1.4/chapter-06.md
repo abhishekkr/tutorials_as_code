@@ -137,7 +137,7 @@ iex(12)> videoo.user
 
 ### Managing Related Data
 
-> * need to grab current-user `conn.assigns.current_user` and scope operations to them by passing it in `Videologue.Multimedia.create_video/2` (updated from `create_video/1`)
+> * need to grab current-user `conn.assigns.current_user` and scope operations to them by passing it in [Videologue.Multimedia](lib/videologue/multimedia.ex.chapter06).`create_video/2` (updated from `create_video/1`)
 
 ```
   def create(conn, %{"video" => video_params}) do

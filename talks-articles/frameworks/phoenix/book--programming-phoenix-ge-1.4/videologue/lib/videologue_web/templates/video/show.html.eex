@@ -17,6 +17,11 @@
     <%= @video.description %>
   </li>
 
+  <li>
+    <strong>Category:</strong>
+    <%= @video.category.name %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.video_path(@conn, :edit, @video) %></span> |
