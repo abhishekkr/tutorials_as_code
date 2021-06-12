@@ -15,9 +15,9 @@
       <td><%= video.description %></td>
 
       <td>
-        <span><%= link "📄", to: Routes.video_path(@conn, :show, video), "title": "Show" %></span>
-        <span><%= link "✏️", to: Routes.video_path(@conn, :edit, video), "title": "Edit" %></span>
-        <span><%= link "🗑️", to: Routes.video_path(@conn, :delete, video), "title": "Delete", method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "📄", to: Routes.video_path(@conn, :show, video), title: "Show" %></span>
+        <span><%= link "✏️", to: Routes.video_path(@conn, :edit, video), title: "Edit" %></span>
+        <span><%= link "🗑️", to: Routes.video_path(@conn, :delete, video), title: "Delete", method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>

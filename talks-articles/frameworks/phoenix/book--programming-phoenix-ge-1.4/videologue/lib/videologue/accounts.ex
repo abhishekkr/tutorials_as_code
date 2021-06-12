@@ -37,7 +37,7 @@ defmodule Videologue.Accounts do
     get_user_by(username: username)
     |> do_authenticate_by_username_and_password(given_pass)
   end
-  defp do_authenticate_by_username_and_password(nil, given_pass) do
+  defp do_authenticate_by_username_and_password(nil, _given_pass) do
     Pbkdf2.no_user_verify()
     {:error, :not_found}
   end

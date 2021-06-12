@@ -5,13 +5,11 @@ defmodule VideologueWeb.Auth do
 
   def init(opts), do: opts
 
-  def call(conn, _opts), do: do_call(conn, conn.assigns[:current_user])
-  def do_call(conn, nil) do
+  def call(conn, _opts) do
     user_id = get_session(conn, :user_id)
     user = user_id && Accounts.get_user(user_id)
     assign(conn, :current_user, user)
   end
-  def do_call(conn, _current_user), do: conn
 
   def login(conn, user) do
     conn
@@ -22,12 +20,13 @@ defmodule VideologueWeb.Auth do
 
   def logout(conn), do: configure_session(conn, drop: true)
 
-  def authenticate_user(conn, _opts), do: do_authenticate_user(conn, conn.assigns[:current_user])
-  def do_authenticate_user(conn, nil) do
+  def authenticate_user(conn, _opts) when is_nil(conn.assigns.current_user) do
     conn
     |> Phoenix.Controller.put_flash(:error, "You are not logged in.")
     |> Phoenix.Controller.redirect(to: Routes.page_path(conn, :index))
     |> halt()
   end
-  def do_authenticate_user(conn, _current_user), do: conn
+  def authenticate_user(conn, _opts) do
+    conn
+  end
 end

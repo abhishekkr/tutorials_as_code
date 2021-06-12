@@ -23,7 +23,6 @@ defmodule VideologueWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import VideologueWeb.ConnCase
-      import Videologue.TestHelpers
 
       alias VideologueWeb.Router.Helpers, as: Routes
 

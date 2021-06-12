@@ -67,7 +67,7 @@ defmodule VideologueWeb.VideoController do
         |> put_flash(:info, "Video deleted successfully.")
         |> redirect(to: Routes.video_path(conn, :index))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
+      {:error, %Ecto.Changeset{} = _changeset} ->
         conn
         |> put_flash(:info, "Video deletion failed.")
         |> redirect(to: Routes.video_path(conn, :index))

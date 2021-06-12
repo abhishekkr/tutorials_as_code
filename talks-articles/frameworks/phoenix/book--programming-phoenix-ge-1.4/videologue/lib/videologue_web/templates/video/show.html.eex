@@ -17,10 +17,12 @@
     <%= @video.description %>
   </li>
 
+  <%= if @video.category do %>
   <li>
     <strong>Category:</strong>
     <%= @video.category.name %>
   </li>
+  <% end %>
 
 </ul>
 

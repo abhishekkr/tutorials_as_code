@@ -122,7 +122,9 @@ defmodule Videologue.Multimedia do
   end
 
   def create_category!(name) do
-    %Category{name: name} |> Repo.insert(on_conflict: :nothing)
+    %Category{name: name}
+    |> Category.changeset()
+    |> Repo.insert(on_conflict: :nothing)
   end
 
   def list_alphabetical_categories do

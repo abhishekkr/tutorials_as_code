@@ -20,3 +20,6 @@ config :videologue, VideologueWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Pbkdf2
+config :pbkdf2_elixir, :rounds, 1

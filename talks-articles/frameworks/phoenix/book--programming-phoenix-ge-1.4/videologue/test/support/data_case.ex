@@ -24,6 +24,7 @@ defmodule Videologue.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Videologue.DataCase
+      import Videologue.TestHelpers
     end
   end
 
