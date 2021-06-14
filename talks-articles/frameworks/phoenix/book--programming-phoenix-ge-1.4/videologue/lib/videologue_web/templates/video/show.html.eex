@@ -1,5 +1,7 @@
 <h1>Show Video</h1>
 
+<div><%= link "Watch🔗", to: Routes.watch_path(@conn, :show, @video), title: "Link", class: "button" %></div>
+
 <ul>
 
   <li>

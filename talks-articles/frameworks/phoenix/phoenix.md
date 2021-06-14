@@ -31,3 +31,7 @@ mix phx.server
 ## iex -S mix phx.server
 ## by default runs at http://localhost:4000
 ```
+
+* add a new channel like `mix phx.gen.channel scuttlebutt`
+
+* for persistence can create a new context like `mix phx.gen.context Chats Message messages from:string msg:text` and `mix ecto.migrate` to run migrations

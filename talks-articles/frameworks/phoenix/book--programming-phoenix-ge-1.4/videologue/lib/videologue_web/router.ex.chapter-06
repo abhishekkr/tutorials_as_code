@@ -21,7 +21,6 @@ defmodule VideologueWeb.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     get "/", PageController, :index
-    get "/watch/:id", WatchController, :show
   end
 
   scope "/my", VideologueWeb  do

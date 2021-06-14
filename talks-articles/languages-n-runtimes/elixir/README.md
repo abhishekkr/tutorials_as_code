@@ -20,6 +20,16 @@
 
 ### Notes
 
+* [Book: Programming Elixir >= 1.6](./book--programming-elixir-ge-1.6/README.md)
+
 * [Derek Banas' Elixir Tutorial](./derek-banas.elixir-tutorial/README.md)
+
+* [ElxirSchool.com](./elixirschool.com/README.md)
+
+> * [HexDoc's Distillery AppUps](./hexdocs-pm--distillery--appups.md)
+>
+> * [HexDoc's Mix](./hexdocs-pm--mix.md)
+
+* [Practical Guide to Elixir Protocols by Kevin Rockwood](./kevin-rockwood--practical-guide-to-elixir-protocols.exs)
 
 ---
