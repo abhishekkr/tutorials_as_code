@@ -39,3 +39,10 @@ config :videologue, VideologueWeb.Endpoint,
 #
 # Then you can assemble a release by calling `mix release`.
 # See `mix help release` for more information.
+
+# Channel Socket Auth
+phoenix_token_salt = System.get_env("PHOENIX_TOKEN_SALT") ||
+    raise """
+    environment variable PHOENIX_TOKEN_SALT is missing.
+    """
+config :videologue, phoenix_token_salt: phoenix_token_salt

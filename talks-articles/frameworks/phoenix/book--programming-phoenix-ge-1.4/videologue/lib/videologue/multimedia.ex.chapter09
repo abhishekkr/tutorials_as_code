@@ -6,7 +6,6 @@ defmodule Videologue.Multimedia do
   import Ecto.Query, warn: false
   alias Videologue.Repo
 
-  alias Videologue.Multimedia.Annotation
   alias Videologue.Multimedia.Video
   alias Videologue.Multimedia.Category
   alias Videologue.Accounts.User
@@ -130,22 +129,6 @@ defmodule Videologue.Multimedia do
 
   def list_alphabetical_categories do
     Category |> Category.alphabetical() |> Repo.all()
-  end
-
-  def annotate_video(%User{id: user_id}, video_id, attrs) do
-    %Annotation{video_id: video_id, user_id: user_id}
-    |> Annotation.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  def list_annotations(%Video{} = video, since_id \\ 0) do
-    Repo.all(
-      from a in Ecto.assoc(video, :annotations),
-        where: a.id > ^since_id,
-        order_by: [asc: a.at, asc: a.id],
-        limit: 500,
-        preload: [:user]
-    )
   end
 
   defp user_video_query(query, %User{id: user_id}) do

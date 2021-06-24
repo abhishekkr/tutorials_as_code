@@ -13,9 +13,5 @@
       <button id="msg-submit" class="button column" type="submit">Post</button>
     </div>
   </div>
-</div>
-<hr/>
-<div class="row">
-  <b>Users:</b>
-  <div class="column" id="user-list"></div>
+  <hr/>
 </div>

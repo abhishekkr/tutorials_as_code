@@ -3,10 +3,18 @@ defmodule Videologue.Accounts do
   The Accounts Context
   """
 
+  import Ecto.Query
+
   alias Videologue.Repo
   alias Videologue.Accounts.User
 
   def list_users, do: Repo.all(User)
+
+  def list_users_by_ids(ids) do
+    query = from u in User,
+      where: u.id in ^ids
+    Repo.all(query)
+  end
 
   def get_user(id), do: Repo.get(User, id)
   def get_user!(id), do: Repo.get!(User, id)

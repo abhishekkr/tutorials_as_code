@@ -41,7 +41,7 @@ mix phx.gen.html Multimedia Video videos user_id:references:users url:string tit
 
 * Phoenix uses Singular forms consistently across schema, controller & views in most cases
 
-* move `UserController.authenticate` to [VideologueWeb.Auth](lib/videologue_web/controllers/auth.ex)'s `authenticate_user` for central reuse at User and Multimedia checking sessions
+* move `UserController.authenticate` to [VideologueWeb.Auth](lib/videologue_web/controllers/auth.ex.chapter07)'s `authenticate_user` for central reuse at User and Multimedia checking sessions
 
 > * add `import VideologueWeb.Auth, only: [authenticate_user: 2]` to `controller` & `route` macros in [videologue\_web.ex](videologue/lib/videologue_web.ex)
 >

@@ -74,3 +74,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Channel Socket Auth
+config :videologue, phoenix_token_salt: "user_socket_salt"

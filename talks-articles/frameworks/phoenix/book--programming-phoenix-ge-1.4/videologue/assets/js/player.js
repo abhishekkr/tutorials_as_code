@@ -2,7 +2,6 @@ let Player = {
   player: null,
 
   init(domId, playerId, onReady){
-    console.log(domId)
     window.onYouTubeIframeAPIReady = () => {
       this.onIframeReady(domId, playerId, onReady)
     }
@@ -17,13 +16,14 @@ let Player = {
         width: "420",
         videoId: playerId,
         events: {
-          "onReady": this.onPlayerReady,
+          "onReady": (event => this.onPlayerReady(onReady, event)),
           "onStateChange": this.onPlayerStateChange
         }
       })
   },
-  onPlayerReady(event){
+  onPlayerReady(onReady, event){
     console.log("ready", event)
+    onReady(event)
   },
   onPlayerStateChange(event){
     console.log("state change", event)

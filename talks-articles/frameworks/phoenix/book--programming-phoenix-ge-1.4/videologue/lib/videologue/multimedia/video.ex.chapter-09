@@ -9,7 +9,6 @@ defmodule Videologue.Multimedia.Video do
     field :url, :string
     field :slug, :string
 
-    has_many  :annotations, Videologue.Multimedia.Annotation
     belongs_to :user, Videologue.Accounts.User
     belongs_to :category, Videologue.Multimedia.Category
 

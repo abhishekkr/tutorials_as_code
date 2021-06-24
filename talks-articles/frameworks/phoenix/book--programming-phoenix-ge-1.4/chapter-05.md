@@ -104,7 +104,7 @@ end
 >
 > * check if a new user is in session; store in `conn.assigns` for every incoming so accessible in controllers & views
 
-* create `VideologueWeb.Auth` plug via `import Plug.Conn` at [auth.ex](videologue/lib/videologue_web/controllers/auth.ex) adding `user` details to Assigns for `user_id` in current session
+* create `VideologueWeb.Auth` plug via `import Plug.Conn` at [auth.ex](videologue/lib/videologue_web/controllers/auth.ex.chapter07) adding `user` details to Assigns for `user_id` in current session
 
 * add this Auth plug in browser pipeline
 

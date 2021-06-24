@@ -132,7 +132,7 @@ defmodule Videologue.AccountsTest do
 
 * test login mechanism in isolation; build a bypass for rest usecases
 
-> add following pat-match for `call` in [auth.ex](videologue/lib/videologue_web/controllers/auth.ex) to ensure if a `current_user` exists it's honored
+> add following pat-match for `call` in [auth.ex](videologue/lib/videologue_web/controllers/auth.ex.chapter09) to ensure if a `current_user` exists it's honored
 
 ```
 def call(conn, _opts) when not is_nil(conn.assigns.current_user), do: conn

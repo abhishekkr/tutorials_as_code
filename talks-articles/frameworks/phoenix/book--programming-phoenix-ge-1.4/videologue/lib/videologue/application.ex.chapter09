@@ -14,9 +14,9 @@ defmodule Videologue.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Videologue.PubSub},
       # Start the Endpoint (http/https)
-      VideologueWeb.Endpoint,
-      # Channel Presence
-      VideologueWeb.Presence
+      VideologueWeb.Endpoint
+      # Start a worker by calling: Videologue.Worker.start_link(arg)
+      # {Videologue.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

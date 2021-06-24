@@ -23,3 +23,6 @@ config :logger, level: :warn
 
 # Pbkdf2
 config :pbkdf2_elixir, :rounds, 1
+
+# Channel Socket Auth
+config :videologue, phoenix_token_salt: "user_socket_salt"

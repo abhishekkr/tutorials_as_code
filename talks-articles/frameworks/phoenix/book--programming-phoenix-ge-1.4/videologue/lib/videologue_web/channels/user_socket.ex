@@ -1,35 +1,29 @@
 defmodule VideologueWeb.UserSocket do
   use Phoenix.Socket
 
-  ## Channels
-  # channel "room:*", VideologueWeb.RoomChannel
+  channel "videos:*", VideologueWeb.VideoChannel
 
-  # Socket params are passed from the client and can
-  # be used to verify and authenticate a user. After
-  # verification, you can put default assigns into
-  # the socket that will be set for all channels, ie
-  #
-  #     {:ok, assign(socket, :user_id, verified_user_id)}
-  #
-  # To deny connection, return `:error`.
-  #
-  # See `Phoenix.Token` documentation for examples in
-  # performing token verification on connect.
+  @max_token_age 2 * 7 * 24 * 60 * 60
+  @token_salt Application.get_env(:videologue, :phoenix_token_salt)
+
   @impl true
-  def connect(_params, socket, _connect_info) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket, _connect_info) do
+    Phoenix.Token.verify(
+      socket,
+      @token_salt,
+      token,
+      max_age: @max_token_age
+    ) |> do_connect(socket)
   end
+  def connect(_params, socket, _connect_info), do: :error
 
-  # Socket id's are topics that allow you to identify all sockets for a given user:
-  #
-  #     def id(socket), do: "user_socket:#{socket.assigns.user_id}"
-  #
-  # Would allow you to broadcast a "disconnect" event and terminate
-  # all active sockets and channels for a given user:
-  #
-  #     VideologueWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
-  #
-  # Returning `nil` makes this socket anonymous.
   @impl true
   def id(_socket), do: nil
+
+  defp do_connect({:ok, user_id}, socket) do
+    {:ok, assign(socket, :user_id, user_id)}
+  end
+  defp do_connect({:error, reason}, _socket) do
+    :error
+  end
 end

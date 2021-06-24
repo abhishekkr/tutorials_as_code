@@ -11,7 +11,7 @@
 
 * [Upsert](https://hexdocs.pm/ecto/Ecto.Repo.html#c:insert/2-upserts) is an acceptable tactic; we'll do `on_conflict: :nothing` which is `:raise` by default
 
-> * add `create_category!/1` to [Videologue.Multimedia](lib/videologue/multimedia.ex)
+> * add `create_category!/1` to [Videologue.Multimedia](videologue/lib/videologue/multimedia.ex.chapter09)
 >
 > * add default category seed script to `seeds.exs` & execute `mix run priv/repo/seeds.exs`
 
@@ -40,7 +40,7 @@ Repo.all(query)
 
 > * add `alphabetical/1` to [Videologue.Multimedia.Category](videologue/lib/videologue/multimedia/category.ex) adding `from c in query, order_by: c.name` as queryable and updating query
 >
-> * add `list_alphabetical_categories/0` to [Videologue.Multimedia](videologue/lib/videologue/multimedia.ex) using `alphabetical/1`
+> * add `list_alphabetical_categories/0` to [Videologue.Multimedia](videologue/lib/videologue/multimedia.ex.chapter09) using `alphabetical/1`
 >
 > * add `category_select_options/1` to [VideologueWeb.VideoView](videologue/lib/videologue_web/views/video_view.ex) mapping categories of Assigns sent to it as params into  `{name, id}` tuple list
 >
