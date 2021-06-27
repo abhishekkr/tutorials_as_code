@@ -14,7 +14,6 @@
 
 * [Chapter.2 The Lay of the Land](./chapter-02.md)
 
-__WIP__
 * [Chapter.3 Controllers](./chapter-03.md)
 
 * [Chapter.4 Ecto and Changesets](./chapter-04.md)
@@ -36,6 +35,7 @@ __WIP__
 
 * [Chapter.11 Observer and Umbrellas](./chapter-11.md)
 
+__WIP__
 * [Chapter.12 OTP](./chapter-12.md)
 
 * [Chapter.13 Testing Channels and OTP](./chapter-13.md)
