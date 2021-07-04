@@ -35,7 +35,6 @@
 
 * [Chapter.11 Observer and Umbrellas](./chapter-11.md)
 
-__WIP__
 * [Chapter.12 OTP](./chapter-12.md)
 
 * [Chapter.13 Testing Channels and OTP](./chapter-13.md)
