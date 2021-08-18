@@ -118,7 +118,7 @@ cp -R videologue/assets/css videologue_umbrella/apps/videologue_web/assets/css
 
 ```
 mix deps.get
-push apps/videologue_web/assets ; npm install ; popd
+pushd apps/videologue_web/assets ; npm install ; popd
 ```
 
 * add `config :pbkdf2_elixir, :rounds, 1` to test config

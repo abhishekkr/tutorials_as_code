@@ -9,14 +9,14 @@
 
 * [Chapter.1 Introduction](./chapter-01.md)
 
-__WIP__
 * [Chapter.2 Technology Background](./chapter-02.md)
 
-* [Chapter.3 Performance Analysis](#)
+* [Chapter.3 Performance Analysis](./chapter-03.md)
 
-* Chapter.4 BCC
+__WIP__
+* [Chapter.4 BCC](./chapter-04.md)
 
-* Chapter.5 bpftrace
+* [Chapter.5 bpftrace](./chapter-05.md)
 
 
 ### Part.II Using BPF Tools
