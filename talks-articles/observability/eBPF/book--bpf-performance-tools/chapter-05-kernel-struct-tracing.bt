@@ -1,0 +1,14 @@
+#!/usr/bin/env bpftrace
+/*
+ * source: https://github.com/iovisor/bpftrace/blob/master/docs/tutorial_one_liners.md#lesson-12-kernel-struct-tracing
+ * kernel struct tracing
+ * uses kernel dynamic tracing of the vfs_open() function, which has a (struct path *) as the first argument
+ */
+
+#include <linux/path.h>
+#include <linux/dcache.h>
+
+kprobe:vfs_open
+{
+  printf("open path: %s\n", str(((struct path *)arg0)->dentry->d_name.name));
+}

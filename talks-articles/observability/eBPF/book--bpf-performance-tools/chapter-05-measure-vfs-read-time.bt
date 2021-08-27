@@ -1,0 +1,18 @@
+#!/usr/bin/env bpftrace
+/*
+ * time vfs_read() kernel function, in microsecond as histogram
+ */
+
+
+kprobe:vfs_read
+{
+    @start[tid] = nsecs;
+}
+
+kretprobe:vfs_read  // to time on return
+/@start[tid]/  // filtering by key
+{
+    $duration_us = (nsecs - @start[tid]) / 1000;
+    @us = hist($duration_us);
+    delete(@start[tid]);
+}
