@@ -9,4 +9,10 @@ T U T O R I A L S ↣↣↣↣↣ C O D E
 > log of discussion over twitter on some topic interesting for note-keeping
 
 ---
+
+* [subreddit for tech talks seen & liked](https://www.reddit.com/r/tektv/)
+
+* [twitter for tech, more](https://twitter.com/abionic)
+
+---
 ---
