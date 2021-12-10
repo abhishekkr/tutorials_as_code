@@ -11,11 +11,11 @@
 
 4. [Understanding Ownership](./chap04.md)
 
-_WIP_
-
 5. [Using Structs to Structure Related Data](./chap05.md)
 
 6. [Enums and Pattern Matching](./chap06.md)
+
+_WIP_
 
 7. [Managing Growing Projects with Packages, Crates, and Modules](./chap07.md)
 

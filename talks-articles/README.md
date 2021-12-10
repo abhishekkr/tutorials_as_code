@@ -17,8 +17,8 @@
 #### [languages-n-runtimes](./languages-n-runtimes)
 > [golang](./languages-n-runtimes/golang), [python](./languages-n-runtimes/python), [ruby](./languages-n-runtimes/ruby),
 > [erlang](./languages-n-runtimes/erlang), [elixir](./languages-n-runtimes/elixir), [haskell](./languages-n-runtimes/haskell),
-> [julia](./languages-n-runtimes/julia-lang/README.md), [ballerina](./languages-n-runtimes/ballerina), [clojure](./languages-n-runtimes/clojure),
-> [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [rust](./languages-n-runtimes/rust),
+> [rust](./languages-n-runtimes/rust), [julia](./languages-n-runtimes/julia-lang/README.md), [clojure](./languages-n-runtimes/clojure),
+> [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [ballerina](./languages-n-runtimes/ballerina),
 > [racket](./languages-n-runtimes/racket/README.md), [typescript](./languages-n-runtimes/typescript/README.md),
 > [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
 >
@@ -92,6 +92,9 @@
 
 #### [metrics](./metrics)
 > [sysdig](./metrics/sysdig)
+
+#### [observability](./observability)
+> [eBPF](./observability/eBPF/README.md)
 
 #### [network](./network)
 > [sdn](./network/sdn)
