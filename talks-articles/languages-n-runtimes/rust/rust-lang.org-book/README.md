@@ -15,9 +15,13 @@
 
 6. [Enums and Pattern Matching](./chap06.md)
 
+7. [Managing Growing Projects with Packages, Crates, and Modules](./chap07.md)
+
 _WIP_
 
-7. [Managing Growing Projects with Packages, Crates, and Modules](./chap07.md)
+8. [Common Collections](./chap08.md)
+
+9. [Error Handling](./chap09.md)
 
 
 ---
