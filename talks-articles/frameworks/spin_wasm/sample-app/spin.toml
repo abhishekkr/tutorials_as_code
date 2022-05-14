@@ -1,0 +1,22 @@
+spin_version = "1"
+authors = ["AbhishekKr <a....u.....3@gmail.com>"]
+description = "a sample Spin HTTP Component in Rust"
+name = "sample-http-rust"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "sample-http-rust-demo"
+source = "sample_http_rust_demo.wasm"
+[component.trigger]
+route = "/demo"
+[component.build]
+command = "echo 'Built Separetely' ; exit 123"
+
+[[component]]
+id = "sample-http-rust-test"
+source = "sample_http_rust_test.wasm"
+[component.trigger]
+route = "/test"
+[component.build]
+command = "echo 'Built Separetely' ; exit 123"

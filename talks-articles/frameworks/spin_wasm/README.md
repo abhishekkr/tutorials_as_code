@@ -1,7 +1,8 @@
 
 ## Spin (WASM based Service Framework) by FERMYON
 
-* [intro](intro.md)
+* [Intro](intro.md)
 
+* [QuickStart](quickstart.md), with [sample-http-rust](./sample-http-rust)
 
 ---

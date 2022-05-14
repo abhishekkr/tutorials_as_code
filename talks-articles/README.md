@@ -33,6 +33,7 @@
 > [Phoenix](./frameworks/phoenix),
 > [Flutter](./frameworks/flutter), [React](./frameworks/react),
 > [GatsbyJS](./frameworks/gatsbyjs)
+> [Spin](./frameworks/spin)
 
 #### [virtualization](./virtualization)
 > [aws](./virtualization/aws), [docker](./virtualization/docker), [kuberentes](./virtualization/kuberentes), [kvm](./virtualization/kvm), [podman](./virtualization/podman)
