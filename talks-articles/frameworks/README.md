@@ -9,4 +9,6 @@
 
 * [GatsbyJS](./gatsbyjs/README.md)
 
+* [FFermyon's Spin](./spin_wasm/README.md)
+
 ---
