@@ -1,0 +1,14 @@
+spin_version = "1"
+authors = ["AbhishekKr <a....u.....3@gmail.com>"]
+description = "a sample Spin HTTP Component in Rust"
+name = "sample-http-rust"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "sample-http-rust"
+source = "target/wasm32-wasi/release/sample_http_rust.wasm"
+[component.trigger]
+route = "/demo"
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
