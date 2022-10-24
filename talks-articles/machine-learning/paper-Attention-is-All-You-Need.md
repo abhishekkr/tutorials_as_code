@@ -1,7 +1,8 @@
 
 ## Notes from "Attention Is All You Need"
 
-> [Paper on Transformers](https://arxiv.org/pdf/1706.03762.pdf) by Google Brain team & others
+> * [Paper on Transformers](https://arxiv.org/pdf/1706.03762.pdf) by Google Brain team & others
+> * my code experiments will reside at [github.com/abhishekkr/ai-ayn](https://github.com/abhishekkr/ai-ayn)
 
 > Proposal of a new simple network architecture, Transformer, solely on Attention mechanisms.
 > Models are parallelizable and faster to train.

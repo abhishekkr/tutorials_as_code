@@ -5,7 +5,9 @@
 
 * Allows to achieve variable reduction for ML computation.
 
-> Can also be used for least sqaure linear regression, image compression and denoising data.
+> * Can also be used for least sqaure linear regression, image compression and denoising data.
+>
+> * Offers various useful applications in signal processing, psychology, sociology, climate, atomospheric science, statistics and astronomy.
 
 * SVD is a matrix decomposition method. It's stable as all matrices have an SVD.
 
@@ -22,6 +24,10 @@
 > * S `Sigma` is an `n x n` diagonal matrix; Si are called Singular Values
 >
 > * V is `n x n` orthogonal matrix, transposed; is right Singular Vector
+>
+> Identity Matrix is a square matrix with diagonal elements 1 and others 0.
+> Diagonal Matrix has all entries other than diagonal as 0.
+> Singular Matrix has determinant 0 or a sqaure matrix which doesn't have a matrix inverse.
 
 * Sum of squares of `Singular Values` from diagonal matrix should be equal to toal variance in `A`. Truncated SVD can contain major portion of Variance.
 

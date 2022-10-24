@@ -11,4 +11,6 @@ at it's core provides 2 main features
 
 * automatic differentitation for building and training neural networks
 
+* has dynamic computational graph constrution
+
 ---
