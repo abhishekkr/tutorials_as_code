@@ -3,19 +3,19 @@
 
 * 1957 : Fortran : John Backus
 
-* 1958 : Lisp : John McCarthy
+* 1958 : [Lisp : John McCarthy](#)
 
 * 1959 : COBOL : Design by committee
 
 * 1968 : Smalltalk : Alan Kay
 
-* 1972 : C : Dennis Ritchie
+* 1972 : [C : Dennis Ritchie](#)
 
-* 1972 : Prolog : Alain Colmerauer
+* 1972 : [Prolog : Alain Colmerauer](#)
 
 * 1975 : Scheme : Guy Steele, Gerald Sussman
 
-* 1983 : C++ : Bjarne Stroustrup
+* 1983 : [C++ : Bjarne Stroustrup](#)
 
 * 1986 : [Erlang : Telefonaktiebolaget L. M. Ericsson](./erlang/README.md)
 
@@ -42,6 +42,8 @@
 * 1999 : [TLA+](./tla-plus/README.md)
 
 * 2004 : [Scala : Martin Odersky](./scala/README.md)
+
+* 2005 : [Nim : Andreas Rumpf](./nim/README.md)
 
 * 2007 : [Clojure : Rich Hickey](./clojure/README.md)
 
