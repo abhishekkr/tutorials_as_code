@@ -1,6 +1,8 @@
 
 ## Nim
 
+* [Cheatsheet](./cheatsheet.nim)
+
 * [Book Notes: Nim In Action](./book--nim-in-action/README.md)
 
 ---
