@@ -136,6 +136,8 @@ discard procName("Joey")
 
 #### User-defined Types
 
+> code samples [object & ref](code-samples/chap2_6.nim)
+
 * Nim features objects, tuples and enums
 
 * Nim objects are similar to C structs and passable over FFI, data types stored on Stack can't be `nil`
