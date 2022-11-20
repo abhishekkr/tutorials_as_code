@@ -15,9 +15,11 @@
 
 * [Chap.03 Writing a chat application](./chap03.md)
 
+* [Chap.04 A tour through StdLib](./chap04.md)
+
 _WIP_
 
-* [Chap.04 A tour through StdLib](#)
+* [Chap.05 Package Management](#)
 
 
 ---
