@@ -2,6 +2,8 @@
 ## Chapter.4 Standard Library
 
 > follows a batteries included philosophy like Python
+>
+> [source](code-samples/chap4.nim)
 
 ```
 # some of most useful pure modules

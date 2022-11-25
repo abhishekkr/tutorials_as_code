@@ -17,9 +17,11 @@
 
 * [Chap.04 A tour through StdLib](./chap04.md)
 
+* [Chap.05 Package Management](./chap05.md)
+
 _WIP_
 
-* [Chap.05 Package Management](#)
+* [Chap.06 Parallelism](#)
 
 
 ---
