@@ -19,9 +19,11 @@
 
 * [Chap.05 Package Management](./chap05.md)
 
+* [Chap.06 Parallelism](./chap06.md)
+
 _WIP_
 
-* [Chap.06 Parallelism](#)
+* [Chap.07 Twitter Clone](#)
 
 
 ---
