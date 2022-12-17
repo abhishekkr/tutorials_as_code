@@ -1,0 +1,113 @@
+html {
+  height: 99%;
+}
+
+body {
+  background-color: #f9f9d9;
+  color: #2e2e2e;
+  height: 90%;
+}
+
+#content {
+  height: 95%;
+}
+
+#topbar {
+  height: 5%;
+  color: #2e2e2e;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.title {
+  padding: 5px;
+  font-weight: bold;
+}
+
+#topbar a {
+  color: #2e2e2e;
+}
+
+#newMessage, #login {
+  margin: 25px auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#newMessage span, #login span {
+  font-size: 2em;
+}
+
+#newMessage form, #login form {
+  margin: 25px auto;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  text-align: center;
+  max-width: 500px;
+  background-color: #2e2e2e;
+  color: #e2e2e2;
+}
+
+#newMessage form div, #login form div {
+  padding-bottom: 10px;
+}
+
+#newMessage label, #login label {
+  margin-right: 10px;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.alternative {
+  margin: 25px auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #2e2e2e;
+  color: #e2e2e2;
+  max-width: 500px;
+  height: 90%;
+}
+
+.alternative span {
+  font-size: 1.25em;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+#messages {
+  margin: 25px auto;
+  max-width: 75%;
+  height: 10%;
+}
+
+.atright {
+  float: right;
+}
+.atbottom {
+  position: sticky;
+  bottom: -5;
+}
+
+.roundbtn {
+  padding: 10px;
+
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  border-radius: 55%;
+
+  font-size: 1.25em;
+  font-weight: bolder;
+}
+
+.pad-rl {
+  padding-left: 10px;
+  padding-right: 10px;
+}

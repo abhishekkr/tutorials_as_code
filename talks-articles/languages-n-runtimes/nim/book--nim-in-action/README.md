@@ -21,9 +21,14 @@
 
 * [Chap.06 Parallelism](./chap06.md)
 
+* [Chap.07 Twitter Clone](./chap07.md)
+
 _WIP_
 
-* [Chap.07 Twitter Clone](#)
+### Part.3 Advanced Concepts
 
+* [Chap.08 Interfacing with other Languages](#)
+
+* [Chap.09 Metaprogramming](#)
 
 ---
