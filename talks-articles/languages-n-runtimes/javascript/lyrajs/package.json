@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@lyrasearch/lyra": "^0.3.1"
+  }
+}
