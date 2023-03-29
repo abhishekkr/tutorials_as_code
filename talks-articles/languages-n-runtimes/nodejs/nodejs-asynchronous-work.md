@@ -2,7 +2,6 @@
 ## Node.js Asynchronous Work
 
 > [source](https://nodejs.dev/en/learn/)
-> after this read: [cs in js](https://github.com/humanwhocodes/computer-science-in-javascript), [js algo](https://github.com/trekhleb/javascript-algorithms)
 
 
 ### Asynchronous flow control
