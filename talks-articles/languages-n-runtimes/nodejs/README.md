@@ -7,7 +7,7 @@
 
 * [Debugger, Profiling, Diagnostics, Dockerizing, Buffer, Security, Writing non-blocking code](./nodejs-remaining-guides.md)
 
-* [HTTP Transaction Code Sample](./nodejs-anatomy-of-http-transaction.md); [Backpressuring in Stream](nodejs-backpressuring-streams.md)
+* [HTTP Transaction Code Sample](./nodejs-anatomy-of-http-transaction.md); [Backpressuring in Stream](./nodejs-backpressuring-streams.md); [Domain Module Postmortem](./nodejs-domain-module.md)
 
 
 ### Notes from Conference Talks and Articles
