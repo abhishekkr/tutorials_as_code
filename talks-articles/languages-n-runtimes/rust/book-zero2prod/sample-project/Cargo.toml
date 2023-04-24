@@ -9,3 +9,5 @@ rustflags = ["-C", "linker=clang", "-C", "link-arg=fuse-ld=lld"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+actix-web = "4"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
