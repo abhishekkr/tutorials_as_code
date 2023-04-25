@@ -1,7 +1,17 @@
 [package]
-name = "sample-project"
+name = "sample_project"
 version = "0.1.0"
 edition = "2021"
+
+# when lib.name not provided, package.name gets used
+# convention is to use lib.rs if not specificity reqd
+[lib]
+path = "src/server.rs"
+
+# double brackets as it's array to support multiple binaries
+[[bin]]
+name = "sample-project"
+path = "src/main.rs"
 
 [target.x86_64-unknown-linux-gnu]
 rustflags = ["-C", "linker=clang", "-C", "link-arg=fuse-ld=lld"]
@@ -11,3 +21,4 @@ rustflags = ["-C", "linker=clang", "-C", "link-arg=fuse-ld=lld"]
 [dependencies]
 actix-web = "4"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+reqwest = "0.11.16"
