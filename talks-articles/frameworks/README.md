@@ -11,4 +11,6 @@
 
 * [Fermyon's Spin](./spin_wasm/README.md)
 
+* [Builder.io's Qwik](./qwik-js/README.md)
+
 ---
