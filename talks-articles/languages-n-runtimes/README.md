@@ -59,6 +59,8 @@
 
 * 2015 : [GraphQL : Facebook](./graphql/README.md)
 
+* 2016: [ZIG](./zig/README.md)
+
 * 2017 : [Ballerina : Sanjiva Weerawarana, WSO2](./ballerina/README.md)
 
 > Dart, Elm, Julia, OCaml
