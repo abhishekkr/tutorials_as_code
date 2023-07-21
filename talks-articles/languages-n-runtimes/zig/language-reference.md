@@ -51,11 +51,41 @@
 > * Bytes are not modified by Compiler, though non-UTF-8 bytes can be embedded using `xNN` notation.
 > * maximum valid Unicode points is `0x10ffff`
 
-
+---
 
 ### Zig Test
 
-...
+* `test "<test-name>" { test_block() }` declarations to ensure behavior meets expectations; ran via `zig test <source-file[s]>` which builds and runs executable using Stdlib's default test runner as **main** entry point. Test declarations are omitted from build unless `zig test` tool builds them.
 
+> * (convention) UnNamed tests should only invoke other tests, these can't be filtered.
+> * Implicit return type of tests is `anyerror!void` error-union type.
+> * Tests can be in same source file as tested functionality, or separate. Tests are top-level declarations, thus order independent.
+
+* Tests can be Nested within Blocks, but unless referenced in a top-level test.. will not be resolved.
+
+> * all container tests can be referenced via `std.testing.refAllDecls(@This())` in a top-level test
+> * `test "demo container.X"` & `test "demo container.Y"` can be referenced individually as in comments
+> * to run tests of an imported file, reference as well `_ = @import("other_test.zig");`
+
+* Can skip tests programmatically via `return error.SkipZigTest;`. Default test runner skip test with `suspend point` while test running using default blocking IO mode. Evented IO mode could be enabled via `--test-evented-io`
+
+* Code allocating memory using `std.testing.allocator`, default test runner to report leaks found.
+
+* `std.builtin.is_test` checks if build is in test mode or run
+
+* `std.log.warn` lets you log statements to stderr for testing namespace
+
+* Including `std.testing.expect`, we also have `expectEqual`, `expectDeepEqual` for container/custom types, `expectEqualSlices`, `expectEqualStrings`, `expectError`, `expectStringStartsWith`, `expectStringEndsWith`, etc.
+
+---
+
+### Variables
+
+
+
+
+---
+
+### ...
 
 ---
