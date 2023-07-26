@@ -81,7 +81,68 @@
 
 ### Variables
 
+* Var identifiers never shadow identifiers from outer scope.
 
+> * `@".."` syntax to be used for non-conventional Indentifier names; also for linking with external variables.
+
+* Container level variables have static lifetime, are order independent & lazily analyzed. Init value is implicitly comptime.
+
+* Local static variables can be used with containers within functions.
+
+* `extern` structs are required when need layout of local struct to match layout of say C ABI. Because default structs can reorder struct fields, add hidden fields for safety/debug and perform other transformations. `@extern` bult-in function is available to, for linking against a variable from another object.
+
+* `@export` fn or `export` keyword to make a variable available to other objects at linking, types shall be C ABI compatible.
+
+* `comptime var idx: i32 = 0;` causes `idx` to enforce all loads & store happen at compile time; thus can't be used in an expression that also uses simple variable.
+
+---
+
+### Integers & Floats
+
+* Integers have no size limitation. If value is not comptime, then it's vulnerable to Int Overflow & other compiler errors.
+
+> * `+%` & `-%` perform wrapping arithmetic; `+|` & `-|` perform saturating arithmetic.
+
+* `comptime_float` have same precision as `f128`; and floats coerce to any numeric type if they don't have fractional component.
+
+* `NaN`, infinity, negative infinity available via `std.math`.
+
+#### Float Operations, Optimized
+
+* Default is `Strict` mode, can switch to `Optimized` per-block basis using `@setFloatMode(.Optimized);`.
+
+> When set in an object file, enforces Floating Point Operations to optimize values for accuracy. If called function is in same file, optimizer figures out itself.
+
+```
+// floater_obj.zig
+// built via: zig build-obj floater_obj.zig -O ReleaseFast
+const std = @import("std");
+const big = @as(f64, 1 << 40);
+
+export fn floater_strict(x: f64) f64 {
+    return x * big;
+}
+
+export fn floater_optimized(x: f64) f64 {
+    @setFloatMode(.Optimized);
+    return x * big;
+}
+```
+
+```
+// floater_mode.zig
+// built via: zig build-exe floater_mode.zig floater_obj.o
+const print = @import("std").debug.print;
+
+extern fn floater_strict(x: f64) f64;
+extern fn floater_optimized(x: f64) f64;
+
+pub fn main() void {
+    const x = 0.001;
+    print("optimized = {}\n", .{floater_optimized(x)});
+    print("strict = {}\n", .{floater_optimized(x)});
+}
+```
 
 
 ---
