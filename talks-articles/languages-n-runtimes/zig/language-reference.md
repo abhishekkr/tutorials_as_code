@@ -1,7 +1,7 @@
 
 ## Zig Language Reference
 
-> [source v0.10.1](https://ziglang.org/documentation/0.10.1/)
+> [source: master/v0.11.0-dev.4282+0f21d3d4d](https://ziglang.org/documentation/master/)
 
 * A general-purpose programming language & toolchain.
 
@@ -95,6 +95,8 @@
 
 * `comptime var idx: i32 = 0;` causes `idx` to enforce all loads & store happen at compile time; thus can't be used in an expression that also uses simple variable.
 
+* `noreturn` type is for `break, continue, return, unreachable, while(true) {}`; allowing `const num = if (cond) 10 else return;`
+
 ---
 
 ### Integers & Floats
@@ -144,6 +146,114 @@ pub fn main() void {
 }
 ```
 
+---
+
+### Operator
+
+* No operator overloading.
+
+```
+// Precedence
+x() x[] x.y x.* x.?
+a!b
+x{}
+!x -x -%x ~x &x ?x
+* / % ** *% *| ||
++ - ++ +% -% +| -|
+<< >> <<|
+& ^ | orelse catch
+== != < > <= >=
+and
+or
+= *= *%= *|= /= %= += +%= +|= -= -%= -|= <<= <<|= >>= &= ^= |=
+```
+
+> * Wrapping & Saturating arithmetic, Bit operations are Int only.
+> * Peer-type Resolution for add, subtract, multiply, divide.
+
+* Fn like `@addWithOverflow(type, a, b, *result) <didFlow:bool>`, `@subWithOverflow(..)`, `@mulWithOverflow(..)`, `@divTrunc(..)`, `@divFloor(..)`, `@divExact(..)`, `@rem(..)`, `@mod(..)`.
+
+* `a orlese b` (b could be of `noreturn` type) allows returning `a` if not-null else `b`. Also, `a.?` is same as `a orelse unreachable`.
+
+---
+
+### Arrays
+
+* Array concat `++` & multiplication `**` are available only for comptime Arrays.
+
+* `[N:x]T` describes array with sentinel element of value `x` at index corresponding to `len`
+
+---
+
+### Vectors
+
+* Collection of bool/int/float/pointer, operated in parallel. Created via `@Vector(<len>, <type>){ ..values }`.
+
+* Vectors supports built-in operators as underlying base types.
+
+* `@splat` converts scalars to vectors. `@reduce` alongwith array indexing to convert vectors to scalars. Vectors support assignment to+from fixed-length arrays with comptime-known length.
+
+* Rearranging within/between vectors, can use `@shuffle`/`@select`.
+
+---
+
+### Pointers
+
+> WIP
+
+---
+
+### Slices
+
+> WIP
+
+---
+
+### struct
+
+> WIP
+
+---
+
+### enum
+
+> WIP
+
+---
+
+### struct
+
+> WIP
+
+---
+
+### union
+
+> WIP
+
+---
+
+### opaque
+
+> WIP
+
+---
+
+### Blocks
+
+> WIP
+
+---
+
+### switch
+
+> WIP
+
+---
+
+### while
+
+> WIP
 
 ---
 

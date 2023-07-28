@@ -20,6 +20,8 @@ pub fn main() !void {
         std.log.info("check no WARN statements were made", .{});
     }
     try sampleVariables();
+    try sampleOp();
+    try sampleCompositeType();
     debugPrint("done.\n", .{});
 }
 
@@ -242,4 +244,119 @@ test "big float mode" {
     const x = 0.001;
     std.log.warn("optimized = {}\n", .{floater_optimized(x)});
     std.log.warn("strict = {}\n", .{floater_optimized(x)});
+}
+
+fn sampleOp() !void {
+    var max_i8: i8 = std.math.maxInt(i8);
+    //assert(@as(i8, max_i8) *| 2 == 255);
+    max_i8 +|= 10;
+    debugPrint("max_i8 + 10 = {}\n", .{max_i8});
+    max_i8 *%= 2;
+    debugPrint("max_i8 * 2 = {}\n", .{max_i8});
+
+    const shift_left_a = 1 << 3;
+    debugPrint("1 << 3 = {}\n", .{shift_left_a});
+    const shift_right_b = 16 >> 1;
+    debugPrint("16 >> 1 = {}\n", .{shift_right_b});
+
+    var ba: i8 = 0b0100;
+    ba &= 0b1100;
+    debugPrint("0b0100 & 0b10 = {}\n", .{ba});
+    ba |= 0b0010;
+    debugPrint("0b0100 & 0b10 = {}\n", .{ba});
+    ba ^= 0b0010;
+    debugPrint("0b0100 & 0b10 = {}\n", .{ba});
+    ba = ~ba;
+    debugPrint("0b0100 & 0b10 = {}\n", .{ba});
+
+    error.ArgNotFound catch {
+        debugPrint("Catch doesn't always have to capture err.\n", .{});
+    };
+
+    const ba_ptr = &ba;
+    debugPrint("Dereferencing Pointer: {}\n", .{ba_ptr.*});
+
+    const arr_x = [_]u8{ 1, 3, 5 }; // must be comptime
+    const arr_y = [_]u8{ 2, 4 }; // can be different sizes
+    var arr_xy = arr_x ++ arr_y; // doesn't need to be const
+    arr_xy[0] = 100;
+    debugPrint("{any} ++ {any} == {any}\n", .{ arr_x, arr_y, arr_xy });
+
+    const arr_a = [_]u8{ 1, 2, 3 }; // must be comptime
+    const arr_b = 2; // can be different sizes
+    var arr_ab = arr_a ** arr_b; // doesn't need to be const
+    debugPrint("{any} ** {any} == {any}\n", .{ arr_a, arr_b, arr_ab });
+    debugPrint("\"+-\" ** 10 == {s}\n", .{("+-" ** 10)});
+}
+
+fn sampleCompositeType() !void {
+    try sampleArrays();
+    try sampleVectors();
+}
+
+fn sampleArrays() !void {
+    //Arrays
+    const str = [_]u8{ 'h', 'e', 'l', 'l', 'o' };
+    assert(stdMem.eql(u8, &str, "hello"));
+
+    var str_upper: [str.len]u8 = undefined;
+    var idx: u8 = 0;
+    for (str) |chr| {
+        str_upper[idx] = chr - 32;
+        idx += 1;
+    }
+
+    var numbers: [5]i64 = undefined;
+    for (&numbers, 0..numbers.len) |*element, i| {
+        element.* = @intCast(i * 100);
+    }
+
+    debugPrint("=> {any}\n", .{numbers ++ [_]i64{ 600, 700 }});
+    debugPrint("=> {any}\n", .{numbers ** 2});
+
+    // comptime init of array
+    const Point = struct {
+        x: i32,
+        y: i32,
+    };
+    var fancy_array = init: {
+        var initial_value: [10]Point = undefined;
+        for (&initial_value, 0..) |*pt, i| {
+            pt.* = Point{
+                .x = @intCast(i),
+                .y = @intCast(i * 2),
+            };
+        }
+        break :init initial_value;
+    };
+    assert(fancy_array[4].x == 4);
+    assert(fancy_array[4].y == 8);
+
+    // sentinel-terminated; null-terminated below by making x=0
+    const array = [_:0]u8{ 1, 2, 3, 4 };
+    assert(array[4] == 0);
+    assert(array.len == 4);
+    debugPrint("=> {} | {any}\n", .{ @TypeOf(array), array });
+}
+
+fn sampleVectors() !void {
+    //Vectors
+    const a = @Vector(3, i32){ 1, 10, 100 };
+    const b = @Vector(3, i32){ 2, 9, 99 };
+    debugPrint("vector.a + vector.b = {any}\n", .{a + b});
+    debugPrint("vector.a - vector.b = {any}\n", .{a - b});
+    debugPrint("vector.a > vector.b = {any}\n", .{a > b});
+
+    var arx: [5]f16 = [_]f16{ 1.2, 1.3, 2.1, 2.3, 3.1 };
+    var vex: @Vector(3, f16) = arx[1..4].*;
+    debugPrint("vex: {any}\n", .{vex});
+
+    var slice: []const f16 = &arx;
+    var offset: u16 = 1;
+    // extract comptime-known length from runtime-known offset
+    // by doing it in steps;
+    // step.1: slice from offset, step.2: array of comptime length
+    debugPrint("xo: {any}\n", .{slice[offset..]});
+    var vexo: @Vector(2, f16) = slice[offset..][2..4].*;
+    debugPrint("vexo: {any}\n", .{vexo});
 }
