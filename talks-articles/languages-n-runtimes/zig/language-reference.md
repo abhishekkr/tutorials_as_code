@@ -7,7 +7,7 @@
 
 * StdLib doc [online](https://ziglang.org/documentation/master/std/#A;std).
 
-* [Hello World Code](./hello-world.zig). Has document comments on build/run.
+* [Hello World Code](./hello-world/hello-world.zig). Has document comments on build/run.
 
 > * Source code are UTF-8 encoded files usually `*.zig` named.
 > * Public `main` function is necessary for Zig compiler to infer start point. Unless a library.
@@ -23,7 +23,7 @@
 
 ### Values
 
-* Primitive Types, check `fn sampleValues()` in [hello-world.zig](./hello-world.zig)
+* Primitive Types, check `fn sampleValues()` in [hello-values.zig](./hello-world/hello-values.zig)
 
 > * `i8, i16, i32, i64, i128, isize` for signed x-bit & lastly sized integeres; C Equivalents be like `int8_t, ..., intptr_t`
 > * `u8, u16, u32, u64, u128, usize` for unsigned x-bit & lastly sized integeres; C Equivalents be like `uint8_t, ..., uintptr_t`
@@ -42,7 +42,7 @@
 
 > * `var` need to be initialized at declaration, to leave them uninitialized and coerce-able.. assign `undefined` to them.
 
-#### Strings, check `fn sampleStrings()` in [hello-world.zig](./hello-world.zig)
+#### Strings, check `fn sampleStrings()` in [hello-strings.zig](./hello-world/hello-strings.zig)
 
 * String literals are constant single-item Pointers to null-terminated byte arrays. Type encodes length and fact of null-terminated, thus can be coerced to Slices & Null-Terminated Pointers. Dereferencing converts to Arrays.
 
@@ -53,7 +53,7 @@
 
 ---
 
-### Zig Test
+### Zig Test in [hello-tests.zig](./hello-world/hello-tests.zig)
 
 * `test "<test-name>" { test_block() }` declarations to ensure behavior meets expectations; ran via `zig test <source-file[s]>` which builds and runs executable using Stdlib's default test runner as **main** entry point. Test declarations are omitted from build unless `zig test` tool builds them.
 
@@ -79,7 +79,7 @@
 
 ---
 
-### Variables
+### Variables in [hello-variables.zig](./hello-world/hello-variables.zig)
 
 * Var identifiers never shadow identifiers from outer scope.
 
@@ -99,7 +99,7 @@
 
 ---
 
-### Integers & Floats
+### Integers & Floats in [hello-numbers.zig](./hello-world/hello-numbers.zig)
 
 * Integers have no size limitation. If value is not comptime, then it's vulnerable to Int Overflow & other compiler errors.
 
@@ -148,7 +148,7 @@ pub fn main() void {
 
 ---
 
-### Operator
+### Operator in [hello-operators.zig](./hello-world/hello-operators.zig)
 
 * No operator overloading.
 
@@ -177,7 +177,7 @@ or
 
 ---
 
-### Arrays
+### Arrays in [hello-arrays.zig](./hello-world/hello-arrays.zig)
 
 * Array concat `++` & multiplication `**` are available only for comptime Arrays.
 
@@ -185,7 +185,7 @@ or
 
 ---
 
-### Vectors
+### Vectors in [hello-vectors.zig](./hello-world/hello-vectors.zig)
 
 * Collection of bool/int/float/pointer, operated in parallel. Created via `@Vector(<len>, <type>){ ..values }`.
 
@@ -197,15 +197,35 @@ or
 
 ---
 
-### Pointers
+### Pointers in [hello-pointers.zig](./hello-world/hello-pointers.zig)
 
-> WIP
+* `*T` single item pointer; supports deref `ptr.*`.
+
+* `[*]T` many-item pointer to unknown item numbers; supports indexing & slice syntax. Pointer arithmetic is allowed as `ptr + x` & `ptr - x`.
+
+> * `T` must have known size, so can't be `anyopaque` or other opaque types.
+> * `*[N]T` pointer array to N items, same as single-item pointer to array.
+> * `[]T` is a slice (fat pointer), contains a pointer of type `[*]T` & a length.
+
+* `const ptr: *i32 = @ptrFromInt(0xdeadbee0);` to convert pointer from int address; & `@intFromPtr(ptr);` to get int adress from pointer.
+
+* For MMIO (Memory Mapped Input/Output), using `volatile` ensures order as in source. `volatile` wouldn't be used for anything else than MMIO.
+
+> * `@ptrCast` is unsafe op, to be only used when conversions ain't possible.
+> * `alignment` of type is byte count for it when stored in memory; as power of 2 & based on CPU arch.
+> * `@align` to check alignment & `@alignCast` to change pointer into more aligned pointer.
+
+* AllowZero `var ptr: *allowzero i32 = @ptrFromInt(0);` lets pointer have address zero, only needed on freestanding OS target.
+
+> * To represent null pointers, Optional Pointers shall be used. As `var ptr: ?*i32 = null;`.
 
 ---
 
-### Slices
+### Slices in [hello-slices.zig](./hello-world/hello-slices.zig)
 
-> WIP
+* slice is pointer & length. Array's length is comptime, Slice's length is runtime.
+
+* Slices of Array (over Pointer) are preferred for operatios as they have bound checks.
 
 ---
 
@@ -216,12 +236,6 @@ or
 ---
 
 ### enum
-
-> WIP
-
----
-
-### struct
 
 > WIP
 
