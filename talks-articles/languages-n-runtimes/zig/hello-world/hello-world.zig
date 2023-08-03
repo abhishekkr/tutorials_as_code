@@ -18,6 +18,7 @@ const hello_slices = @import("hello-slices.zig");
 const hello_structs = @import("hello-structs.zig");
 const hello_tuples = @import("hello-tuples.zig");
 const hello_enums = @import("hello-enums.zig");
+const hello_unions = @import("hello-unions.zig");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
@@ -48,4 +49,5 @@ fn sampleCompositeType() !void {
     try hello_structs.sampleStruct();
     try hello_tuples.sampleTuples();
     try hello_enums.sampleEnums();
+    try hello_unions.sampleUnions();
 }

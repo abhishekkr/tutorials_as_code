@@ -269,19 +269,51 @@ or
 
 ### union
 
-> WIP
+* Bare unions (defining a set of possible fields, one active at a time) cannot be used to reinterpret memory. For guaranteed in-mem layout use `@ptrCast`/`extern union`/`packed union`.
+
+> * Accessing non-active field is Undefined Behavior.
+
+* Union can have methods like Struct. Can have anonymous usage as well like `var id: Id = .{.int = 101};`.
 
 ---
 
 ### opaque
 
-> WIP
+* For a custom type declaration with non-zero unknown size & alignment. Has declarations same as struct.
+
+> Used for type-safety while C code interaction, which don't expose struct details.
+
+```
+const SomeSharedStruct = opaque{
+    fn process(self: *SomeSharedStruct) void {
+        fetch_and_persist(self);
+    }
+};
+
+extern fetch_and_persist(*SomeSharedStruct) callconv(.C) void;
+
+test "opaque with declarations" {
+    var some_obj: *SomeSharedStruct = undefined;
+    some_obj.process();
+}
+```
 
 ---
 
 ### Blocks
 
-> WIP
+* Are expressions with declaration scopes. If labeled, can return a value using `break :lbl value;`
+
+```
+...
+var abc: i32 = 100;
+const something = sth: {
+    abc += 1;
+    break :sth abc;
+};
+```
+
+* No shadowing allowed. Also `{} == void{}`.
 
 ---
 
