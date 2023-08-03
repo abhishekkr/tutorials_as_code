@@ -15,6 +15,9 @@ const hello_arrays = @import("hello-arrays.zig");
 const hello_vectors = @import("hello-vectors.zig");
 const hello_pointers = @import("hello-pointers.zig");
 const hello_slices = @import("hello-slices.zig");
+const hello_structs = @import("hello-structs.zig");
+const hello_tuples = @import("hello-tuples.zig");
+const hello_enums = @import("hello-enums.zig");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
@@ -42,4 +45,7 @@ fn sampleCompositeType() !void {
     try hello_vectors.sampleVectors();
     try hello_pointers.samplePointers();
     try hello_slices.sampleSlice();
+    try hello_structs.sampleStruct();
+    try hello_tuples.sampleTuples();
+    try hello_enums.sampleEnums();
 }

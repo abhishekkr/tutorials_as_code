@@ -229,15 +229,41 @@ or
 
 ---
 
-### struct
+### struct in [hello-structs.zig](./hello-world/hello-structs.zig)
 
-> WIP
+* No guarantee of field order & size in default struct.
+
+* Can have methods; only advantage is context namespacing.
+
+* Can have declarations or zero fields as well. Can have default field values.
+
+* `extern struct` only for in-mem layout matching C ABI target.
+
+* `packed struct` have guaranteed in-mem layout (field order & size), so can be used in `@bitCast` or `@ptrCast` to reinterpret memory.
+
+> * Address to a non-byte aligned field can be accessed; but not passed as normal pointer. This address would be same as other fields within their host integer. E.g. `samplePackedStruct()` in [hello-structs.zig](hello-world/hello-structs.zig)
+
+* All structs are anonymous. Zig infers type name based on rules. If it's in `return` then named with fn name and param values serialized. Otherwise as `filename.fnName.__struct_ID`. A nested struct also gets parent name attached.
+
+#### Tuples
+
+* Anonymous structs created without field names are Tuples.
+
+* Fields are implicitly named as indexed. Being integer, need to be accessed via `id.@"0"` or `id[0]`.
+
+* Have a `len` field and allow `++`/`**` ops. Can be iterated via `inline for` (comptime).
 
 ---
 
 ### enum
 
-> WIP
+* Can have ordinal values, with overrides. The values can be `switch` upon.
+
+* Exported enums shall have C-ABI compatible enum with explicit tag like `const Xnum = enum(c_int) {ok, nok};`
+
+* In a context block for an enum, fields can be directly notified with just dot.
+
+* Non-exhaustive enums are available for cases to handle unseen or beyond values.
 
 ---
 
