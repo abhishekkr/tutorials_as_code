@@ -19,6 +19,11 @@ const hello_structs = @import("hello-structs.zig");
 const hello_tuples = @import("hello-tuples.zig");
 const hello_enums = @import("hello-enums.zig");
 const hello_unions = @import("hello-unions.zig");
+const hello_switch = @import("hello-switch.zig");
+const hello_while = @import("hello-while.zig");
+const hello_for = @import("hello-for.zig");
+const hello_if = @import("hello-if.zig");
+const hello_defer = @import("hello-defer.zig");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
@@ -34,6 +39,7 @@ pub fn main() !void {
     try hello_numbers.sampleNumbers();
     try hello_operators.sampleOp();
     try sampleCompositeType();
+    try sampleFlowConstructs();
     debugPrint("done.\n", .{});
 }
 
@@ -50,4 +56,12 @@ fn sampleCompositeType() !void {
     try hello_tuples.sampleTuples();
     try hello_enums.sampleEnums();
     try hello_unions.sampleUnions();
+}
+
+fn sampleFlowConstructs() !void {
+    try hello_switch.sampleSwitch();
+    try hello_while.sampleWhile();
+    try hello_for.sampleFor();
+    try hello_if.sampleIf();
+    try hello_defer.sampleDefer();
 }

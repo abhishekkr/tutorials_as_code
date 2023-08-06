@@ -1,7 +1,5 @@
 const std = @import("std");
 const debugPrint = std.debug.print;
-const assert = std.debug.assert;
-const stdMem = std.mem; // to compare bytes
 
 const Id = union { int: i64, str: []const u8 };
 

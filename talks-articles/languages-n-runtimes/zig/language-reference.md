@@ -245,7 +245,7 @@ or
 
 * All structs are anonymous. Zig infers type name based on rules. If it's in `return` then named with fn name and param values serialized. Otherwise as `filename.fnName.__struct_ID`. A nested struct also gets parent name attached.
 
-#### Tuples
+#### Tuples in [hello-tuples.zig](./hello-world/hello-tuples.zig)
 
 * Anonymous structs created without field names are Tuples.
 
@@ -255,7 +255,7 @@ or
 
 ---
 
-### enum
+### enum in [hello-enums.zig](./hello-world/hello-enums.zig)
 
 * Can have ordinal values, with overrides. The values can be `switch` upon.
 
@@ -267,7 +267,7 @@ or
 
 ---
 
-### union
+### union in [hello-unions.zig](./hello-world/hello-unions.zig)
 
 * Bare unions (defining a set of possible fields, one active at a time) cannot be used to reinterpret memory. For guaranteed in-mem layout use `@ptrCast`/`extern union`/`packed union`.
 
@@ -317,18 +317,92 @@ const something = sth: {
 
 ---
 
-### switch
+### switch in [hello-switch.zig](./hello-world/hello-switch.zig)
+
+* All cases must be able to coerce to a common type. Can be used outside a function.
+
+* Branches can't fallthrough; for that combine cases and use if. Can use block in value; in match for comptime available matchers.
+
+* `else` clause can meet exhaustive list, all cases must be handled.
+
+* `inline` switch prong to generate prong's body for each possible value.
+
+* `inline else` are type-safe alternatives to `inline for`. With `inline for` comptime doesn't know all possible case have been handled. Allowed for tagged unions & exhaustive enums. For non-exhaustive enums with use of `_`.
+
+> `inline for` block gets generated as series of `if` stmt relying on optimizer to convert to switch, could have `unreachable` flow. `inline else` fn are explicitly generated as desired switch handling all cases.
+
+---
+
+### while; for
+
+> `while` & `for`, like `switch` allow `break`/`continue` flows.
+
+* `while (cond) {..}` are simple statement; `while (i < 100) : ({i *= 2;}) {}` are loop continue statements... usage at [hello-while.zig](hello-world/hello-while.zig)
+
+* `while (cond) : (updateCondVar) { if (condInner) { break retVal; } }` or `while (cond) : (updatecondVar) {...} else retVal;` or a mix of both allows return value from it.
+
+* A labeled `blk: while () {.. {continue :blk;}}` while loop can be referenced with `break/continue` from within a nested loop.
+
+* `while` can handle optional as `while (..) |val| {...}`; and handle error unions with `else |err| {..}` flow.
+
+* `inline while` unrolls loop thus allowing compile time actions like using types as first class.
+
+* Similar to `while`; `for` allows optional else, multi-list ranging if of same length, labeled break/continue from inner loop & `inline for`.. usage at [hello-for.zig](hello-world/hello-for.zig).
+
+---
+
+### if; defer
+
+> `if` in [hello-if.zig](./hello-world/hello-if.zig)
+
+* `if` expressions have 3 uses corresponding to 3 types (`bool`, `?T`, `anyerror!T`).
+
+* If with `anyerror!?T`, the capture `|val|` is optional value `?T`.
+
+> `defer` in [hello-defer.zig](./hello-world/hello-defer.zig)
+
+* `defer` do Stack, as in Go. `errdefer` will only execute if scope returns an error.
+
+---
+
+### unreachable; noreturn
+
+* `unreachable` are of `noreturn` type, yet can't be matched to those as reaching them in run-flow is compile error
+
+> In `Debug/ReleaseSafe` mode `unreachable` emits `panic`. In `ReleaseFast/ReleaseSmall` mode, optimizer assumes it will never be hit to optimize rest of code.
+
+* `noreturn` is also type of `break`, `continue`, `return` & `while(true) {}`.
+
+---
+
+### Functions, Errors, Optionals
 
 > WIP
 
 ---
 
-### while
-
-> WIP
+### Casting, 0-bit Types, Result Location Semantics, usingnamespace
 
 ---
 
-### ...
+### comptime, Assembly, Atomics, Async Functions, Builtin Functions
+
+---
+
+### Build Mode, Single Threaded Builds, Undefined Behavior, Memory
+
+---
+
+### Compile Variables, Root Source File, Zig Build system, C, WASM, Targets
+
+---
+
+### Style Guide, Source Encoding
+
+---
+
+### Keyword Reference, Appendix
+
+> WIP
 
 ---
