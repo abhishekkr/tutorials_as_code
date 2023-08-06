@@ -375,9 +375,57 @@ const something = sth: {
 
 ---
 
-### Functions, Errors, Optionals
+### Functions
 
-> WIP
+* `export fn` to make fn visible in generate obj file & make it use C-ABI. Fn type of `sub` in [hello-fn.zig](hello-world/hello-fn.zig) is `*const fn(u8, u8) callconv(.C) u8`
+
+* `extern "c" fn atan2(a: f64, b: f64) f64;` to declare a fn to be resolved at runtime when linking. Quoted token in library (`"c"` for `libc.so`).
+
+* `@setCold(true);` builtin call in a fn tells optimizer that fn is rarely called.
+
+* Fn bodies are comptime-only, Fn Pointers may be runtime known.
+
+* Parameters are immutable. Thus Zig can optimize on PassByValue or PassByReference.
+
+* `anytype` for param as in `add100()` def alongwith `@TypeOf(paramName)` as return type to define a slightly broad catering.
+
+#### Errors
+
+* Error set, like `enum` where each error name across entire compilation gets assigned unique  `u16, >0`.
+
+* Can coerce error subset to superset, not backwards. `anyerror` is Global error set.
+
+* `const err = error.ThisWasAlwaysDoomed;` is equivalent to `const err = (error {ThisWasAlwaysDoomed}).ThisWasAlwaysDoomed`.
+
+* `!u8` like Error Union Type to allow `return 10;` & `return error.OverFlow;` from same call based on flow.
+
+* `catch` can return a default value of RHS expression type with/out block. `try` evaluates Error Union and return fn with error if get one.
+
+* `errdefer` evaluates deferred expression on block exit path only when returns error from block. Returning error shall be at or within same block.
+
+* With inferred error set `!T`, fn becomes generic.. thus trickier to do things like obtain Fn pointer.
+
+* Error Return Traces are enabled in `Default/ReleaseSafe` builds, default disabled in `ReleaseFast/ReleaseSmall`.
+
+> For code which returns error, just before `return` stmt that returns error.. Zig calls `__zig_return_error(*StackTrace) void`.
+
+---
+
+### Optionals
+
+* Optional Pointer secretly compiles down to a normal pointer. Compiler checks there is no null assigned to where it shouldn't.
+
+```
+fn someFoo(opt_ptr: ?*Foo) void {
+    ...
+    if (opt_ptr) |foo| {
+        workWith(foo);  // in block, foo can't ever be null
+    }
+    ...
+}
+```
+
+> Like `undefined`, `null` has its own type.. only way to use it to cast to different type.
 
 ---
 

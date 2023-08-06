@@ -24,6 +24,8 @@ const hello_while = @import("hello-while.zig");
 const hello_for = @import("hello-for.zig");
 const hello_if = @import("hello-if.zig");
 const hello_defer = @import("hello-defer.zig");
+const hello_fn = @import("hello-fn.zig");
+const hello_optional = @import("hello-optional.zig");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
@@ -64,4 +66,6 @@ fn sampleFlowConstructs() !void {
     try hello_for.sampleFor();
     try hello_if.sampleIf();
     try hello_defer.sampleDefer();
+    try hello_fn.sampleFn();
+    try hello_optional.sampleOptional();
 }
