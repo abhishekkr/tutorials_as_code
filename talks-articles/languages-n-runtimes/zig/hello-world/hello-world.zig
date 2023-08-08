@@ -26,6 +26,11 @@ const hello_if = @import("hello-if.zig");
 const hello_defer = @import("hello-defer.zig");
 const hello_fn = @import("hello-fn.zig");
 const hello_optional = @import("hello-optional.zig");
+const hello_casting = @import("hello-casting.zig");
+const hello_zerobit = @import("hello-zerobit.zig");
+const hello_usingnamespace = @import("hello-usingnamespace.zig");
+const hello_comptime = @import("hello-comptime.zig");
+const hello_asm = @import("hello-asm.zig");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
@@ -42,6 +47,11 @@ pub fn main() !void {
     try hello_operators.sampleOp();
     try sampleCompositeType();
     try sampleFlowConstructs();
+    try hello_casting.sampleCasting();
+    try hello_zerobit.sampleZeroBit();
+    try hello_usingnamespace.sampleUsingNamespace();
+    try hello_comptime.sampleComptime();
+    try hello_asm.sampleAsm();
     debugPrint("done.\n", .{});
 }
 

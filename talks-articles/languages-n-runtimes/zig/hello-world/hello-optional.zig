@@ -1,6 +1,5 @@
 const std = @import("std");
 const debugPrint = std.debug.print;
-const assert = std.debug.assert;
 
 pub fn sampleOptional() !void {
     debugPrint("=================== OPTIONALS\n", .{});

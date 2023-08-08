@@ -429,19 +429,132 @@ fn someFoo(opt_ptr: ?*Foo) void {
 
 ---
 
-### Casting, 0-bit Types, Result Location Semantics, usingnamespace
+### Casting
+
+* **non const** to **const**, **non volatile** to **volatile**, **bigger alignment** to **smaller** & **error sets** to supersets is allowed. Are no-ops at runtime as value representation remains same.
+
+* Tuples to Array.
+
+* Explicit casts: `@bitCast`, `@alignCast`, `@enumFromInt`, `@errorFromInt`, `@intFromBool`, `@intFromEnum`, `@intFromError`, `@intFromPt`, `@ptrFromInt`, `@truncate`
 
 ---
 
-### comptime, Assembly, Atomics, Async Functions, Builtin Functions
+### 0-bit Types
+
+* Some types `@sizeOf` is Zero.. `void`, `u0/i0`, `[0]{void}` Array/Vetors with len=0 or 0-bit element, Enum with 1 tag, struct with 0-bit fields & union with 1 0-bit field.
 
 ---
 
-### Build Mode, Single Threaded Builds, Undefined Behavior, Memory
+### Result Location Semantics
+
+> WIP
+
+---
+
+### usingnamespace in [hello-usingnamespace.zig](hello-world/hello-usingnamespace.zig)
+
+* Mixes all public declarations of operand (struct/union/enum/opaque) into the namespace.
+
+* Important use-case when organizing public API of file or package.
+
+> Using `pub` to qualify `usingnamespace` additionally makes imported declarations.
+
+```
+pub usingnamespace @cImport({
+    @cInclude("epoxy/gl.h");
+    @cInclude("GLFW/glfw3.h");
+    @cDefine("STBI_ONLY_PNG", "");
+    @cDefine("STBI_NO_STDIO", "");
+    @cInclude("stb_image.h");
+});
+```
+
+---
+
+### comptime in [hello-comptime.zig](hello-world/hello-comptime.zig)
+
+* Compile time parameters is how Zig implements Generics; comptime duck-typing.
+
+* Zig Types being first-class citizen can be passed around, but only comptime. Not just the definition, any value in flow of its resolution.
+
+* For `if` when condition is known at `comptime`, it's implicitly inline & skips analysis of branch not taken at runtime. As for `maxWithBool()` in sample code. Similar behavior with `switch` as well.
+
+* Within comptime expression, all variables are comptime. All expressions are to be evaluation ready at comptime. No `return` or `try`, unless Fn itself is comptime. No runtime side effects allowed.
+
+* All **container** level expressions are implicitly comptime.
+
+* E.g. `std.debug.print` uses `comptime` format for string formatting in compiler.
+
+---
+
+### Assembly
+
+* For `x86/x86_64` targets, syntax is AT&T syntax instead of Intel (as Asm parsing is provided by LLVM).
+
+* `volatile` optional modifier tells Zig, the inline asm expression has side-effects. Without `volatile`, Zig allows to delete inline asm code if unused.
+
+---
+
+### Atomics, Async Functions
+
+> WIP
+
+---
+
+### Builtin Functions
+
+* [Reference](https://ziglang.org/documentation/master/#Builtin-Functions)
+
+---
+
+### Build Mode
+
+* 4 build modes, available as `-Doptimize=$MODE` with MODE as:
+
+> * `Debug`, Optimizations:off, Safety:on, default. Slow perf & large binary. `zig build-exe example.zig`.
+> * `ReleaseSafe`, Optimizations:on, Safety:on. Medium perf & large binary. `zig build-exe example.zig -O ReleaseSafe`.
+> * `ReleaseFast`, Optimizations:on, Safety:off. Fast perf & large binary. `zig build-exe example.zig -O ReleaseFast`.
+> * `ReleaseSmall`, Size Optimizations:on, Safety:off. Medium perf & small binary. `zig build-exe example.zig -O ReleaseSmall`.
+
+---
+
+### Single Threaded Builds
+
+* Compile option `-fsingle-threaded`. Treat all thread local variables as container level variables. `@import("builtin").single_threaded` becomes `true`.
+
+---
+
+### Undefined Behavior
+
+* Reaching unreachable code.
+
+* Index out of bounds.
+
+* Casting -ve numbers to unsigned integer.
+
+* Cast truncates data.
+
+* Integer Overflow
+
+> * `+` add, `-` subtraction/negation, `*` multiply, `/`/`@divTrunc`/`@divFloor`/`@divExact` division can cause int overflow. So can stdlib math operations.
+>
+> * `@addWithOverflow`, `@subWithOverflow`, `@mulWithOverflow`, `@shlWithOverflow` returns a tuple of whether there was an overflow and overflowed bits.
+>
+> * Wraparound `+%` , `-%`, `*%` ops.
+
+* Shift ops. Unwrap null or error. Invalid error code or cast. Incorrect pointer alignment.
+
+---
+
+### Memory
+
+> WIP
 
 ---
 
 ### Compile Variables, Root Source File, Zig Build system, C, WASM, Targets
+
+> WIP
 
 ---
 
