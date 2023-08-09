@@ -411,7 +411,7 @@ const something = sth: {
 
 ---
 
-### Optionals
+### Optionals in [hello-optional.zig](hello-world/hello-optional.zig)
 
 * Optional Pointer secretly compiles down to a normal pointer. Compiler checks there is no null assigned to where it shouldn't.
 
@@ -429,7 +429,7 @@ fn someFoo(opt_ptr: ?*Foo) void {
 
 ---
 
-### Casting
+### Casting in [hello-casting.zig](hello-world/hello-casting.zig)
 
 * **non const** to **const**, **non volatile** to **volatile**, **bigger alignment** to **smaller** & **error sets** to supersets is allowed. Are no-ops at runtime as value representation remains same.
 
@@ -439,7 +439,7 @@ fn someFoo(opt_ptr: ?*Foo) void {
 
 ---
 
-### 0-bit Types
+### 0-bit Types in [hello-zerobit.zig](hello-world/hello-zerobit.zig)
 
 * Some types `@sizeOf` is Zero.. `void`, `u0/i0`, `[0]{void}` Array/Vetors with len=0 or 0-bit element, Enum with 1 tag, struct with 0-bit fields & union with 1 0-bit field.
 
@@ -487,7 +487,7 @@ pub usingnamespace @cImport({
 
 ---
 
-### Assembly
+### Assembly in [hello-asm.zig](hello-world/hello-asm.zig)
 
 * For `x86/x86_64` targets, syntax is AT&T syntax instead of Intel (as Asm parsing is provided by LLVM).
 
@@ -546,9 +546,45 @@ pub usingnamespace @cImport({
 
 ---
 
-### Memory
+### Memory in [hello-mem.zig](hello-world/hello-mem.zig)
 
-> WIP
+* Zig does no memory management. Zig has no default allocator, Fn that need.. accept an `Allocator` parameter.
+
+#### Choosing an Allocator
+
+> If making a library, accept an `Allocator` as a parameter.
+
+* When linking against **libc**, Zig exposes this allocator with `std.heap.c_allocator`.
+
+* If max bytes needed are known at comptime, use `std.heap.FixedBufferAllocator` or `std.heap.ThreadSafeFixedBufferAllocator` depending on whether need thread safety or not.
+
+* For process like Cli/WebServers that run without any cyclical pattern, makes sense to free everything at end. Like `sampleArena(..)`.
+
+* To write tests for `error.OutOfMemory`, use `std.testing.FallingAllocator`.
+
+* If none apply, can use `std.heap.GeneralPurposeAllocator`. Or implement an Allocator.
+
+#### Where are the bytes?
+
+* Like string literals, `const` declarations, comptime store/load are in global constant data section.
+
+* `var` within Fn stored in Fn's stack frame. Location of mem used with allocator, depends on Allocator's implementation.
+
+#### Implementing an Allocator
+
+* There is an Allocator interface, details in `std/mem.zig` doc supplying `allocFn` & `resizeFn`. E.g. `std/heap.zig`.
+
+#### Heap Allocation Failure
+
+* Zig convention is to not simply crash on heap allocation failure. `error.OutOfMemory` is returned on failure, to be handled. A library must make use of it.
+
+#### Recursion
+
+* WIP, not yet stack overflow safe.
+
+#### Lifetime & Ownership
+
+* Developer shall clealry decide if caller or called block owns responsibility to free the returned memory.
 
 ---
 
