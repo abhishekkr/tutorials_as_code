@@ -588,18 +588,131 @@ pub usingnamespace @cImport({
 
 ---
 
-### Compile Variables, Root Source File, Zig Build system, C, WASM, Targets
+### Compile Variables in [hello-builtin.zig](hello-world)
 
-> WIP
-
----
-
-### Style Guide, Source Encoding
+* Available via `const builtin = @import("builtin")`, values like current target, endianness & release mode.
 
 ---
 
-### Keyword Reference, Appendix
+### Root Source File
 
 > WIP
+
+* If linking with `libc`, can `export fn main`
+
+---
+
+### Zig Build system
+
+* Allows to build cross-platform dependency-free way to build, logic to build via `build.zig`.
+
+Example of tasks it can help with
+
+> * Build artifacts via compiler, includes Zig (as well C/C++) source code.
+> * Capture user-configured options to configure build.
+> * Build config as comptime values, providing a file imported via Zig code.
+> * Caching build artifacts; executing artifacts or system-installed tools.
+> * Run/veridy tests. Run `zig fmt` on entire/subset-of code. Custom tasks.
+
+* Executable Build; `zig init-exe` to auto-gen `build.zig`. Uses `standardTargetOptions(.{})` to allow `zig build` choose target to build for. There are other details like name, root src file, etc.
+
+* Library Build; `zig build-exe` to auto-gen `build.zig`. Allows providing root src file for lib & tests.
+
+* Compiling C Src code with
+
+```
+lib.addCSourcefile("src/lib.c", &[_][]const u8{
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+})
+```
+
+---
+
+### C
+
+* Zig is independent of C, doesn't depend on `libc`. Does facilitate C interop.
+
+* C Type Primitives `c_char`, `c_short`, `c_ushort`, `c_int`, `c_uint`, `c_long`, `c_ulong`, `c_longlong`, `c_ulonglong`, `c_longdouble`. For C `void`, use `anyopaque`.
+
+* `@cImport` to import symbols from C Header files.
+
+```
+const c = @cImport({
+    @cDefine("_NO_CRT_STDIO_INLINE", "1");
+    @cInclude("stdio.h");
+});
+
+pub fn main() void {
+    _ = c.printf("ziggit\n");
+}
+```
+
+* `zig translate-c` writes translated file to stdout. Provide include file dir via `-I`, `-D` preprocessor macro, `-cflags [flags]` & `-target` as well. Uses same underlying functionality as `@cImport`.
+
+> Uses Zig caching system, `--verbose-cimport` flag shows where.
+
+* Some C constructs like `goto` fail to translate. Zig uses demotion (`opaque`, `extern` & `@compileError`) to continue using translation instead of non-translatable entities.
+
+* C Macros that can't be translated get `@compileError`. [C Pointer](https://ziglang.org/documentation/master/#C-Pointers) is to be avoided whenever possible. Zig support C Variadic.
+
+* Zig can export a lib with C ABI using `export`. `zig build-lib $ZIGSRCFILE` to make static lib; `zig build-lib $ZIGSRCFILE -dynamic` to make shared lib. [More details here](https://ziglang.org/documentation/master/#Exporting-a-C-Library).
+
+* Can [mix object files](https://ziglang.org/documentation/master/#Mixing-Object-Files) with any other object file supporting C ABI.
+
+---
+
+### WASM
+
+* In-built support. For host env like browser/nodejs.. build as dynamic library using freestanding OS target like `zig build-lib math.zig -target wasm32-freestanding -dynamic -rdynamic`.
+
+```
+extern fn print(i32) void;
+
+export fn pow2(a: i32) void {
+    print(a * a);
+}
+```
+
+```
+const fs = require('fs');
+const source = fs.readFileSync("./math.wasm");
+const typedArray = new Uint8Array(source);
+
+WebAssembly.instantiate(typedArray, {
+  env: {
+    print: (result) => { console.log(`The result is ${result}`); }
+  }}).then(result => {
+  const pow2 = result.instance.exports.add;
+  pow2(2);
+});
+```
+
+* WASI support is _WIP_.
+
+---
+
+### Targets
+
+* Zig supports all targets that LLVM supports.
+
+* Libraries have their own. Like current `std` supports `Linux/Win/Max x86_64`.
+
+---
+
+> Core Gist
+
+* Style Guide: `camelCaseFunctionName`, `TitleCaseTypeName`, `snake_case_variable_name`.
+
+* Source Encoding: UTF-8
+
+* Keyword Reference: [here](https://ziglang.org/documentation/master/#Keyword-Reference)
+
+---
+
+### Appendix
+
+* Container is any construct that hold variable & function declarations; and can be instantiated. Src files themselves are containers. [Grammar](https://ziglang.org/documentation/master/#Grammar).
 
 ---

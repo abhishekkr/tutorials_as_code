@@ -32,6 +32,7 @@ const hello_usingnamespace = @import("hello-usingnamespace.zig");
 const hello_comptime = @import("hello-comptime.zig");
 const hello_asm = @import("hello-asm.zig");
 const hello_mem = @import("hello-mem.zig");
+const hello_builtin = @import("hello-builtin.zig");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
@@ -54,6 +55,7 @@ pub fn main() !void {
     try hello_comptime.sampleComptime();
     try hello_asm.sampleAsm();
     try hello_mem.sampleMem();
+    try hello_builtin.sampleBuiltin();
     debugPrint("done.\n", .{});
 }
 
