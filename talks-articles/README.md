@@ -20,7 +20,7 @@
 > [rust](./languages-n-runtimes/rust), [julia](./languages-n-runtimes/julia-lang/README.md), [clojure](./languages-n-runtimes/clojure),
 > [jvm-n-java](./languages-n-runtimes/jvm-n-java), [javascript](./languages-n-runtimes/javascript), [ballerina](./languages-n-runtimes/ballerina),
 > [nim](./languages-n-runtimes/nim/README.md), [racket](./languages-n-runtimes/racket/README.md), [typescript](./languages-n-runtimes/typescript/README.md),
-> [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala),
+> [nodejs](./languages-n-runtimes/nodejs), [R](./languages-n-runtimes/R-lang), [scala](./languages-n-runtimes/scala), [zig](./languages-n-runtimes/zig/README.md)
 >
 > [TLA+](./languages-n-runtimes/tla-plus),
 > [GraphQL](./languages-n-runtimes/graphql/README.md)
