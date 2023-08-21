@@ -4,19 +4,21 @@
 
 consider `ES_URI` to be something like `http://127.0.0.1:9200`
 
+* [REST APIs official doc](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html)
+
 
 * get nodes information
 
 ```
 ## hostname, role, free disk, heap used, ram used, FDs used, load
-curl -XGET https://escluster/_cat/nodes?v&h=host,r,d,hc,rc,fdc,l
+curl -XGET "${ES_URI}/_cat/nodes?v&h=host,r,d,hc,rc,fdc,l"
 ```
 
 * monitor search queues
 
 ```
 while true; do
-  curl -XGET 'host:9200/_cat/thread_pool?v&h=host,search.queue,search.active,search.rejected,search.completed' | sort -unk 2,3 ;
+  curl -XGET "${ES_URI}/_cat/thread_pool?v&h=host,search.queue,search.active,search.rejected,search.completed" | sort -unk 2,3 ;
   sleep 5 ;
 done
 ```
@@ -24,7 +26,9 @@ done
 * check indices
 
 ```
-curl -XGET https://escluster/_cat/indices?v
+curl -XGET "${ES_URI}/_cat/indices?v"
+
+curl -X GET "${ES_URI}/_cat/indices?bytes=b&s=store.size:desc&v&pretty"
 ```
 
 
@@ -52,7 +56,7 @@ curl -skL -XPOST "${ES_URI}/_cluster/reroute?pretty&retry_failed"
 * move shards to some place else
 
 ```
-curl -XPOST '${ES_URI}/_cluster/reroute?pretty' -H 'Content-Type: application/json' -d'
+curl -skL -XPOST "${ES_URI}/_cluster/reroute?pretty" -H 'Content-Type: application/json' -d'
 {
     "commands" : [
         {
@@ -78,25 +82,25 @@ curl -XPOST '${ES_URI}/_cluster/reroute?pretty' -H 'Content-Type: application/js
 * recovery information
 
 ```
-curl -XGET https://escluster/_recovery?pretty&active_only
+curl -XGET "${ES_URI}/_recovery?pretty&active_only"
 ```
 
 * cluster stats
 
 ```
-curl -XGET https://escluster/_cluster/stats?pretty
+curl -XGET "${ES_URI}/_cluster/stats?pretty"
 ```
 
 * node stats
 
 ```
-curl -XGET https://escluster/_nodes/stats?pretty
+curl -XGET "${ES_URI}/_nodes/stats?pretty"
 ```
 
 * all cluster settings
 
 ```
-curl -XGET https://escluster/_settings
+curl -XGET "${ES_URI}/_settings"
 ```
 
 
@@ -114,6 +118,24 @@ curl -X DELETE '${ES_URI}/_all'
 
 ```
 curl -X DELETE '${ES_URI}/shop'
+```
+
+---
+
+### mappings
+
+* all mappings
+
+```
+curl -X GET '${ES_URI}/_mapping'
+```
+
+* specific indexes mapping
+
+```
+curl -X GET '${ES_URI}/my-index-01/_mapping'
+
+curl -X GET '${ES_URI}/my-index-01,my-index-02/_mapping'
 ```
 
 ---
