@@ -688,7 +688,15 @@ Attaching 1 probe...
 
 * `printf()` could be used to leave breadcrumbs in run
 
-* `-d` prints AST & LLVM IR; `-v` prints BPF bytecode
+```
+printf("$duration_ms = (%d - %d) / 1000000\n", nsecs, @start[tid]);
+```
+
+* `-d` prints AST & LLVM IR; `-v` prints BPF bytecode; there is also `-dd` for verbose debug
+
+```
+bpftrace -d -e 'k:vfs_read { @[pid] = count(); }'
+```
 
 
 > [Next Chapter 6. CPUs | Part.II: Using BPF Tools](./chapter-06.md)
