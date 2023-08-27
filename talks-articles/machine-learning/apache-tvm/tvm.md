@@ -191,5 +191,55 @@ tvmc.tune(model, target='llvm', target_host=TARGET_HOST_PROCESSOR, hostname=HOST
 ```
 
 
+### Compiling & Optimizing Model with Python Interface (Auto TVM)
+
+> [autotvmintro.py](./autotvmintro.py) with code compile a pre-trained ResNet-50 v2 model for TVM, run real image through compiled model & interpret output alongwith model perf; tune model on CPU, re-compile & track changes
+
+* Specifying target appropriately is important. Some processors as `target='llvm -mcpu=skylake'`, while one with AVX-512 vector instruction set `target='llvm -mcpu=skylake-avx512'`.
+
+* For `tuning_option.trials`, for production with CPU 1500 is recommended and for GPU value between 3000-4000. `early_stopping` param is minimum number of trials.
+
+> By default search is guided with XGBoost Grid algorithm.
+
+
+### Working with Operators using Tensor Expression
+
+* [source](https://tvm.apache.org/docs/tutorial/tensor_expr_get_started.html)
+
+
+### Optimizing Operators with Schedule Templates & AutoTVM
+
+* [source](https://tvm.apache.org/docs/tutorial/autotvm_matmul_x86.html)
+
+
+### Optimizing Operators with Auto-Scheduling
+
+* [source](https://tvm.apache.org/docs/tutorial/auto_scheduler_matmul_x86.html)
+
+
+### Blitz Course to TensorIR
+
+* [source](https://tvm.apache.org/docs/tutorial/tensor_ir_blitz_course.html)
+
+
+### Cross Compilation and RPC
+
+* [source](https://tvm.apache.org/docs/tutorial/cross_compilation_and_rpc.html)
+
+
+### QuickStart Tutorial for Compiling Deep Learning Models
+
+* [source](https://tvm.apache.org/docs/tutorial/relay_quick_start.html)
+
+
+### Making your H/w Accelerator TVM-ready with UMA
+
+* [source](https://tvm.apache.org/docs/tutorial/uma.html)
+
+
+### Introduction to TOPI
+
+* [source](https://tvm.apache.org/docs/tutorial/intro_topi.html)
+
 ---
 
