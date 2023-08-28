@@ -15,6 +15,14 @@
 
 * [ml5.js](./toolbox/ml5.js/README.md)
 
+### MLOps
+
+* [MLOps w/ SageMaker](./MLOps.md)
+
+* [MLflow](./mlflow/docs-summary.md)
+
+* [Apache TVM](./apache-tvm/tvm.md)
+
 ---
 
 ### Approaches
