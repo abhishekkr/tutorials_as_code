@@ -23,11 +23,11 @@
 
 * [Chap.07 Twitter Clone](./chap07.md)
 
-_WIP_
-
 ### Part.3 Advanced Concepts
 
-* [Chap.08 Interfacing with other Languages](#)
+* [Chap.08 Interfacing with other Languages](./chap08.md)
+
+_WIP_
 
 * [Chap.09 Metaprogramming](#)
 
