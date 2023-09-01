@@ -27,8 +27,6 @@
 
 * [Chap.08 Interfacing with other Languages](./chap08.md)
 
-_WIP_
-
-* [Chap.09 Metaprogramming](#)
+* [Chap.09 Metaprogramming](./chap09.md)
 
 ---
