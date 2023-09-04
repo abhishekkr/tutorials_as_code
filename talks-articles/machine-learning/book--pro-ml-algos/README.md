@@ -5,12 +5,12 @@
 
 * [Chapter.2 Linear Regression](./chap02.md)
 
-
-_WIP_
-
 * [Chapter.3 Logistic Regression](./chap03.md)
 
-* [Chapter.4 Decision Tree](#)
+* [Chapter.4 Decision Tree](./chap04.md)
+
+
+_WIP_
 
 * [Chapter.5 Random Forest](#)
 
