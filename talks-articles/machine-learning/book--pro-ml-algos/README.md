@@ -9,12 +9,12 @@
 
 * [Chapter.4 Decision Tree](./chap04.md)
 
+* [Chapter.5 Random Forest](./chap05.md)
+
+* [Chapter.6 Gradient Boosting Machine](./chap06.md)
+
 
 _WIP_
-
-* [Chapter.5 Random Forest](#)
-
-* [Chapter.6 Gradient Boosting Machine](#)
 
 * [Chapter.7 Artifical NN](#)
 
