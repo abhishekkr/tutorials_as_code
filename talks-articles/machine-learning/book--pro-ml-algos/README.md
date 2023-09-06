@@ -13,12 +13,12 @@
 
 * [Chapter.6 Gradient Boosting Machine](./chap06.md)
 
+* [Chapter.7 Artifical NN](./chap07.md)
+
+* [Chapter.8 Word2Vec](./chap08.md)
+
 
 _WIP_
-
-* [Chapter.7 Artifical NN](#)
-
-* [Chapter.8 Word2Vec](#)
 
 * [Chapter.9 CNN](#)
 
