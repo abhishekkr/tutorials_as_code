@@ -17,12 +17,12 @@
 
 * [Chapter.8 Word2Vec](./chap08.md)
 
+* [Chapter.9 CNN](./chap09.md)
+
 
 _WIP_
 
-* [Chapter.9 CNN](#)
-
-* [Chapter.10 RNN](#)
+* [Chapter.10 RNN](./chap10.md)
 
 * [Chapter.11 Clustering](#)
 
