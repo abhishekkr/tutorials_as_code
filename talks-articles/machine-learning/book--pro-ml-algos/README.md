@@ -19,10 +19,10 @@
 
 * [Chapter.9 CNN](./chap09.md)
 
+* [Chapter.10 RNN](./chap10.md)
+
 
 _WIP_
-
-* [Chapter.10 RNN](./chap10.md)
 
 * [Chapter.11 Clustering](#)
 
