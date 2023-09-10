@@ -21,12 +21,12 @@
 
 * [Chapter.10 RNN](./chap10.md)
 
+* [Chapter.11 Clustering](./chap11.md)
+
+* [Chapter.12 Principle Component Analysis](./chap12.md)
+
 
 _WIP_
-
-* [Chapter.11 Clustering](#)
-
-* [Chapter.12 Principle Component Analysis](#)
 
 * [Chapter.13 Recommender System](#)
 
