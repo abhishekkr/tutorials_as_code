@@ -25,11 +25,6 @@
 
 * [Chapter.12 Principle Component Analysis](./chap12.md)
 
-
-_WIP_
-
-* [Chapter.13 Recommender System](#)
-
-* [Chapter.14 Implementing Algos in Cloud](#)
+* [Chapter.13 Recommender System](./chap13.md)
 
 ---

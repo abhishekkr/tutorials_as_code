@@ -58,7 +58,7 @@
 
 * MNIST having 28x28 image unrolled with each pixel value as columns. Given `28*28 = 784` columns, intuitively observe for Columns with Zero variance; Columns with minimal variance; and Columns with high variance.
 
-> PCA helps avoiding Zero & Minimal variance columns whil achieving decent accuracy with limited column count.
+> PCA helps avoiding Zero & Minimal variance columns while achieving decent accuracy with limited column count.
 > Experiments have shown it to reduce columns by 95% while using PC.
 
 ---
