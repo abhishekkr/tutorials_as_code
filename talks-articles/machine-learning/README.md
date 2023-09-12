@@ -25,6 +25,12 @@
 
 ---
 
+### Book Notes
+
+* [Pro ML Algorithms](./book--pro-ml-algos/README.md)
+
+---
+
 ### Approaches
 
 * Neural Networks: [ANN Concept](./approaches/neural-networks/concept-ann.md), [ANN Supervised Learning](./approaches/neural-networks/ann-supervised-learning.md)

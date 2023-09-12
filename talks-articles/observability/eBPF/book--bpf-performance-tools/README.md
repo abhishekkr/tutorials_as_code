@@ -13,17 +13,17 @@
 
 * [Chapter.3 Performance Analysis](./chapter-03.md)
 
-__WIP__
 * [Chapter.4 BCC](./chapter-04.md)
 
 * [Chapter.5 bpftrace](./chapter-05.md)
 
-
 ### Part.II Using BPF Tools
 
-* Chapter.6 CPUs
+* [Chapter.6 CPUs](./chapter-06.md)
 
-* Chapter.7 Memeory
+__WIP__
+
+* [Chapter.7 Memeory](./chapter-07.md)
 
 * Chapter.8 File Systems
 
