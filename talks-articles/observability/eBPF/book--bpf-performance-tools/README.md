@@ -21,9 +21,9 @@
 
 * [Chapter.6 CPUs](./chapter-06.md)
 
-__WIP__
-
 * [Chapter.7 Memeory](./chapter-07.md)
+
+__WIP__
 
 * Chapter.8 File Systems
 
