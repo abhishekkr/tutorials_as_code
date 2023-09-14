@@ -23,11 +23,11 @@
 
 * [Chapter.7 Memeory](./chapter-07.md)
 
+* [Chapter.8 File Systems](./chapter-08.md)
+
+* [Chapter.9 Disk I/O](./chapter-09.md)
+
 __WIP__
-
-* Chapter.8 File Systems
-
-* Chapter.9 Disk I/O
 
 * Chapter.10 Networking
 
