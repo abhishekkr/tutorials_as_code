@@ -27,11 +27,11 @@
 
 * [Chapter.9 Disk I/O](./chapter-09.md)
 
+* [Chapter.10 Networking](./chapter-10.md)
+
+* [Chapter.11 Security](./chapter-11.md)
+
 __WIP__
-
-* Chapter.10 Networking
-
-* Chapter.11 Security
 
 * Chapter.13 Applications
 
