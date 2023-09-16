@@ -31,36 +31,20 @@
 
 * [Chapter.11 Security](./chapter-11.md)
 
-__WIP__
+* [Chapter.12 Languages](./chapter-12.md)
 
-* Chapter.13 Applications
+* [Chapter.13 Applications](./chapter-13.md)
 
-* Chapter.14 Kernel
+* [Chapter.14 Kernel](./chapter-14.md)
 
-* Chapter.15 Containers
+* [Chapter.15 Containers](./chapter-15.md)
 
-* Chapter.16 Hypervisors
-
+* [Chapter.16 Hypervisors](./chapter-16.md)
 
 ### Part.III Additional Topics
 
-* Chapter.17 Other BPF Performance Tools
+* [Chapter.17 Other BPF Performance Tools](./chapter-17.md)
 
-* Chapter.18 Tips, Tricks, and Common Problems
-
-
-### Part.IV Appendixes
-
-* Appendix.A bpftrace One-Liners
-
-* Appendix.B bpftrace Cheat Sheet
-
-* Appendix.C BCC Tool Development
-
-* Appendix.D C BPF
-
-* Appendix.E BPF Instructions
-
-* Appendix.F Code Snippets
+* [Chapter.18 Tips, Tricks, and Common Problems](./chapter-18.md)
 
 ---
