@@ -7,6 +7,8 @@
 
 * [Book Notes: BPF Performance Tools](./book--bpf-performance-tools/README.md)
 
+* Sample eBPF Scripts: [Trace TCP send\_msg](./trace-tcp-sendmsg.ebpf)
+
 ---
 
 source/references/detailed-reads

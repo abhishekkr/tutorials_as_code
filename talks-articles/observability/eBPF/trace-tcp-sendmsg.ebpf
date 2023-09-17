@@ -1,0 +1,30 @@
+#!bpftrace
+
+#include <net/sock.h>
+
+k:tcp_sendmsg
+{
+  @sk[tid] = arg0;
+  @size[tid] = arg2;
+}
+
+kr:tcp_sendmsg
+/@sk[tid]/
+{
+  $sk = (struct sock *)@sk[tid];
+  $size = @size[tid];
+  $af = $sk->__sk_common.skc_family;
+  if ($af == AF_INET) {
+    $daddr = ntop($af, $sk->__sk_common.skc_daddr);
+    $saddr = ntop($af, $sk->__sk_common.skc_rcv_saddr);
+    $lport = $sk->__sk_common.skc_num;
+    $dport = $sk->__sk_common.skc_dport;
+    $dport = ($dport >> 8) | (($dport << 8) & 0xff00);
+    printf("%-15s %-5d -> %-15s %-5d: %d bytes, retval %d\n",
+        $saddr, $lport, $daddr, $dport, $size, retval);
+  } else {
+    printf("IPv6...\n");
+  }
+  delete(@sk[tid]);
+  delete(@size[tid]);
+}
