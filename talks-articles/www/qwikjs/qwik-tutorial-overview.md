@@ -1,7 +1,8 @@
 
 ## Qwik Tutorial
 
-> [source](https://qwik.builder.io/tutorial/)
+> [source](https://qwik.builder.io/tutorial/),
+> [playground](https://qwik.builder.io/playground) lets you have deeper insight into constructs
 
 * Qwik, front-end f/w to build resumable app. Focus to fetch & exec only strictly necessary code for user actions.
 
@@ -446,21 +447,63 @@ export const Greeter = component$((props: GreeterProps) => {
 
 ### Styling
 
-* _WIP_ {useStyles, useStylesScoped}
+* `useStyles$` loads style while mounting component. If a child component is loaded later, new styles get inserted alongwith. Code Sample is part of `component SampleNamedSlot`.
+
+> * CSS from a separate file can be imported to be used as `import AppCSS from './app.css'`.
+
+* `useStylesScoped$` allows to load & apply style to specific component scope only. As applied for `div` in sample code `component Panel` in repo link atop, only applies to that component.
 
 
 ### $ and QRL
 
-* _WIP_ {optimizer, lazy-loading constant, lazy-loading closures}
+* Optimizer looks for `$` suffixed Fn, transform it to entry point. Becomes a lazy-loaded boundary in itself.
+
+> * Optimizer can serialize all that Qwik can. Special handling for Closures making it serializable & thus Qwik very resumable.
+
+* Using `$()` fn to mark data makes it a lazy-loading constant, returning a QRL which is serializable. Code sample in `component Collapsible` at repo link atop.
+
+* Closures can be lazy-loading similarly within `$(..)` generating `QRL<Fn>`.
+
+```
+  const store = useStore({ name: '' });
+...
+  <input
+    // // Instead of commented segment, can be written easily as below
+    // onInput$={$(async (event: KeyboardEvent) => { ...
+    // })}
+    onInput$={(event) => {
+      const input = event.target as HTMLInputElement; store.name = input.value;
+    }}
+    value={store.name}
+  />
+```
 
 
 ### Composing new APIs
 
-* _WIP_ {Creating API with $; Compose use Hooks}
+* Creating API with $ suffix. E.g. a lazy-loaded alternative for `setTimeout(() => {..}, timeout);`.
+
+```
+export function delayQrl<T>(fn: QRL<() => T>, delayInMs: number): Promise<T> {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res(fn.invoke());
+    }, delayInMs);
+  });
+}
+
+export const delay$ = implicit$FirstArg(delayQrl);
+...
+    <button onClick$={async () => { s.count++; await delay$(() => s.delay++, 1000); }} >+1</button>
+```
+
+* Hooks allow abstract component's common logic, to be shared. Code e.g. as `useMousePosition()` in sample at repo link atop.
 
 
 ### Understanding Qwik Difference
 
-* _WIP_ {Tree shaking static components; Capturing lexical scope}
+* Qwik only loads component in client that is to be re-rendered; static don't need to. Data binding determines if a component is static or dynamic. Static components never need to be loaded from client, only reachable on initial render at SSR.
+
+* Qwik tree shakes stores needed by client. To have less states managed & sent to client; using them such that not entire store is passed.. helps Qwik make intelligent decision.
 
 ---
