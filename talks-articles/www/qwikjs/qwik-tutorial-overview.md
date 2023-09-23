@@ -232,7 +232,7 @@ export default component$(() => {
 });
 ```
 
-* Listeners: `useOn()` for current component's root element; `useOnDocumented()` for 'document' object; `useOnWindow()`.
+* Listeners: `useOn()` for current component's root element; `useOnDocumente()` for 'document' object; `useOnWindow()`.
 
 > `useOn()`'s 2nd QRL (Qwik URL as lazy-load ref). If 2nd arg is a function instead of QRL, would eagerly execute to allocate listener closure. Using `$` as below, Qwik can lazy load the closure as listener triggers.
 
@@ -348,35 +348,116 @@ export default component$(() => {
 
 ### Component Props
 
-* _WIP_ {Passing Data to Components; Passing Closures}
+* Components have props as args to fn; used to pass data to children component.
+
+```
+... <Greeter salutation="Hello" name="World" />
+...
+interface GreeterProps { salutation: string; name: string; }
+export const Greeter = component$((props: GreeterProps) => {
+  return (
+    <p> {props.salutation} {props.name}! </p>
+  );
+});
+```
+
+* Props must be serializable; Callback Fn ain't directly so to pass them convert to QRLs using `$()`.
+
+> * Qwik's convenience APIs end in `$`. Same as explicit `cbQrl = $(() => {..}); useTaskQrl(cbQrl)`; helps separate declartion and invoke blocks. Otherwise can use inline form `useTask$(() => {...}/>`.
+> * The prop name to end in `$`.
+
+```
+  const helloQrl = $(() => { return 'Hello'; });
+...
+  <Greeter salutation$={helloQrl} name$={() => {alert("World");}} />
+...
+interface GreeterProps {
+  salutation$: PropFunction<() => void>;
+  name$: PropFunction<() => void>;
+}
+export const Greeter = component$((props: GreeterProps) => {
+  return (
+    <div> <button onClick$={props.name$}>{props.salutation$()}</button> </div>
+  );
+});
+```
+
 
 ### Reactivity
 
-* _WIP_ {Implicit: template; Explicit: useTask$ & useResource$}
+* Implicit: template. Subscriptions are auto created & removed. In SSR, subscription info generates at server and gets passed to client. E.g. use of Stores before.
+
+* Explicit: useTask$. Allows explicit trigger of code on a property change. `useTask$` hooks execute before renders; can be async.
+
+* Explicit: useResource$; to integrate with external resources for data fetch and prepare. Provides `<Resource/>` to display data element. E.g. usage as for github repo example.
+
 
 ### Context
 
-* _WIP_ {Using Context}
+* Can pass data to child components without explicit params via Context sharing. Used for data like styling, app state, user management, etc.
+
+> Using context has 3 stages:
+> * `createContextId()` to create a unique serializable ID.
+> * `useContextProvider()` in parent component to publish context value.
+> * `useContext()` in all (grand)children components to retrieve context.
+> Code available as `component SampleCtx` in repo link at top.
 
 ### Lifecycle Hooks
 
-* _WIP_ {useTask$, useSignal$, useVisibleTask$, useOn..$, useUnMount$}
+* `useTask$`, e.g. code available as `component SampleTask` in repo link at top.
+
+> * Can also have clean-up fn to run on next invoke or component removal.
+> * Creates subscription using `track()` fn; each invoke clears subscription so based on requirement would need to be reset.
+> * If not async, get eval before render and thus can compute values used in render itself.
+
+* `useSignal$` stores single value as `useStore()`; can skip re-renders.
+
+> * Works with all primitive types; `useStore` is suggested for lists or complex objects.
+> * E.g. `const intStore = useSignal(0);` to create and accessible by 'value' prop as `intStore.value++`.
+> * Can hold ref of DOM elements created by component, via prop binding `ref={signalIdent}` in element. Code e.g. in `component SampleSignal` at repo link atop.
+
+* `useVisibleTask$` evals on client after it resumes; recieves `track` like `useTask$`.
+
+> Takes optional arg `{strategy: val}`.
+> * Where default val `'intersection=observer'` first exec when element is visible in viewport;
+> * `'document-ready'` using document load event; and
+> * `'document-idle'` using requestIdleCallback API.
+> Code e.g. in `component Clock` at repo link atop.
+
+* `useOn$`, `useOnDocumente$`, `useOnWindow$` to attach listeners. Useful with custom APIs or for dynamic events based on props. Code e.g. in `Component MouseXY` at repo sample.
+
+* `useUnMount$` is planned to run cleanup code on component removal.
+
 
 ### Projection
 
-* _WIP_ {Basic Projection, Named Slots, Fallback Content}
+* Projection is parent component deciding content & passing it to child to decide if & how to render.
+
+> * `<Panel>` element within `<App>` is content to be projected. Wraps it in `<div>` tag and project using `<Slot>` element.
+> * `<Slot>` allows out-of-order render, as even if parent is not yet resumed. Whereas Child component needs to be serializable & need to be re-rendered every time parent does.
+> Code e.g. in `component SampleSlot` at repo link atop.
+
+* More than one content `<Slot name="alpha">` may need be projected for `<div q:slot="alpha">...</div>`; done via Named Slots.
+
+> In e.g. `component SampleNamedSlot`, used `<Collapsible>` toggles b/w open/closed states.. doesn't need re-render to recover projected content.
+
+* Fallback Content allows children to display something if parent didn't. Managed via CSS selectors for tag wrapping slot. Code e.g. is `<Slot name="notset" />` in sample link atop.
+
 
 ### Styling
 
 * _WIP_ {useStyles, useStylesScoped}
 
+
 ### $ and QRL
 
 * _WIP_ {optimizer, lazy-loading constant, lazy-loading closures}
 
+
 ### Composing new APIs
 
 * _WIP_ {Creating API with $; Compose use Hooks}
+
 
 ### Understanding Qwik Difference
 
