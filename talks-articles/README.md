@@ -55,7 +55,7 @@
 > [misc](./dataengines/README.md)
 
 #### [datastores](./datastores)
-> [mysql](./datastores/mysql), [postgresql](./datastores/postgresql), [redis](./redis), [elasticsearch](./datastores/elasticsearch),
+> [mysql](./datastores/mysql), [postgresql](./datastores/postgresql), [redis](./datastores/redis/README.md), [elasticsearch](./datastores/elasticsearch),
 > [cayley](./datastores/cayley), [cockroachdb](./datastores/cockroachdb), [crate](./datastores/crate), [druid](./datastores/druid),
 > [gundb](./datastores/gundb), [influxdata](./datastores/influxdata), [rethinkdb](./datastores/rethinkdb), [rrdtool](./datastores/rrdtool),
 > [genre-timeseries](./datastores/genre-timeseries)

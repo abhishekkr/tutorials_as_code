@@ -1,5 +1,6 @@
 
 ## Managing Redis with Kubernetes
+
 > Redis Conf 2016
 > Kelsey Hightomwer, Google
 
