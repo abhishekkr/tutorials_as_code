@@ -7,8 +7,6 @@
 
 * Primitve `string` type. If required data structure ain't supported by Redis, can always just serialize and use this. Max length 512MB.
 
-> Bit-oriented op are supported on Redis strings. So, for 512MB it can manipulate 2^32 bits. Eg: usage like tracking up/down states of million sensors in a simple bitmapped string.
-
 * Hashes for shallow objects.
 
 * Lists with items sorted by insertion order. Implemented with LinkedLists, so good for Queues but positional index is slower (better suited to Sorted Sets).
@@ -28,5 +26,14 @@
 
 * This log data-structure is append-only table, allowing multiple consumers to track event data.
 
+### More About Strings
+
+* Bit-oriented op are supported on Redis strings. So, for 512MB it can manipulate 2^32 bits. Eg: usage like tracking up/down states of million sensors in a simple bitmapped string.
+
+* Could also be used to cache requests/configs/states, have counters. Can have expiry on key.
+
+* String Ops with `O(N)` are `APPEND`, `BITCOUNT`, `BITOP`, `BITPOS`, `GETRANGE`, `MGET`, `MSET`, `MSERTNX`.
+
+* String Ops with `O(1)` are `BITFIELD`, `DECR`, `DECRBY`, `GET`, `GETBIT`, `GETSET`, `INCR`, `INCRBY`, `INCRBYFLOAT`, `PSETEX`, `SET`, `SETBIT`, `SETEX`, `SETNX`, `SETRANGE`, `SETRLEN`.
 
 ---
