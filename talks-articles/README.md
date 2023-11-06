@@ -38,8 +38,8 @@
 #### [virtualization](./virtualization)
 > [aws](./virtualization/aws), [docker](./virtualization/docker), [kuberentes](./virtualization/kuberentes), [kvm](./virtualization/kvm), [podman](./virtualization/podman)
 
-#### [config-mgmt](./config-mgmt)
-> [ansible](./config-mgmt/ansible), [chef](./config-mgmt/chef)
+#### [devops-toolbox](./devops-toolbox)
+> [ansible](./devops-toolbox/ansible), [chef](./devops-toolbox/chef), [puppet](./devops-toolbox/puppet)
 
 #### [www](./www)
 > [webaudio](./www/webaudio),
@@ -86,7 +86,7 @@
 #### [machine-learning](./machine-learning/README.md)
 > *toolbox*: [rasa](./machine-learning/toolbox/rasa/README.md),
 > [tensorflow](./machine-learning/toolbox/tensorflow), [torch/pytorch](./machine-learning/toolbox/torch),
-> [caffe2](./machine-learning/toolboox/caffe2/README.md), [NumPy](./machine-learning/toolbox/numpy/README.md),
+> [caffe2](./machine-learning/toolbox/caffe2/README.md), [NumPy](./machine-learning/toolbox/numpy/README.md),
 > [ml5.js](./machine-learning/toolbox/ml5.js/README.md),
 >
 > [more ML](./machine-learning/README.md)
