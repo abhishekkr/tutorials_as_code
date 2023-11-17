@@ -1,0 +1,34 @@
+diff --git a/roles/kubernetes/node/tasks/main.yml b/roles/kubernetes/node/tasks/main.yml
+index 1b822cf2f..731d3b5c9 100644
+--- a/roles/kubernetes/node/tasks/main.yml
++++ b/roles/kubernetes/node/tasks/main.yml
+@@ -128,6 +128,19 @@
+   ignore_errors: true  # noqa ignore-errors
+   when:
+     - kube_proxy_mode == 'ipvs'
++    - ansible_kernel is version_compare('4.19', '<')
++  tags:
++    - kube-proxy
++
++- name: Modprobe nf_conntrack
++  community.general.modprobe:
++    name: nf_conntrack
++    state: present
++  register: modprobe_nf_conntrack
++  ignore_errors: true  # noqa ignore-errors
++  when:
++    - kube_proxy_mode == 'ipvs'
++    - ansible_kernel is version_compare('4.19', '>=')
+   tags:
+     - kube-proxy
+ 
+@@ -143,6 +156,9 @@
+       {% if modprobe_nf_conntrack_ipv4 is success -%}
+       nf_conntrack_ipv4
+       {%-   endif -%}
++      {% if modprobe_nf_conntrack is success -%}
++      nf_conntrack
++      {%-   endif -%}
+   when: kube_proxy_mode == 'ipvs'
+   tags:
+     - kube-proxy
