@@ -1,0 +1,44 @@
+* {
+  padding-left: 0.25em;
+}
+
+#header {
+  font-weight: bold;
+  font-size: 3vw;
+  padding-bottom: 1em;
+}
+
+form {
+  border: 1px solid #ccc!important;
+  border-radius: 10px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+form * {
+  margin: 5px 5px 5px 5px;
+}
+
+#messages {
+  border: 1px solid #aaa!important;
+  border-radius: 10px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#messages span {
+  box-sizing: inherit;
+  border-left: 6px solid #ccc!important;
+  border-bottom: 1px solid #aaa!important;
+  border-color: #2196F3!important;
+  width: 90%;
+  color: #000!important;
+  background-color: #ddffff!important;
+  padding: 0.01em 16px;
+}
