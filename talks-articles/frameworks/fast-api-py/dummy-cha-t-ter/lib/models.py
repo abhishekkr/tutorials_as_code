@@ -1,5 +1,8 @@
 from pydantic import BaseModel
 from typing import Union
+"""
+This is to manage Pydantic Models used for routes in Chatter.
+"""
 
 
 class User(BaseModel):
