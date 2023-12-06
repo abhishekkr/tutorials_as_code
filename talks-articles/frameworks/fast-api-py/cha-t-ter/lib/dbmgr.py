@@ -5,18 +5,21 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean
 
 from .models import User
+from .config import settings
 
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+SQLALCHEMY_DATABASE_URL = settings.sqlite_db_path
 ENGINE = create_engine(SQLALCHEMY_DATABASE_URL,
                        connect_args={"check_same_thread": False})
-SESSION = sessionmaker(autocommit=False, autoflush=False, bind=ENGINE)
+SESSION = sessionmaker(autocommit=settings.db_autocommit,
+                       autoflush=settings.db_autoflush,
+                       bind=ENGINE)
 BASE = declarative_base()
 
 
 class Users(BASE):
-   __tablename__ = 'Users'
-   id = Column(Integer, primary_key=True, nullable=False)
+   __tablename__ = 'users'
+   id = Column(Integer, primary_key=True, autoincrement=True)
    name = Column(String(50), unique=True, nullable=False)
    subscribed = Column(Boolean)
 
