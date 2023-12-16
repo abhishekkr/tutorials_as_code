@@ -44,6 +44,14 @@ class DB:
             print(e)
             return None
 
+    def get_users(db: Session):
+        try:
+            users = db.query(Users).all()
+            return [{'name': u.name, 'id': u.id} for u in users]
+        except Exception as e:
+            print(e)
+            return None
+
     def get_usernames(db: Session):
         try:
             users = db.query(Users).all()

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>chatter</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <div id="sticky-banner" tabindex="-1" class="sticky top-0 start-0 z-50 flex justify-between h-50 w-full p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 box-decoration-slice bg-gradient-to-r from-indigo-600 to-pink-500 shadow-xl">
+      <div class="flex items-center mx-auto">
+          <p class="flex items-center text-xl font-bold text-white tracking-wider hover:skew-y-6">
+              <span>Cha-t-ter</span>
+          </p>
+      </div>
+    </div>
+    <div id='main-container' class='sticky top-0 pt-4'>
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+  </body>
+</html>
