@@ -45,6 +45,8 @@
 
 ### Shorter Wikis
 
+* LLMs: [fundamentals](./wiki/LLM-fundamentals.md); [terminology](./wiki/LLM-terminology.md)
+
 * [Singular Value Decomposition](./wiki/SVD.md)
 
 * [Latent Semantic Analysis](./wiki/LSA.md)
