@@ -1,7 +1,7 @@
 
 ## MySQL Data Compression
 
-> topics: Page Compression, Table Compression
+> topics: Page Compression, Table Compression (ref: v8.9)
 
 * If just need compression for a specific field, and table compression isn't suitable or overhead. Opt for app level compression instead.
 
