@@ -45,4 +45,66 @@
 > * Post MySQL 5.6.17.. OPTIMIZE TABLE is performed online for regular and partitioned InnoDB tables.
 > * XLOCK is taken.. during prepare phase for metadata update and an intermediate table is created. Then during commit phase, table metadata changes to be committed.
 
+
+### Buffering & Caching
+
+#### InnoDB Buffer Pool Optimization
+
+> Buffer pool size must always be equal to or a multiple of `innodb_buffer_pool_chunk_size * innodb_buffer_pool_instances`.
+
+```
+mysql> SELECT @@innodb_buffer_pool_size;
+mysql> SELECT @@innodb_buffer_pool_chunk_size;
+mysql> SELECT @@innodb_buffer_pool_instances;
+```
+
+* Buffer Pool state can be saved and restored. Popular use-case is reduce restart warm-up; also reset buffer after running report/maintenance tasks to rid of less required state.
+
+* InnoDB stores caching data & indexes in memory. `SHOW ENGINE INNODB STATUS` to see impact.
+
+* For Linear read-ahead `innodb_read_ahead_threshold` value `0-64; default: 56`. So if sequential pages read is more than it; async prefetch happens.
+
+* Ranom read-ahead `innodb_random_read_ahead` to ON makes InnoDB async prefetch pages based on prediction regardless of order of pages in buffer pool.
+
+* `innodb_page_cleaners` (auto set to value `innodb_buffer_pool_instances`) value `1-64; default: 4` flushes dirty pages from buffer pool instances. May impact write-io.
+
+* If have buffer pool in GBs; dividing pool instances improves **concurrency**; configured with `innodb_buffer_pool_instances` (value `1-64; default: 1`) with adjusted `innodb_buffer_pool_size`.
+> Each pool has its own free/flush lists, LRUs, mutex, etc.
+
+* In periodic batch reporting queries which result in large scans, setting `innodb_old_blocks_time` (default: 1000; higher value ages blocks quicker) during runs help keep normal workload in the buffer pool.
+
+* When scanning large tables that cannot fit entirely in the buffer pool, setting `innodb_old_blocks_pct` to a small value (default: 37; like 5 restricts this read once data to 5% of the buffer pool).
+
+
+#### Query Cache (Deprecated by v5.7.20; removed by v8)
+
+> Better to use options like ProxySQL+Readyset now, if need be.
+
+* Query cache stores `SELECT` statements with retrieved records in memory.
+
+```
+mysql> show variables like 'have_query_cache';
+mysql> show variables like 'query_cache_%' ;
+
+-- query_cache_type => 0: OFF; 1: Cache all except 'SELECT SQL_NO_CACHE'; 2: Only cache 'SELECT SQL_CACHE'
+-- important stats are 'Qcache_lowmem_prunes', 'Qcache_free_memory', 'Qcache_hits'
+```
+
+* To check query durations
+
+```
+mysql> SET profiling = 1;
+mysql> SHOW PROFILES;
+-- result would show Query IDs; for details can do 'SHOW PROFILE FOR QUERY 1;'
+```
+
+#### Cache Prepared Statement
+
+* MySQL's Prepare allows have a statement once; run multiple times with different parameters. Server converts statement into internal structure & caches it; to avoid overhead of reconverting on each execution.. thus more efficiency.
+> * MySQL's stored procedures, functions, triggers & events are similarly cached as well.
+> * These caches are session specific.
+> * MySQL keeps cache updated to DDL changes. The `Com_stmt_reprepare` status variable tracks the number of repreparations.
+
+> Also available from within ORMs, as Go's [GORM](https://gorm.io/docs/performance.html#Caches-Prepared-Statement).
+
 ---
