@@ -38,4 +38,7 @@
 > * [impl Trait](generic-impl-trait.rs)
 > * [Exercise: Generic min](ex-generic-min.rs)
 
+* Standard Library Types: [pew-pew](./pew-pew/README.md)
+> * [Exercise: Counter](./ex-counter.rs)
+
 ---

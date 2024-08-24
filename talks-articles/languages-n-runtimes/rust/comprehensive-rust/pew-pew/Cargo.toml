@@ -1,0 +1,7 @@
+[package]
+name = "pew-pew"
+version = "0.1.0"
+edition = "2021"
+description = "A lib crate created to apply Comprehensive Rust flows, that can only be done in a crate."
+
+[dependencies]
