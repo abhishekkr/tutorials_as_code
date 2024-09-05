@@ -1,16 +1,16 @@
 ```ASCII
-                        ~'~`\/@
-                      ~\\\\\\\\\\\
-                    ~@\\\\\\\\\\\\\
-     ,-,-,           |C>   // )\\\\|
-   ,',','|          /    || ,'/////|
+                       .~'~`@/@
+                      ~\\\\\\\\\@\        Tech tutorials' content from
+                    ~@\\\\\\\\\\\\\         video, articles, projects, etc.
+     ,-,-,           |C>   // )\\\\;        mostly tried as code samples..
+   ,',','|          /    || ,'/////,        sometimes as TL;DR wikis.
  ,-,','  |         (,    @@   /////
- | ||    |          //  @@@|//''''|
+ | ||    |          ##  @@@|//''''|
  | ||TUT |           @@@@@@|     _|
-_| ||.AS.|______      @@@@@\____/ \
+_| ||.AS.|______,     @@@@@\____/ \
  | ||CODE|     ,|         _/_____/ \
  | ||  ,'    ,' |        /          |
- | ||,[]   ,'   |       |         \  |
+ | ||,'@'  ,'   |       |         \  |
  |_|/    ,'     |      /           | |
 _______,'      ,',_____|      |    | |
        |     ,','      |      |    | |
@@ -45,7 +45,7 @@ _______|','   ///_/-------------/   |
 #### [frameworks](./frameworks)
 > [Phoenix](./frameworks/phoenix),
 > [Flutter](./frameworks/flutter), [React](./frameworks/react),
-> [GatsbyJS](./frameworks/gatsbyjs)
+> [GatsbyJS](./frameworks/gatsbyjs),
 > [Spin](./frameworks/spin)
 
 #### [virtualization](./virtualization)
@@ -81,7 +81,7 @@ _______|','   ///_/-------------/   |
 > [phoenix](./frameworks/phoenix)
 
 #### [google](./google)
-> [google-cloud-platform](./google/google-cloud-platform), [gmail-api-email-access](./google/gmail-api-email-access)
+> [GCP](./google/google-cloud-platform), [GMail API](./google/gmail-api-email-access)
 
 #### [hacks](./hacks)
 > [misc](hacks/README.md)
