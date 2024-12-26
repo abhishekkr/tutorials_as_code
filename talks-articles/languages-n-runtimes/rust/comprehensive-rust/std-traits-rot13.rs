@@ -8,8 +8,8 @@ struct RotDecoder<R: Read> {
 // Implement the `Read` trait for `RotDecoder`.
 impl<R: Read> Read for RotDecoder<R> {
     fn read(&mut self, buf: &mut [u8]) -> Result<usize> {
-        let upper_a = 'A' as u8;
-        let lower_a = 'a' as u8;
+        const UPPER_A: u8 = 'A' as u8;
+        const LOWER_A: u8 = 'a' as u8;
         let size = self.input.read(buf)?;
 
         let rotate = |chr: u8, base: u8| -> u8 { (chr - base + self.rot) % 26 + base };
@@ -19,8 +19,8 @@ impl<R: Read> Read for RotDecoder<R> {
                 continue;
             }
             *chr = match chr.is_ascii_uppercase() {
-                true => rotate(*chr, upper_a),
-                false => rotate(*chr, lower_a),
+                true => rotate(*chr, UPPER_A),
+                false => rotate(*chr, LOWER_A),
             };
         }
         Ok(size)
