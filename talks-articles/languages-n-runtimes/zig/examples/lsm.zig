@@ -1,6 +1,5 @@
 const std = @import("std");
 
-const CWD = std.fs.cwd();
 const DB_FILEPATH = "data-blah.lsm";
 const MAX_MEMORY_SIZE: usize = 10;
 const MAX_PREDISK_SIZE: usize = 50;
@@ -25,7 +24,7 @@ const PreDiskLayer = struct {
     size: usize,
 
     pub fn persist(self: PreDiskLayer, filepath: []const u8) !void {
-        const file = try CWD.openFile(filepath, .{ .mode = .write_only });
+        const file = try std.fs.cwd().openFile(filepath, .{ .mode = .write_only });
         defer file.close();
         try file.seekFromEnd(0);
 
@@ -45,7 +44,7 @@ const LSMTree = struct {
 };
 
 pub fn main() !void {
-    const file = try CWD.createFile(DB_FILEPATH, .{});
+    const file = try std.fs.cwd().createFile(DB_FILEPATH, .{});
     defer file.close();
     std.debug.print("MAX_MEMORY_SIZE: {d}\n", .{MAX_MEMORY_SIZE});
     var tree = try initLSMTree();
