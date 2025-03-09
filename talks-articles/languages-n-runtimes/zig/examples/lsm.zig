@@ -65,23 +65,16 @@ pub fn main() !void {
 
     printTree(&tree);
 
-    const value = get(&tree, 2);
-    std.debug.print("Value: {any}\n", .{value});
-    const value2 = get(&tree, 4);
-    std.debug.print("Value: {any}\n", .{value2});
+    for ([5]i64{ 2, 4, 0, 1998, 1898 }) |k| {
+        const value = get(&tree, k);
+        std.debug.print("Value: {any}\n", .{value});
+    }
 
     //try printPersisted(DB_FILEPATH);
 
-    const value3 = get(&tree, 0);
-    std.debug.print("Value: {any}\n", .{value3});
-    const value4 = get(&tree, 1998);
-    std.debug.print("Value: {any}\n", .{value4});
-    const value5 = get(&tree, 1898);
-    std.debug.print("Value: {any}\n", .{value5});
-
     destroyLSMTree(&tree);
-    defer _ = GPA_M.deinit();
-    defer _ = GPA_D.deinit();
+    _ = GPA_M.deinit();
+    _ = GPA_D.deinit();
 }
 
 pub fn printPersisted(filepath: []const u8) !void {
