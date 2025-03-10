@@ -1,13 +1,11 @@
 const std = @import("std");
 
 const DB_FILEPATH = "data-blah.lsm";
-const MAX_MEMORY_SIZE: usize = 10;
-const MAX_PREDISK_SIZE: usize = 50;
+const MAX_MEMORY_SIZE: usize = 512;
+const MAX_PREDISK_SIZE: usize = 10240;
 
-var GPA_M = std.heap.GeneralPurposeAllocator(.{}){};
-const MALLOC = GPA_M.allocator();
-var GPA_D = std.heap.GeneralPurposeAllocator(.{}){};
-const ALLOCATOR = GPA_D.allocator();
+var GPA = std.heap.GeneralPurposeAllocator(.{}){};
+const ALLOCATOR = GPA.allocator();
 
 const KeyVal = packed struct {
     key: i64,
@@ -15,7 +13,7 @@ const KeyVal = packed struct {
 };
 
 const MemLayer = struct {
-    KV: []KeyVal,
+    KV: [MAX_MEMORY_SIZE]KeyVal,
     size: usize,
 };
 
@@ -49,32 +47,34 @@ pub fn main() !void {
     std.debug.print("MAX_MEMORY_SIZE: {d}\n", .{MAX_MEMORY_SIZE});
     var tree = try initLSMTree();
 
-    try put(&tree, 1, 100);
-    try put(&tree, 2, 200);
-    try put(&tree, 3, 300);
-    try put(&tree, 4, 40);
-    try put(&tree, 5, 50);
-    for (10..99999) |i| {
+    for (1..999999) |i| {
         const tmp: i64 = @intCast(i);
         try put(&tree, tmp, tmp * 10);
     }
-    try put(&tree, 6, 60);
-    try put(&tree, 7, 70);
-    try put(&tree, 8, 80);
-    try put(&tree, 9, 90);
 
-    printTree(&tree);
+    //printTree(&tree);
 
     for ([5]i64{ 2, 4, 0, 1998, 1898 }) |k| {
-        const value = get(&tree, k);
+        const value = get(&tree, k) catch |err| {
+            std.debug.print("[main] Error: {any}\n", .{err});
+            continue;
+        };
         std.debug.print("Value: {any}\n", .{value});
     }
 
     //try printPersisted(DB_FILEPATH);
+    _ = printSizes(&tree) catch 0;
 
     destroyLSMTree(&tree);
-    _ = GPA_M.deinit();
-    _ = GPA_D.deinit();
+    _ = GPA.deinit();
+}
+
+fn printSizes(tree: *LSMTree) !void {
+    var binf = try std.fs.cwd().openFile(DB_FILEPATH, .{});
+    defer binf.close();
+    const eof = try binf.getEndPos();
+    const persistedSize = @divFloor(eof, @sizeOf(KeyVal));
+    std.debug.print("mem.size: {d}\npredisk.size: {d}\ndisk: {d}\n", .{ tree.mem.size, tree.predisk.size, persistedSize });
 }
 
 pub fn printPersisted(filepath: []const u8) !void {
@@ -91,16 +91,14 @@ pub fn printPersisted(filepath: []const u8) !void {
 
 fn initLSMTree() !LSMTree {
     return LSMTree{
-        .mem = try initMemoryLayer(),
+        .mem = initMemoryLayer(),
         .predisk = try initPreDiskLayer(),
     };
 }
 
-fn initMemoryLayer() !MemLayer {
-    const kv = try MALLOC.alloc(KeyVal, MAX_MEMORY_SIZE);
-    errdefer MALLOC.free(kv);
+fn initMemoryLayer() MemLayer {
     return MemLayer{
-        .KV = kv,
+        .KV = undefined,
         .size = 0,
     };
 }
@@ -154,8 +152,8 @@ fn memToDisk(tree: *LSMTree) !void {
     }
     tree.predisk.size = tree.predisk.KV.len;
 
-    MALLOC.free(tree.mem.KV);
-    tree.mem = try initMemoryLayer();
+    _ = tree.mem.KV;
+    tree.mem = initMemoryLayer();
 }
 
 fn get(tree: *LSMTree, k: i64) !i64 {
@@ -197,7 +195,7 @@ pub fn getPersisted(filepath: []const u8, k: i64) !i64 {
 }
 
 fn destroyLSMTree(tree: *LSMTree) void {
-    MALLOC.free(tree.mem.KV);
+    _ = tree.mem.KV;
     ALLOCATOR.free(tree.predisk.KV);
 }
 
