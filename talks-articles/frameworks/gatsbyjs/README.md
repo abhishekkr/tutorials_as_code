@@ -6,8 +6,12 @@
 ### Gatsby.js Tutorials
 
 * [environment setup](./gatsby-00-environment-setup.md)
+
 * [building blocks](./gatsby-01-building-blocks.md)
+
 * [intro to styling](./gatsby-02-intro-to-styling.md)
+
+__TBD__ * [nested layout components](./gatsby-03-nested-layout-components.md)
 
 ---
 

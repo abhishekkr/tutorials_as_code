@@ -17,3 +17,15 @@ react-native run-android
 ```
 
 ---
+
+### ToDo
+
+* [decoide.org](https://www.decoide.org/react-native/docs/linux-windows-support.html#content)
+
+* [codedaily.io](https://codedaily.io/tutorials/16/How-to-Make-Instagram)
+
+* [awesome react native](http://www.awesome-react-native.com/)
+
+* [tutorialspoint](https://www.tutorialspoint.com/react_native/react_native_overview.htm)
+
+---
