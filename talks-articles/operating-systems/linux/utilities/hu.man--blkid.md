@@ -1,9 +1,11 @@
 
 ## blkid
 
-> to locate/print block device attributes
+> * name infers block id
 >
-> its basic listing is `LABEL`, `UUID`, **filesystem** `TYPE`, for partition `PARTLABEL` and `PARTUUID`
+> * to locate/print block device attributes
+>
+> * its basic listing is `LABEL`, `UUID`, **filesystem** `TYPE`, for partition `PARTLABEL` and `PARTUUID`
 
 * to get basic details of all block devices
 
