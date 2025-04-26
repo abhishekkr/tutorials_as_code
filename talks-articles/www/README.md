@@ -12,3 +12,7 @@
 * [which way is forward by Douglas Crockford](./FooCafe.Which-way-is-forward.2013.DouglasCrockford.md)
 
 * [html5 dev webapp dev workflow by Paul Irsih at JSConf2012](./Paul.Irish--HTML5.Developer.JSConf.2012--WebApp.Dev.Workflow.md)
+
+* [Playwright](./playwright/README.md)
+
+---
