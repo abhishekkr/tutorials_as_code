@@ -59,5 +59,16 @@ curl -XPUT 'http://escluster:9200/_cluster/settings' -d '{
 }'
 ```
 
+* update replica to 0 for single node cluster
+
+```
+curl -H 'Content-Type: application/json' -XPUT 'http://${ES_URI}:9200/_settings' -d '
+{
+    "index" : {
+        "number_of_replicas" : 0
+    }
+}'
+
+```
 
 ---

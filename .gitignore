@@ -10,6 +10,7 @@ example-webapp
 build
 **/__pycache__
 **/.venv
+**/.venv-tut-as-code
 **/.gradle
 **/bower_components
 **/node_modules
