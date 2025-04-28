@@ -1,5 +1,6 @@
 ## Workshop: High Performance Python I
-* by Ian Ozsvald at PyCon 2012
+
+> by Ian Ozsvald at PyCon 2012
 
 * Profile big Python codebase
 
