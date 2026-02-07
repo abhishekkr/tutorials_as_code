@@ -34,6 +34,11 @@
 * GameDevBuddies: [Procedural Gen](https://www.youtube.com/watch?v=Y19Mw5YsgjI)
 
 * GameDev DOU UKrainian [Blogs](https://gamedev.dou.ua/blogs/?hl=en), [Articles](https://gamedev.dou.ua/articles/)
+> [Level Design Basics - Part.1](https://gamedev.dou.ua/blogs/level-design-basics-part-1/?hl=en); [Part-2](https://gamedev.dou.ua/blogs/level-design-basics-part-2/?hl=en)
+
+* [John Romero's Level Design Tips](https://www.helldoradoteam.com/2018/12/19/john-romeros-level-design-tips/)
+
+* [Timothy Cain's Game Production Stages](https://www.youtube.com/watch?v=IADSh_P05As)
 
 * BucketBrigade: [Make Beautiful Levels](https://www.youtube.com/watch?v=Q1AAxGTnp7E)
 
@@ -42,6 +47,8 @@
 * Games of Vaibhav: [Make Games in Easiest Ways](https://www.youtube.com/watch?v=MGhMShAXsHM)
 
 * Filip Hráček: [Faking 3D with Craig Labenz](https://www.youtube.com/watch?v=DmId-KOgPkg); [Flutter Mad Science Conf talk](https://www.youtube.com/watch?v=ESqXNHWtONE); [Building Giant Robot](https://www.youtube.com/watch?v=TtN0mhikdPk); [Boring Keynote Sep2025](https://www.youtube.com/watch?v=YyDY7p8heMM)
+
+* [Indie Games Hub: 16 Best Horror Games With Pixel Graphic That You Can Play On PC](https://www.youtube.com/watch?v=M49HF_Wp96s)
 
 ---
 
@@ -67,5 +74,10 @@
 
 * [Board Game Design Lab](https://www.youtube.com/@BoardGameDesignLab)
 
+* [GameDev.tv](https://www.youtube.com/@Gdevtv/videos)
+
+* [Indie Games Hub](https://www.youtube.com/@IndieHub01/videos)
+
+* [Lost Relic Games](https://www.youtube.com/@LostRelicGames/videos)
 
 ---
