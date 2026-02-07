@@ -13,6 +13,8 @@
 
 * [MakerTech Godot Tutorials Playlsit| Intro to Shaders](https://www.youtube.com/watch?v=GCZT1_bd_7w&list=PLMQtM2GgbPEXTqB6PCXSvXlgTIc20uPd3&index=6)
 
+* [RedFoolsGameDev's 16+hr Beginner Godot Game Course](https://www.youtube.com/watch?v=8QKoUBCwNbo)
+
 * [blazeDev | Smooth Grass Color Transitions Between Biomes - Godot Shader Trick](https://www.youtube.com/watch?v=3FKlMhqIrcY); [articles](https://blazedev.games/categories/godot-tutorials/)
 
 * [kidsCanCode | Godot 101](https://kidscancode.org/godot_recipes/4.x/g101/index.html)
@@ -28,3 +30,7 @@
 * TheNerdForum: [10 New Godot Games in Jan2026](https://www.youtube.com/watch?v=p_cvhrJWTqU)
 
 * [Gwizz's](https://www.youtube.com/@Gwizz1027/videos): [Tween Tutorial](https://www.youtube.com/watch?v=GN_HMhvYnYA); [Camera Tips](https://www.youtube.com/watch?v=ySEKAFt4ckw)
+
+* [old tutorial from Gamefromscratch](https://devga.me/tutorials/godot2d/)
+
+---

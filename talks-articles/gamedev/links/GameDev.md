@@ -41,6 +41,14 @@
 
 * Games of Vaibhav: [Make Games in Easiest Ways](https://www.youtube.com/watch?v=MGhMShAXsHM)
 
+* Filip Hráček: [Faking 3D with Craig Labenz](https://www.youtube.com/watch?v=DmId-KOgPkg); [Flutter Mad Science Conf talk](https://www.youtube.com/watch?v=ESqXNHWtONE); [Building Giant Robot](https://www.youtube.com/watch?v=TtN0mhikdPk); [Boring Keynote Sep2025](https://www.youtube.com/watch?v=YyDY7p8heMM)
+
+---
+
+### Interviews
+
+* UD GameDev Club: [Erin Catto - Box2D](https://www.youtube.com/watch?v=SDwvTPR_U-g); [Tom Rothamal - RenPy](https://www.youtube.com/watch?v=LxR10UzTbuk); [Ramon Santamaria - Raylib](https://www.youtube.com/watch?v=nCdjLETQ0b8)
+
 ---
 
 ### TOOLS
@@ -52,5 +60,12 @@
 * [ClearCode's 6+hrs Ultimate Intro to Raylib](https://www.youtube.com/watch?v=UoAsDlUwjy0)
 
 * [ClearCode's 11+hrs PyGame](https://www.youtube.com/watch?v=8OMghdHP-zs); [PyGame Camera](https://www.youtube.com/watch?v=u7LPRqrzry8); [PyGame Zelda](https://www.youtube.com/watch?v=QU1pPzEGrqw&pp=0gcJCZEKAYcqIYzv); [PyGame Masks](https://www.youtube.com/watch?v=uW3Fhe-Vkx4); [Intro to PySimpleGUI](https://www.youtube.com/watch?v=kQ8DGP9p2LY)
+
+---
+
+### Channels
+
+* [Board Game Design Lab](https://www.youtube.com/@BoardGameDesignLab)
+
 
 ---
