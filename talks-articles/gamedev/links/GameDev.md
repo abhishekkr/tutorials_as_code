@@ -72,12 +72,18 @@
 
 ### Channels
 
-* [Board Game Design Lab](https://www.youtube.com/@BoardGameDesignLab)
+* [Board Game Design Lab](https://www.youtube.com/@BoardGameDesignLab/videos)
 
 * [GameDev.tv](https://www.youtube.com/@Gdevtv/videos)
 
 * [Indie Games Hub](https://www.youtube.com/@IndieHub01/videos)
 
 * [Lost Relic Games](https://www.youtube.com/@LostRelicGames/videos)
+
+* [Mooneye Studios](https://www.youtube.com/@MooneyeStudios/videos)
+
+* [Box2D's Erin Catto](https://www.youtube.com/@erin_catto/videos)
+
+* [Challacade](https://www.youtube.com/@Challacade/videos)
 
 ---

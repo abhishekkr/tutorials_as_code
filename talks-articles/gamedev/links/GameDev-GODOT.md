@@ -1,4 +1,6 @@
 
+## Godot
+
 * [Packt's Godot4 Game Dev Projects 2nd Ed Book Github Code](https://github.com/PacktPublishing/Godot-4-Game-Development-Projects-Second-Edition)
 
 * [ClearCode's 8.xhrs Ultimate Intro to Godot](https://www.youtube.com/watch?v=TLG2yVpLDT8)
@@ -32,5 +34,9 @@
 * [Gwizz's](https://www.youtube.com/@Gwizz1027/videos): [Tween Tutorial](https://www.youtube.com/watch?v=GN_HMhvYnYA); [Camera Tips](https://www.youtube.com/watch?v=ySEKAFt4ckw)
 
 * [old tutorial from Gamefromscratch](https://devga.me/tutorials/godot2d/)
+
+### Android Specific
+
+* [Channel: Godot Basics](https://www.youtube.com/@GodotBasics)
 
 ---

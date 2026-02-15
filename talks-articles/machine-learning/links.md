@@ -3,7 +3,7 @@
 
 * [Futurepedia X AI Agent Lab: From Zero to Your First AI Agent in 25 Minutes ~ No Coding](https://www.youtube.com/watch?v=EH5jx5qPabU)
 
-* [Vizuara's  Build a Small Language Model (SLM) From Scratch](https://www.youtube.com/watch?v=pOFcwcwtv3k)
+* [Vizuara's  Build a Small Language Model (SLM) From Scratch](https://www.youtube.com/watch?v=pOFcwcwtv3k); [NOTEBOOK](https://colab.research.google.com/drive/1k4G3G5MxYLxawmPfAknUN7dbbmyqldQv?usp=sharing)
 
 **MachineLearningMastery.com**
 > * [Object Detection with Keras](https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-keras/)
