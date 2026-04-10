@@ -10,6 +10,9 @@
 - [x] [Flutter Bloc Easy Tutorial by Flutter Mapp](https://www.youtube.com/watch?v=3bEkaRUVOeU)
 - [x] [Flutter Bloc Mistakes by AbedDev](https://www.youtube.com/watch?v=FklNwVd__Zs)
 
+*Other Packages*
+- [x] [flutter\_animate](https://www.youtube.com/watch?v=JSqUZFkRLr8)
+
 - [ ] [Flutter, Flame and Fragment Shaders](https://www.youtube.com/watch?v=A4l1v0Kc-uk); Flutter Con EU
 - [ ] [Flutter Fragment Shaders Complete Guide by Yash Makan](https://www.youtube.com/watch?v=bdy2mi7S5Nk)
 - [ ] [GameState Machine inf Flame by vlogize](https://www.youtube.com/watch?v=_S9CM_xS03s)
@@ -116,6 +119,10 @@
 ---
 
 ### Flutter Channels
+
+* [Dart and Flutter Getting Started](https://www.youtube.com/playlist?list=PLjxrf2q8roU2bqkohF-r9TNmo8HWSu0TG)
+* [#decodingflutter](https://www.youtube.com/hashtag/decodingflutter)
+* [Stateful Widgets](https://www.youtube.com/watch?v=Gzz8FwSlsUg)
 
 * [David Serrano](https://www.youtube.com/@DavidSerranoIO/videos)
 * [nextapp devCon](https://www.youtube.com/@nextappevents/videos) mainly for FlutterCon Talks

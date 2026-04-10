@@ -50,6 +50,10 @@
 
 * [Indie Games Hub: 16 Best Horror Games With Pixel Graphic That You Can Play On PC](https://www.youtube.com/watch?v=M49HF_Wp96s)
 
+* [ConfTalk: Paul Merrell on Procedural Modeling](https://www.youtube.com/watch?v=1tgMl92DAqk)
+
+* [Barney Codes: Intro to Shaders](https://www.youtube.com/watch?v=3mfvZ-mdtZQ)
+
 ---
 
 ### Interviews
