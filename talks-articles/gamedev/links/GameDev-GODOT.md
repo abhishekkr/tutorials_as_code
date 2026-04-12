@@ -1,11 +1,15 @@
 
 ## Godot
 
+> working samples from tutorials could be found [here](https://github.com/abhishekkr/godot-samples)
+
 ### Watched
 
 - [x] Brackey's [2D Platformer Tutoial](https://www.youtube.com/watch?v=LOhfqjmasi0);
 
 - [x] GDQuest's [Your First 2D GAME From Zero in Godot 4 Vampire Survivor Style](https://www.youtube.com/watch?v=GwCiGixlqiU)
+
+- [x] [ClearCode's 8.xhrs Ultimate Intro to Godot](https://www.youtube.com/watch?v=TLG2yVpLDT8); two 2D games, one 3D
 
 - [ ] Coding with Russ' [Roguelite Mining Game](https://www.youtube.com/watch?v=iKm0JDi9nF0)
 
@@ -32,7 +36,6 @@
 * [Packt's Godot4 Game Dev Projects 2nd Ed Book Github Code](https://github.com/PacktPublishing/Godot-4-Game-Development-Projects-Second-Edition)
 
 * [ClearCode's 7+hrs Master 2D Shaders](https://www.youtube.com/watch?v=J9qx8MxuJYM)
-* [ClearCode's 8.xhrs Ultimate Intro to Godot](https://www.youtube.com/watch?v=TLG2yVpLDT8)
 * [ClearCode's 5.xhrs Recreate Stardew Valley in Godot](https://www.youtube.com/watch?v=jIKuiUdCsuo)
 * [ClearCode's 3.xhrs Ultimate intro to Godot Control nodes + Creating ZELDA Menu](https://www.youtube.com/watch?v=Ny4JDxwlrbo)
 * [ClearCode's 10+hrs 3D ZELDA in Godot](https://www.youtube.com/watch?v=AoGOIiBo4Eg)
