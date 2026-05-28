@@ -3,9 +3,7 @@
 
 [source](https://www.tutorialspoint.com/lua/)
 
-* [Overview](./01-overview.md)
-
-* [Basic Syntax](./02-basic-syntax.md)
+* [Overview & Basic Syntax](./a_-_lua-basics.md)
 
 __...more__
 
