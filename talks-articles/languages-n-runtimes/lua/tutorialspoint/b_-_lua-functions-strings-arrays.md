@@ -1,5 +1,5 @@
 
-## Lua Functions
+## Lua Functions, Strings, Arrays
 
 > code for: [functions](./b_-_lua-functions.lua); [strings](./b_-_lua-strings.lua); [arrays](./b_-_lua-arrays.lua)
 
